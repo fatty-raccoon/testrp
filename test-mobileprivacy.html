@@ -1,179 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mobile Privacy – Harden Your Digital Pocket | ShadowSec</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Privacy Guide | ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
       margin: 0;
-      padding: 0;
-      line-height: 1.6;
     }
-    header, footer {
+    header {
       background-color: #111;
-      padding: 1.2rem 1.5rem;
+      color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       border-bottom: 1px solid #222;
     }
     .site-title {
       font-size: 1.6rem;
       font-weight: 800;
-      letter-spacing: 0.5px;
-      color: #f0f0f0;
     }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 2rem 1.5rem;
+    .menu-toggle {
+      font-size: 1.5rem;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
     nav {
-      margin-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
+      display: none;
+      flex-direction: column;
       gap: 1rem;
+      padding: 1rem;
+      background-color: #111;
     }
     nav a {
       color: #ccc;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
     }
-    nav a:hover,
-    nav a.active {
+    nav a:hover {
       color: #00ffc3;
     }
+    .popup {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      border: 1px solid #222;
+      padding: 1.5rem;
+      z-index: 2000;
+      display: none;
+      flex-direction: column;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 12px;
+    }
+    .popup a {
+      color: #00ffc3;
+      margin: 0.5rem 0;
+    }
+    .popup button {
+      margin-top: 1rem;
+      background: none;
+      border: 1px solid #444;
+      color: #ccc;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    main {
+      padding: 2rem 1.5rem;
+    }
     h2 {
-      font-size: 2rem;
       color: #00ffc3;
       margin-bottom: 1rem;
     }
-    h3 {
-      font-size: 1.3rem;
-      margin-top: 2rem;
+    .section {
+      margin-bottom: 2rem;
+    }
+    .section h3 {
       color: #fff;
-    }
-    ul {
-      padding-left: 1.2rem;
-      color: #ccc;
-    }
-    li {
       margin-bottom: 0.5rem;
     }
-    .readmore {
-      display: none;
-      margin-top: 1rem;
+    .section p {
+      color: #ccc;
+      margin-bottom: 0.5rem;
     }
-    .readmore-toggle {
-      background: none;
+    .read-more {
+      display: inline-block;
+      margin-top: 0.5rem;
       color: #00ffc3;
-      border: none;
-      cursor: pointer;
       font-weight: 600;
-      padding: 0;
     }
     footer {
+      background-color: #111;
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
+      padding: 1.5rem;
       color: #666;
+      font-size: 0.9rem;
       border-top: 1px solid #222;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <div class="site-title">ShadowSec</div>
-  <nav>
-    <a href="index.html">Home</a>
+  <header>
+    <div class="site-title">ShadowSec</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+  <nav id="mainMenu">
+    <a href="#" onclick="openPopup()">📚 Mini Guides</a>
+    <a href="mobile.html">📱 Mobile Privacy</a>
+    <a href="consult.html">🧠 Consultation</a>
+  </nav>  <div class="popup" id="popupMenu">
     <a href="osint.html">OSINT</a>
     <a href="opsec.html">OPSEC</a>
     <a href="survival.html">Analog Survival</a>
     <a href="money.html">Money = Privacy</a>
-    <a href="mobile.html" class="active">Mobile Privacy</a>
-    <a href="consult.html">Consultation</a>
-  </nav>
-</header>
-
-<main class="container">
-  <h2>📱 Mobile Privacy – Harden Your Digital Pocket</h2>
-
-  <h3>🎯 The Goal</h3>
-  <p>Mobile phones are surveillance devices in disguise. If you carry one, it must be controlled, not owned by data brokers.</p>
-
-  <h3>🚧 Bare Minimum Setup</h3>
-  <ul>
-    <li>Remove bloatware or disable system apps (use ADB or root if advanced).</li>
-    <li>Install privacy firewalls like <strong>RethinkDNS</strong> or <strong>NetGuard</strong>.</li>
-    <li>Use <strong>Windscribe VPN</strong> with kill switch + custom DNS.</li>
-    <li>Always block background data. Review permissions for each app.</li>
-  </ul>
-
-  <h3>🕵️ App Hygiene</h3>
-  <ul>
-    <li>Prefer <strong>F-Droid</strong> or trusted APK mirrors. No Play Store when possible.</li>
-    <li>Use <strong>Bromite</strong> or <strong>Mull</strong> for browsing. Avoid Chrome.</li>
-    <li><strong>Disable Location</strong>, Bluetooth, and Wi-Fi scanning unless needed.</li>
-  </ul>
-
-  <button class="readmore-toggle" onclick="toggleRead('sec1')">+ Read More</button>
-  <div class="readmore" id="sec1">
-    <h3>🗂️ Compartmentalize Apps</h3>
-    <ul>
-      <li>Use <strong>Shelter</strong> or <strong>Island</strong> to isolate risky apps.</li>
-      <li>Split identities: personal, work, burner.</li>
-      <li>Never mix banking, messaging, and OSINT apps.</li>
-    </ul>
-
-    <h3>🔒 Encrypted Everything</h3>
-    <ul>
-      <li>Use <strong>KeepassDX</strong> for passwords, <strong>Aegis</strong> for 2FA.</li>
-      <li>Keep notes, contact files, and records in <strong>Standard Notes</strong> (offline mode).</li>
-    </ul>
-
-    <h3>📵 Offline-First Mentality</h3>
-    <ul>
-      <li>Only go online when necessary.</li>
-      <li>Use SD cards and OTG drives for file movement, not cloud.</li>
-      <li>Keep backups encrypted, local, and rotated monthly.</li>
-    </ul>
-
-    <h3>🧪 Advanced Users</h3>
-    <ul>
-      <li>Use custom ROMs like CalyxOS or GrapheneOS.</li>
-      <li>Or repurpose old phones into offline-only tools: PDF readers, encrypted storage, signal jammers.</li>
-    </ul>
-  </div>
-
-  <h3>💡 Final Notes</h3>
-  <ul>
-    <li>Test everything in airplane mode. What still works is what you control.</li>
-    <li>Use aliases and burner setups. No SIM is ever private.</li>
-    <li>Physical control of your phone is digital control of your data.</li>
-  </ul>
-
-</main>
-
-<footer>
-  <p>Created by Anonymous. &copy; 2025</p>
-</footer>
-
-<script>
-  function toggleRead(id) {
-    const section = document.getElementById(id);
-    const btn = event.target;
-    if (section.style.display === "block") {
-      section.style.display = "none";
-      btn.textContent = "+ Read More";
-    } else {
-      section.style.display = "block";
-      btn.textContent = "- Read Less";
+    <button onclick="closePopup()">← Back</button>
+  </div>  <main>
+    <h2>📱 Mobile Privacy Guide</h2>
+    <div class="section">
+      <h3>1. Phone Setup & First Steps</h3>
+      <p>Learn how to start fresh with factory reset, new Google account, and secure offline-first setup.</p>
+      <a href="guides/setup.html" class="read-more">Read Full Guide →</a>
+    </div>
+    <div class="section">
+      <h3>2. Firewalls & DNS</h3>
+      <p>RethinkDNS and NextDNS block trackers before they reach you. Learn how to combine them.</p>
+      <a href="guides/firewalls.html" class="read-more">Read Full Guide →</a>
+    </div>
+    <div class="section">
+      <h3>3. Apps & Permissions</h3>
+      <p>Every permission is a risk. Understand how to grant only what’s necessary.</p>
+      <a href="guides/apps.html" class="read-more">Read Full Guide →</a>
+    </div>
+    <div class="section">
+      <h3>4. VPNs & Network OPSEC</h3>
+      <p>Use Windscribe the right way. Spoofing, kill-switching, and traffic shaping.</p>
+      <a href="guides/vpn.html" class="read-more">Read Full Guide →</a>
+    </div>
+    <div class="section">
+      <h3>5. Storing Sensitive Data</h3>
+      <p>How to use KeePassDX, Aegis, and encrypted vaults offline.</p>
+      <a href="guides/storage.html" class="read-more">Read Full Guide →</a>
+    </div>
+  </main>  <footer>
+    Created by Anonymous. &copy; 2025
+  </footer>  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("mainMenu");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
-  }
-</script>
-
-</body>
+    function openPopup() {
+      document.getElementById("popupMenu").style.display = "flex";
+    }
+    function closePopup() {
+      document.getElementById("popupMenu").style.display = "none";
+    }
+  </script></body>
   </html>
