@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Guides | ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #e5e5e5;
+    }
+
+    header {
+      background-color: #111;
+      color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .site-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 0.2rem 0;
+      color: #ffffff;
+    }
+
+    main {
+      padding: 2rem 1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .features article {
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .features article:hover {
+      transform: translateY(-4px);
+    }
+
+    .features h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc3;
+    }
+
+    .features h3 a {
+      text-decoration: none;
+      color: #00ffc3;
+    }
+
+    .features h3 a:hover {
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #00ffc3;
+      border: 2px solid #00ffc3;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="site-title">ShadowSec</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="features">
+      <article>
+        <h3><a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a></h3>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/shadowsec/opsec.html">🔐 OPSEC</a></h3>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a></h3>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/shadowsec/money.html">💰 Money = Privacy</a></h3>
+      </article>
+    </section>
+
+    <div style="text-align: center;">
+      <a href="https://lamboar.github.io/shadowsec/" class="back-btn">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Created by Anonymous. &copy; 2025</p>
+  </footer>
+</body>
+  </html>
