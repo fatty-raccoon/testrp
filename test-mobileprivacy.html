@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShadowSec</title>
+  <title>Mobile Privacy Guide | ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,10 +21,7 @@
       z-index: 1000;
       border-bottom: 1px solid #222;
     }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1000px; margin: 0 auto; }
     .site-title {
       font-size: 1.6rem;
       font-weight: 800;
@@ -37,17 +33,11 @@
       color: white;
       border: none;
       cursor: pointer;
-      display: block;
       position: absolute;
       top: 1.3rem;
       right: 1.5rem;
     }
-    nav {
-      display: none;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
+    nav { display: none; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
     nav a {
       color: #ccc;
       font-weight: 600;
@@ -55,57 +45,8 @@
       padding: 0.5rem 0;
       display: block;
     }
-    nav a:hover,
-    nav a.active {
-      color: #00ffc3;
-    }
-
-    .popup-menu {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #111;
-      border: 1px solid #00ffc3;
-      border-radius: 12px;
-      box-shadow: 0 0 25px #00ffc3aa;
-      padding: 2rem;
-      display: none;
-      flex-direction: column;
-      gap: 1rem;
-      z-index: 2000;
-      width: 80%;
-      max-width: 350px;
-    }
-
-    .popup-menu a {
-      color: #e5e5e5;
-      text-decoration: none;
-      padding: 0.75rem 1rem;
-      background-color: #1a1a1a;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-
-    .popup-menu a:hover {
-      background-color: #00ffc3;
-      color: #111;
-    }
-
-    .back-btn {
-      background-color: #222;
-      color: #00ffc3;
-      font-weight: bold;
-      text-align: center;
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: 1px solid #00ffc3;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-
+    nav a:hover, nav a.active { color: #00ffc3; }
+    .search-box { margin-top: 1rem; }
     .search-box input {
       width: 100%;
       padding: 0.6rem;
@@ -114,7 +55,75 @@
       background-color: #1a1a1a;
       color: #eee;
     }
-
+    main { padding: 2rem 1.5rem; }
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #00ffc3;
+    }
+    .section-box {
+      background-color: #1a1a1a;
+      padding: 1.2rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #00ffc3;
+    }
+    .section-box h3 { color: #fff; margin-bottom: 0.5rem; }
+    .section-box p { color: #ccc; margin-bottom: 0.5rem; }
+    .read-more {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background-color: #00ffc3;
+      color: #0e0e0e;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .read-more:hover { background-color: #00e6b8; }
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+      margin-top: 2rem;
+    }
+    /* Mini Guides Popup */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #1a1a1a;
+      border: 1px solid #00ffc3;
+      padding: 1.5rem;
+      border-radius: 12px;
+      z-index: 2000;
+      display: none;
+      text-align: center;
+    }
+    .popup a {
+      display: block;
+      margin: 0.5rem 0;
+      color: #00ffc3;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .popup a:hover { text-decoration: underline; }
+    .back-btn {
+      margin-top: 1rem;
+      background-color: #222;
+      color: #ccc;
+      padding: 0.4rem 1rem;
+      border: 1px solid #444;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .back-btn:hover { background-color: #333; }
     @media (min-width: 768px) {
       nav {
         display: flex !important;
@@ -125,14 +134,8 @@
         margin-top: 0;
         position: static;
       }
-
-      .menu-toggle {
-        display: none;
-      }
-
-      .search-box {
-        margin-left: auto;
-      }
+      .menu-toggle { display: none; }
+      .search-box { margin-top: 0; margin-left: auto; }
     }
   </style>
 </head>
@@ -142,39 +145,58 @@
       <div class="site-title">ShadowSec</div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
-        <a href="#" onclick="openMiniGuides()">🧭 Mini Guides</a>
-        <a href="mobile.html">📱 Mobile Privacy</a>
-        <a href="consult.html">💬 Consultation</a>
+        <a href="#" onclick="showPopup(event)">📚 Mini Guides</a>
+        <a href="mobile.html" class="active">📱 Mobile Privacy</a>
+        <a href="consult.html">🧠 Consultation</a>
         <div class="search-box">
-          <input type="text" placeholder="Search...">
+          <input type="text" placeholder="Search this page..." />
         </div>
       </nav>
     </div>
-  </header>
+  </header>  <main class="container">
+    <h2>📱 Mobile Privacy – Own Your Device, Own Your Life</h2><div class="section-box">
+  <h3>🔐 App Permissions</h3>
+  <p>Understand which permissions apps really need and revoke unnecessary ones. Privacy begins with denying access.</p>
+  <a href="permissions-guide.html" class="read-more">Read More →</a>
+</div>
 
-  <!-- Popup for Mini Guides -->
-  <div id="popupMenu" class="popup-menu">
+<div class="section-box">
+  <h3>📡 Network Controls</h3>
+  <p>Block unnecessary internet access using firewalls (like RethinkDNS) and prevent background leaks.</p>
+  <a href="network-guide.html" class="read-more">Read More →</a>
+</div>
+
+<div class="section-box">
+  <h3>🧱 App Sandboxing</h3>
+  <p>Use Shelter or Island to isolate sensitive apps. Prevent cross-data leaks and background tracking.</p>
+  <a href="sandbox-guide.html" class="read-more">Read More →</a>
+</div>
+
+<div class="section-box">
+  <h3>📲 Phone Setup</h3>
+  <p>Start fresh: new SIM, no accounts, verified APKs only. Trust nothing you didn’t verify yourself.</p>
+  <a href="setup-guide.html" class="read-more">Read More →</a>
+</div>
+
+  </main>  <div id="popupMenu" class="popup">
     <a href="osint.html">🕵️ OSINT</a>
     <a href="opsec.html">🛡️ OPSEC</a>
-    <a href="money.html">💰 Money = Privacy</a>
-    <a href="survival.html">📦 Analog Survival</a>
-    <a href="tools.html">🔐 Security Tools</a>
-    <div class="back-btn" onclick="closeMiniGuides()">← Back</div>
-  </div>
-
-  <script>
+    <a href="money.html">💵 Money = Privacy</a>
+    <a href="survival.html">📻 Analog Survival</a>
+    <button class="back-btn" onclick="closePopup()">← Back</button>
+  </div>  <footer>
+    <p>Created by Anonymous. &copy; 2025</p>
+  </footer>  <script>
     function toggleMenu() {
       const nav = document.getElementById("mainNav");
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
-
-    function openMiniGuides() {
-      document.getElementById("popupMenu").style.display = "flex";
+    function showPopup(e) {
+      e.preventDefault();
+      document.getElementById("popupMenu").style.display = "block";
     }
-
-    function closeMiniGuides() {
+    function closePopup() {
       document.getElementById("popupMenu").style.display = "none";
     }
-  </script>
-</body>
-  </html>
+  </script></body>
+          </html>.
