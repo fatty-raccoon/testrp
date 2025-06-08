@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #e5e5e5;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #111;
+      color: #f0f0f0;
+      padding: 1.2rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .site-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #ccc;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #00ffc3;
+    }
+
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: #ffffff;
+    }
+
+    form {
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 10px rgba(0, 255, 195, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #ccc;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.5rem;
+      background: #0e0e0e;
+      border: 1px solid #333;
+      border-radius: 0.5rem;
+      color: #e5e5e5;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background: transparent;
+      color: #00ffc3;
+      border: 2px solid #00ffc3;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="site-title">ShadowSec</div>
+      <nav>
+        <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
+        <a href="mobile.html">📱 Mobile Privacy</a>
+        <a href="consult.html">🔗 Contact Us</a>
+        <a href="contact.html" class="active">📨 Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>📨 Contact Us</h2>
+    <form action="#" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
+  </footer>
+</body>
+  </html>
