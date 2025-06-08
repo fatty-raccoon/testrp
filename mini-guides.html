@@ -18,82 +18,52 @@
       color: #e5e5e5;
     }
 
-    header {
-      background-color: #111;
-      color: #f0f0f0;
-      padding: 1rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .container {
+    main {
       max-width: 1000px;
       margin: 0 auto;
+      padding: 3rem 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
     }
 
-    .site-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      padding: 0.2rem 0;
-      color: #ffffff;
-    }
-
-    main {
-      padding: 2rem 1rem;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .features article {
-      background-color: #111;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
-      transition: transform 0.3s ease;
+    .guide-btn {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      padding: 1rem 2rem;
       text-align: center;
-    }
-
-    .features article:hover {
-      transform: translateY(-4px);
-    }
-
-    .features h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+      border: 2px solid #00ffc3;
       color: #00ffc3;
-    }
-
-    .features h3 a {
       text-decoration: none;
-      color: #00ffc3;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 14px;
+      background-color: transparent;
+      transition: all 0.3s ease;
     }
 
-    .features h3 a:hover {
-      text-decoration: underline;
+    .guide-btn:hover {
+      background-color: rgba(0, 255, 195, 0.07);
+      box-shadow: 0 0 12px #00ffc3;
     }
 
     .back-btn {
       display: inline-block;
-      background-color: transparent;
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
       color: #00ffc3;
-      border: 2px solid #00ffc3;
-      padding: 0.7rem 1.4rem;
-      font-weight: 600;
+      border: 2px dashed #00ffc3;
       border-radius: 12px;
       text-decoration: none;
-      margin-top: 2rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-weight: 600;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .back-btn:hover {
-      background-color: rgba(0, 255, 195, 0.1);
+      background-color: rgba(0, 255, 195, 0.08);
+      box-shadow: 0 0 10px #00ffc3;
     }
 
     footer {
@@ -107,35 +77,19 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="site-title">ShadowSec</div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="features">
-      <article>
-        <h3><a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a></h3>
-      </article>
-      <article>
-        <h3><a href="https://lamboar.github.io/shadowsec/opsec.html">🔐 OPSEC</a></h3>
-      </article>
-      <article>
-        <h3><a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a></h3>
-      </article>
-      <article>
-        <h3><a href="https://lamboar.github.io/shadowsec/money.html">💰 Money = Privacy</a></h3>
-      </article>
-    </section>
+  <main>
+    <a href="https://lamboar.github.io/shadowsec/osint.html" class="guide-btn">🕵️ OSINT</a>
+    <a href="https://lamboar.github.io/shadowsec/opsec.html" class="guide-btn">🔐 OPSEC</a>
+    <a href="https://lamboar.github.io/shadowsec/survival.html" class="guide-btn">📻 Analog Survival</a>
+    <a href="https://lamboar.github.io/shadowsec/money.html" class="guide-btn">💰 Money = Privacy</a>
 
-    <div style="text-align: center;">
-      <a href="https://lamboar.github.io/shadowsec/" class="back-btn">← Back to Home</a>
-    </div>
+    <a href="https://lamboar.github.io/shadowsec/" class="back-btn">← Back to Home</a>
   </main>
 
   <footer>
     <p>Created by Anonymous. &copy; 2025</p>
   </footer>
+
 </body>
-  </html>
+      </html>
