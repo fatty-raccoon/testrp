@@ -2,213 +2,178 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Money = Privacy – Control Your Flow | ShadowSec</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile Privacy – Harden Your Digital Pocket | ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
-    /* Base & Layout */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
     }
-    header {
+    header, footer {
       background-color: #111;
-      color: #f0f0f0;
       padding: 1.2rem 1.5rem;
-      position: sticky; top: 0; z-index: 1000;
       border-bottom: 1px solid #222;
     }
-    .container { max-width: 1000px; margin: 0 auto; }
-    .site-title { font-size: 1.6rem; font-weight: 800; }
-    .menu-toggle {
-      font-size: 1.6rem; background: none; color: white; border: none;
-      cursor: pointer; display: block;
-      position: absolute; top: 1.3rem; right: 1.5rem;
+    .site-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #f0f0f0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1.5rem;
     }
     nav {
-      display: none; flex-direction: column; gap: 0.75rem; margin-top: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     nav a {
-      color: #ccc; font-weight: 600; text-decoration: none; padding: 0.5rem 0; display: block;
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 600;
     }
-    nav a:hover, nav a.active { color: #00ffc3; }
-    .search-box { margin-top: 1rem; }
-    .search-box input {
-      width: 100%; padding: 0.6rem;
-      border-radius: 6px; border: 1px solid #333;
-      background-color: #1a1a1a; color: #eee;
+    nav a:hover,
+    nav a.active {
+      color: #00ffc3;
     }
-
-    /* Main */
-    main { padding: 2rem 1.5rem; }
-    main h2 { font-size: 2rem; margin-bottom: 1rem; color: #00ffc3; }
-    article h3 {
-      font-size: 1.25rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: #fff;
+    h2 {
+      font-size: 2rem;
+      color: #00ffc3;
+      margin-bottom: 1rem;
     }
-    article p, article ul {
-      font-size: 1rem; color: #ccc; margin-bottom: 1rem;
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      color: #fff;
     }
-    article ul { padding-left: 1.2rem; }
-    article ul li { margin-bottom: 0.4rem; }
-    a { color: #00ffc3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Expandable Sections */
-    .expandable {
-      border-left: 3px solid #00ffc3;
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
+    ul {
+      padding-left: 1.2rem;
+      color: #ccc;
     }
-    .expand-btn {
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .readmore {
+      display: none;
+      margin-top: 1rem;
+    }
+    .readmore-toggle {
       background: none;
       color: #00ffc3;
-      font-weight: bold;
       border: none;
       cursor: pointer;
-      margin-bottom: 0.8rem;
+      font-weight: 600;
+      padding: 0;
     }
-    .hidden { display: none; }
-
-    /* Footer */
     footer {
-      background-color: #111; text-align: center;
-      padding: 2rem 1rem; font-size: 0.9rem;
-      color: #666; border-top: 1px solid #222; margin-top: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      nav {
-        display: flex !important;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1.5rem;
-        margin-top: 0;
-        position: static;
-      }
-      .menu-toggle { display: none; }
-      .search-box { margin-top: 0; margin-left: auto; }
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="site-title">ShadowSec</div>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <nav id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="osint.html">OSINT</a>
-        <a href="opsec.html">OPSEC</a>
-        <a href="survival.html">Analog Survival</a>
-        <a href="money.html" class="active">Money = Privacy</a>
-        <a href="consult.html">Consultation</a>
-        <div class="search-box">
-          <input type="text" id="siteSearch" placeholder="Search this page...">
-        </div>
-      </nav>
-    </div>
-  </header>
 
-  <main class="container">
-    <h2>Money = Privacy – Control the Flow, Control the Risk</h2>
-    <article>
+<header>
+  <div class="site-title">ShadowSec</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="osint.html">OSINT</a>
+    <a href="opsec.html">OPSEC</a>
+    <a href="survival.html">Analog Survival</a>
+    <a href="money.html">Money = Privacy</a>
+    <a href="mobile.html" class="active">Mobile Privacy</a>
+    <a href="consult.html">Consultation</a>
+  </nav>
+</header>
 
-      <section class="expandable">
-        <h3>💵 Why Financial Privacy Matters</h3>
-        <p>Your money speaks for you, even when you don’t. It reveals routines, addictions, secrets, and even your fears. Every swipe is a breadcrumb.</p>
-        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
-        <div class="hidden">
-          <p>Governments, advertisers, and data brokers build behavioral profiles by watching your transactions. Opting for privacy is not about hiding crimes—it's about preserving the right to live without being profiled like a product.</p>
-        </div>
-      </section>
+<main class="container">
+  <h2>📱 Mobile Privacy – Harden Your Digital Pocket</h2>
 
-      <section class="expandable">
-        <h3>🏦 Offline Banking Tactics</h3>
-        <ul>
-          <li>Use banks with limited digital surveillance and no biometric traps</li>
-          <li>Visit branches and counters; human error > automated monitoring</li>
-          <li>Never link mobile number unless required by law—use alt SIMs</li>
-          <li>Disable mobile banking, keep passbooks updated</li>
-        </ul>
-        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
-        <div class="hidden">
-          <p>Withdraw only what you plan to use. Carry different denominations. Keep ₹500s separate from ₹50s. Store copies of key receipts in offline, encrypted form.</p>
-        </div>
-      </section>
+  <h3>🎯 The Goal</h3>
+  <p>Mobile phones are surveillance devices in disguise. If you carry one, it must be controlled, not owned by data brokers.</p>
 
-      <section class="expandable">
-        <h3>🪙 Cash Is King</h3>
-        <ul>
-          <li>Buy ration, transport, medicine in cash—no trace, no habits</li>
-          <li>Avoid linking name with loyalty programs—don’t chase discounts</li>
-          <li>Rotate usage zones; don’t always buy from the same area</li>
-        </ul>
-        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
-        <div class="hidden">
-          <p>Store cash in a hidden tin, behind books, inside sealed boxes. Use analog logs if needed. Destroy any pattern. Remember: cash is freedom in physical form.</p>
-        </div>
-      </section>
+  <h3>🚧 Bare Minimum Setup</h3>
+  <ul>
+    <li>Remove bloatware or disable system apps (use ADB or root if advanced).</li>
+    <li>Install privacy firewalls like <strong>RethinkDNS</strong> or <strong>NetGuard</strong>.</li>
+    <li>Use <strong>Windscribe VPN</strong> with kill switch + custom DNS.</li>
+    <li>Always block background data. Review permissions for each app.</li>
+  </ul>
 
-      <section class="expandable">
-        <h3>📱 Digital Payments with OPSEC</h3>
-        <ul>
-          <li>Use UPI on sandboxed profiles (Shelter, Island, GrapheneOS workspaces)</li>
-          <li>Install finance apps in secondary profiles with zero permissions</li>
-          <li>Never use real email or main SIM for any fintech app</li>
-          <li>Clear logs, cache, and restrict background data</li>
-        </ul>
-        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
-        <div class="hidden">
-          <p>Install apps via APK only, verify checksums. Never grant location, SMS, or contact access. Treat each app like a suspect until proven innocent.</p>
-        </div>
-      </section>
+  <h3>🕵️ App Hygiene</h3>
+  <ul>
+    <li>Prefer <strong>F-Droid</strong> or trusted APK mirrors. No Play Store when possible.</li>
+    <li>Use <strong>Bromite</strong> or <strong>Mull</strong> for browsing. Avoid Chrome.</li>
+    <li><strong>Disable Location</strong>, Bluetooth, and Wi-Fi scanning unless needed.</li>
+  </ul>
 
-      <section class="expandable">
-        <h3>🧰 Tools for Private Finance</h3>
-        <ul>
-          <li><a href="https://www.privacy.com" target="_blank">Privacy.com</a> – Burner cards (US)</li>
-          <li><a href="https://monerujo.io" target="_blank">Monerujo</a> – Android Monero wallet</li>
-          <li><a href="https://cash.app" target="_blank">Cash App</a> – Basic privacy controls</li>
-          <li><a href="https://localmonero.co" target="_blank">LocalMonero</a> – Buy XMR anonymously</li>
-          <li><a href="https://bisq.network" target="_blank">Bisq</a> – Peer crypto exchange</li>
-        </ul>
-      </section>
+  <button class="readmore-toggle" onclick="toggleRead('sec1')">+ Read More</button>
+  <div class="readmore" id="sec1">
+    <h3>🗂️ Compartmentalize Apps</h3>
+    <ul>
+      <li>Use <strong>Shelter</strong> or <strong>Island</strong> to isolate risky apps.</li>
+      <li>Split identities: personal, work, burner.</li>
+      <li>Never mix banking, messaging, and OSINT apps.</li>
+    </ul>
 
-      <section class="expandable">
-        <h3>💡 Strategic Suggestions</h3>
-        <ul>
-          <li>Use notebooks for offline transaction logs—no digital metadata</li>
-          <li>Have 3 modes: cash for daily, UPI for occasional, crypto for strategic</li>
-          <li>Rotate tools, change habits, fake trails, and never stick to routines</li>
-        </ul>
-        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
-        <div class="hidden">
-          <p>If you're predictable, you're vulnerable. Privacy isn't static—it's a game of constantly shifting your footprint to avoid building a shadow you can't outrun.</p>
-        </div>
-      </section>
+    <h3>🔒 Encrypted Everything</h3>
+    <ul>
+      <li>Use <strong>KeepassDX</strong> for passwords, <strong>Aegis</strong> for 2FA.</li>
+      <li>Keep notes, contact files, and records in <strong>Standard Notes</strong> (offline mode).</li>
+    </ul>
 
-    </article>
-  </main>
+    <h3>📵 Offline-First Mentality</h3>
+    <ul>
+      <li>Only go online when necessary.</li>
+      <li>Use SD cards and OTG drives for file movement, not cloud.</li>
+      <li>Keep backups encrypted, local, and rotated monthly.</li>
+    </ul>
 
-  <footer>
-    <p>Created by Anonymous. &copy; 2025</p>
-  </footer>
+    <h3>🧪 Advanced Users</h3>
+    <ul>
+      <li>Use custom ROMs like CalyxOS or GrapheneOS.</li>
+      <li>Or repurpose old phones into offline-only tools: PDF readers, encrypted storage, signal jammers.</li>
+    </ul>
+  </div>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+  <h3>💡 Final Notes</h3>
+  <ul>
+    <li>Test everything in airplane mode. What still works is what you control.</li>
+    <li>Use aliases and burner setups. No SIM is ever private.</li>
+    <li>Physical control of your phone is digital control of your data.</li>
+  </ul>
+
+</main>
+
+<footer>
+  <p>Created by Anonymous. &copy; 2025</p>
+</footer>
+
+<script>
+  function toggleRead(id) {
+    const section = document.getElementById(id);
+    const btn = event.target;
+    if (section.style.display === "block") {
+      section.style.display = "none";
+      btn.textContent = "+ Read More";
+    } else {
+      section.style.display = "block";
+      btn.textContent = "- Read Less";
     }
+  }
+</script>
 
-    function toggleContent(button) {
-      const hiddenDiv = button.nextElementSibling;
-      hiddenDiv.classList.toggle("hidden");
-      button.textContent = hiddenDiv.classList.contains("hidden") ? "Read More" : "Read Less";
-    }
-  </script>
 </body>
   </html>
