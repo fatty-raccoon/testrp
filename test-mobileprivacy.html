@@ -1,12 +1,14 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Privacy – Harden Your Phone | ShadowSec</title>
+  <title>Money = Privacy – Control Your Flow | ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
+    /* Base & Layout */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
@@ -16,98 +18,79 @@
       background-color: #111;
       color: #f0f0f0;
       padding: 1.2rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       border-bottom: 1px solid #222;
     }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .site-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .site-title { font-size: 1.6rem; font-weight: 800; }
     .menu-toggle {
-      font-size: 1.6rem;
-      background: none;
-      color: white;
-      border: none;
-      cursor: pointer;
-      display: block;
-      position: absolute;
-      top: 1.3rem;
-      right: 1.5rem;
+      font-size: 1.6rem; background: none; color: white; border: none;
+      cursor: pointer; display: block;
+      position: absolute; top: 1.3rem; right: 1.5rem;
     }
     nav {
-      display: none;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1rem;
+      display: none; flex-direction: column; gap: 0.75rem; margin-top: 1rem;
     }
     nav a {
-      color: #ccc;
-      font-weight: 600;
-      text-decoration: none;
+      color: #ccc; font-weight: 600; text-decoration: none; padding: 0.5rem 0; display: block;
     }
-    nav a:hover, nav a.active {
+    nav a:hover, nav a.active { color: #00ffc3; }
+    .search-box { margin-top: 1rem; }
+    .search-box input {
+      width: 100%; padding: 0.6rem;
+      border-radius: 6px; border: 1px solid #333;
+      background-color: #1a1a1a; color: #eee;
+    }
+
+    /* Main */
+    main { padding: 2rem 1.5rem; }
+    main h2 { font-size: 2rem; margin-bottom: 1rem; color: #00ffc3; }
+    article h3 {
+      font-size: 1.25rem; margin-top: 1.8rem; margin-bottom: 0.6rem; color: #fff;
+    }
+    article p, article ul {
+      font-size: 1rem; color: #ccc; margin-bottom: 1rem;
+    }
+    article ul { padding-left: 1.2rem; }
+    article ul li { margin-bottom: 0.4rem; }
+    a { color: #00ffc3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Expandable Sections */
+    .expandable {
+      border-left: 3px solid #00ffc3;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .expand-btn {
+      background: none;
       color: #00ffc3;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 0.8rem;
     }
+    .hidden { display: none; }
+
+    /* Footer */
+    footer {
+      background-color: #111; text-align: center;
+      padding: 2rem 1rem; font-size: 0.9rem;
+      color: #666; border-top: 1px solid #222; margin-top: 2rem;
+    }
+
     @media (min-width: 768px) {
       nav {
         display: flex !important;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: 1.5rem;
+        margin-top: 0;
+        position: static;
       }
-      .menu-toggle {
-        display: none;
-      }
-    }
-    main h2 {
-      font-size: 2rem;
-      margin: 2rem 0 1rem;
-      color: #00ffc3;
-    }
-    article h3 {
-      font-size: 1.25rem;
-      margin-top: 1.8rem;
-      color: #fff;
-    }
-    article p, article ul {
-      font-size: 1rem;
-      color: #ccc;
-    }
-    article ul {
-      padding-left: 1.2rem;
-    }
-    article ul li {
-      margin-bottom: 0.5rem;
-    }
-    .chunk {
-      margin-bottom: 2rem;
-    }
-    .read-more-btn {
-      background-color: transparent;
-      color: #00ffc3;
-      border: 1px solid #00ffc3;
-      padding: 0.4rem 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      border-radius: 6px;
-      margin-top: 0.5rem;
-    }
-    footer {
-      background-color: #111;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #222;
-      margin-top: 2rem;
+      .menu-toggle { display: none; }
+      .search-box { margin-top: 0; margin-left: auto; }
     }
   </style>
 </head>
@@ -121,79 +104,111 @@
         <a href="osint.html">OSINT</a>
         <a href="opsec.html">OPSEC</a>
         <a href="survival.html">Analog Survival</a>
-        <a href="money.html">Money = Privacy</a>
-        <a href="mobile.html" class="active">Mobile Privacy</a>
+        <a href="money.html" class="active">Money = Privacy</a>
         <a href="consult.html">Consultation</a>
+        <div class="search-box">
+          <input type="text" id="siteSearch" placeholder="Search this page...">
+        </div>
       </nav>
     </div>
   </header>
+
   <main class="container">
-    <h2>📱 Mobile Privacy – Harden Your Phone</h2>
+    <h2>Money = Privacy – Control the Flow, Control the Risk</h2>
     <article>
-      <div class="chunk">
-        <h3>1. Setup Philosophy</h3>
-        <p><strong>Offline first</strong>. Think before you connect. Never trust defaults. Privacy begins the moment you power on.</p>
-      </div>
-      <div class="chunk">
-        <h3>2. App Hygiene</h3>
-        <button class="read-more-btn" onclick="toggleChunk(this)">Read More</button>
-        <div class="hidden-content" style="display:none">
-          <ul>
-            <li>Install apps from trusted sources only (e.g. F-Droid, APKMirror verified)</li>
-            <li>Use open-source alternatives where possible</li>
-            <li>Restrict permissions: No location, no mic, no camera unless essential</li>
-          </ul>
+
+      <section class="expandable">
+        <h3>💵 Why Financial Privacy Matters</h3>
+        <p>Your money speaks for you, even when you don’t. It reveals routines, addictions, secrets, and even your fears. Every swipe is a breadcrumb.</p>
+        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
+        <div class="hidden">
+          <p>Governments, advertisers, and data brokers build behavioral profiles by watching your transactions. Opting for privacy is not about hiding crimes—it's about preserving the right to live without being profiled like a product.</p>
         </div>
-      </div>
-      <div class="chunk">
-        <h3>3. Firewalls & Filters</h3>
-        <button class="read-more-btn" onclick="toggleChunk(this)">Read More</button>
-        <div class="hidden-content" style="display:none">
-          <ul>
-            <li>Use RethinkDNS or NetGuard to block trackers</li>
-            <li>Pair with NextDNS custom blocklists</li>
-            <li>Disable background data for all apps</li>
-          </ul>
+      </section>
+
+      <section class="expandable">
+        <h3>🏦 Offline Banking Tactics</h3>
+        <ul>
+          <li>Use banks with limited digital surveillance and no biometric traps</li>
+          <li>Visit branches and counters; human error > automated monitoring</li>
+          <li>Never link mobile number unless required by law—use alt SIMs</li>
+          <li>Disable mobile banking, keep passbooks updated</li>
+        </ul>
+        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
+        <div class="hidden">
+          <p>Withdraw only what you plan to use. Carry different denominations. Keep ₹500s separate from ₹50s. Store copies of key receipts in offline, encrypted form.</p>
         </div>
-      </div>
-      <div class="chunk">
-        <h3>4. App Profiles</h3>
-        <button class="read-more-btn" onclick="toggleChunk(this)">Read More</button>
-        <div class="hidden-content" style="display:none">
-          <ul>
-            <li>Use Shelter or Island to sandbox apps</li>
-            <li>Clone risky apps and isolate their permissions</li>
-            <li>Switch profiles when handling sensitive tasks</li>
-          </ul>
+      </section>
+
+      <section class="expandable">
+        <h3>🪙 Cash Is King</h3>
+        <ul>
+          <li>Buy ration, transport, medicine in cash—no trace, no habits</li>
+          <li>Avoid linking name with loyalty programs—don’t chase discounts</li>
+          <li>Rotate usage zones; don’t always buy from the same area</li>
+        </ul>
+        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
+        <div class="hidden">
+          <p>Store cash in a hidden tin, behind books, inside sealed boxes. Use analog logs if needed. Destroy any pattern. Remember: cash is freedom in physical form.</p>
         </div>
-      </div>
-      <div class="chunk">
-        <h3>5. Hardening the OS</h3>
-        <button class="read-more-btn" onclick="toggleChunk(this)">Read More</button>
-        <div class="hidden-content" style="display:none">
-          <ul>
-            <li>Disable unnecessary system apps and bloatware</li>
-            <li>Use De-Googled OS if possible (Graphene, Calyx)</li>
-            <li>Keep airplane mode on when idle</li>
-          </ul>
+      </section>
+
+      <section class="expandable">
+        <h3>📱 Digital Payments with OPSEC</h3>
+        <ul>
+          <li>Use UPI on sandboxed profiles (Shelter, Island, GrapheneOS workspaces)</li>
+          <li>Install finance apps in secondary profiles with zero permissions</li>
+          <li>Never use real email or main SIM for any fintech app</li>
+          <li>Clear logs, cache, and restrict background data</li>
+        </ul>
+        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
+        <div class="hidden">
+          <p>Install apps via APK only, verify checksums. Never grant location, SMS, or contact access. Treat each app like a suspect until proven innocent.</p>
         </div>
-      </div>
+      </section>
+
+      <section class="expandable">
+        <h3>🧰 Tools for Private Finance</h3>
+        <ul>
+          <li><a href="https://www.privacy.com" target="_blank">Privacy.com</a> – Burner cards (US)</li>
+          <li><a href="https://monerujo.io" target="_blank">Monerujo</a> – Android Monero wallet</li>
+          <li><a href="https://cash.app" target="_blank">Cash App</a> – Basic privacy controls</li>
+          <li><a href="https://localmonero.co" target="_blank">LocalMonero</a> – Buy XMR anonymously</li>
+          <li><a href="https://bisq.network" target="_blank">Bisq</a> – Peer crypto exchange</li>
+        </ul>
+      </section>
+
+      <section class="expandable">
+        <h3>💡 Strategic Suggestions</h3>
+        <ul>
+          <li>Use notebooks for offline transaction logs—no digital metadata</li>
+          <li>Have 3 modes: cash for daily, UPI for occasional, crypto for strategic</li>
+          <li>Rotate tools, change habits, fake trails, and never stick to routines</li>
+        </ul>
+        <button class="expand-btn" onclick="toggleContent(this)">Read More</button>
+        <div class="hidden">
+          <p>If you're predictable, you're vulnerable. Privacy isn't static—it's a game of constantly shifting your footprint to avoid building a shadow you can't outrun.</p>
+        </div>
+      </section>
+
     </article>
   </main>
+
   <footer>
     <p>Created by Anonymous. &copy; 2025</p>
   </footer>
+
   <script>
     function toggleMenu() {
       const nav = document.getElementById("mainNav");
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
-    function toggleChunk(button) {
-      const content = button.nextElementSibling;
-      const isVisible = content.style.display === "block";
-      content.style.display = isVisible ? "none" : "block";
-      button.textContent = isVisible ? "Read More" : "Hide";
+
+    function toggleContent(button) {
+      const hiddenDiv = button.nextElementSibling;
+      hiddenDiv.classList.toggle("hidden");
+      button.textContent = hiddenDiv.classList.contains("hidden") ? "Read More" : "Read Less";
     }
   </script>
 </body>
-</html>
+  </html>
