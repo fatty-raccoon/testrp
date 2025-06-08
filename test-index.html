@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0e0e0e;
+  color: #e5e5e5;
+}
+
+header {
+  background-color: #111;
+  color: #f0f0f0;
+  padding: 1.2rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #222;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.site-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.menu-toggle {
+  font-size: 1.6rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 1.3rem;
+  right: 1.5rem;
+}
+
+nav {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+nav a {
+  color: #ccc;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  display: block;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00ffc3;
+}
+
+.search-box {
+  margin-top: 1rem;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  background: #111;
+  color: #e5e5e5;
+  border: 1px solid #333;
+}
+
+.hero {
+  background-color: #111;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #ccc;
+}
+
+.btn {
+  display: inline-block;
+  background-color: transparent;
+  color: #00ffc3;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid #00ffc3;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: rgba(0, 255, 195, 0.1);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.features article {
+  background-color: #111;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.features article:hover {
+  transform: translateY(-4px);
+}
+
+.features h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #00ffc3;
+}
+
+.features p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.features h3 a {
+  text-decoration: none;
+  color: #00ffc3;
+}
+
+.features h3 a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #222;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  padding: 2rem;
+  border: 1px solid #333;
+  border-radius: 1rem;
+  z-index: 9999;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 255, 195, 0.2);
+}
+
+.modal h3 {
+  margin-bottom: 1rem;
+  color: #00ffc3;
+  font-size: 1.25rem;
+}
+
+.modal a {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #e5e5e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.modal a:hover {
+  color: #00ffc3;
+}
+
+.close-modal {
+  background: none;
+  color: #888;
+  border: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  nav {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0;
+    position: static;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .search-box {
+    margin-top: 0;
+    margin-left: auto;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="site-title">ShadowSec</div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="mainNav">
+        <a href="#" id="miniGuidesLink">📚 Mini Guides</a>
+        <a href="index.html" class="active">🏠 Home</a>
+        <a href="osint.html">🕵️ OSINT</a>
+        <a href="opsec.html">🛡️ OPSEC</a>
+        <a href="survival.html">📻 Analog Survival</a>
+        <a href="money.html">💵 Money = Privacy</a>
+        <a href="consult.html">🧠 Consultation</a>
+        <div class="search-box">
+          <input type="text" id="siteSearch" placeholder="Search entire site...">
+        </div>
+      </nav>
+    </div>
+  </header>  <main class="container">
+    <section class="hero">
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
+      <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
+      <a href="consult.html" class="btn">Request Private Consultation</a>
+    </section><section class="features">
+  <article>
+    <h3><a href="osint.html">Open Source Intelligence</a></h3>
+    <p>Master the art of finding information using public tools. From usernames to geo-tagging, learn the techniques step-by-step.</p>
+  </article>
+  <article>
+    <h3><a href="opsec.html">Digital OPSEC</a></h3>
+    <p>Protect your digital identity with zero-trust methods. Learn the mindset, tools, and routines that truly keep you safe.</p>
+  </article>
+  <article>
+    <h3><a href="survival.html">Analog Survival</a></h3>
+    <p>Live without digital dependency. Use maps, radios, button phones, and traditional tools like a ghost in the machine.</p>
+  </article>
+  <article>
+    <h3><a href="money.html">Money = Privacy</a></h3>
+    <p>Control your financial trail. Discover offline banking, hidden cashflow, and untraceable asset management techniques.</p>
+  </article>
+</section>
+
+  </main>  <div id="miniGuidesModal" class="modal">
+    <h3>📚 Mini Guides</h3>
+    <a href="osint.html">🕵️ OSINT</a>
+    <a href="opsec.html">🛡️ OPSEC</a>
+    <a href="money.html">💵 Money = Privacy</a>
+    <a href="analog.html">📻 Analog Survival</a>
+    <button class="close-modal" onclick="closeModal()">← Back</button>
+  </div>  <footer>
+    <p>Created by Anonymous. &copy; 2025</p>
+  </footer>  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    }
+
+    const modal = document.getElementById("miniGuidesModal");
+    const link = document.getElementById("miniGuidesLink");
+
+    link.onclick = function(e) {
+      e.preventDefault();
+      modal.style.display = "block";
+    };
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script></body>
+</html>
