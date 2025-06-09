@@ -220,16 +220,22 @@
         display: block;
       }
     }
+@media (max-width: 767px) {
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: none;
+    padding-left: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
 
-    @media (max-width: 767px) {
-      .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        border: none;
-        background: none;
-        padding-left: 1rem;
-      }
-    }
+  .dropdown-menu.open {
+    max-height: 500px;
+  }
+}
   </style>
 </head>
 <body>
@@ -285,21 +291,6 @@
     <p>Created by Anonymous. &copy; 2025</p>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-    }
 
-    const miniLink = document.getElementById("miniGuidesLink");
-    const dropdownMenu = miniLink.nextElementSibling;
-
-    miniLink.addEventListener("click", function (e) {
-      if (window.innerWidth < 768) {
-        e.preventDefault();
-        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-      }
-    });
-  </script>
 </body>
   </html>
