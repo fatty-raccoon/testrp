@@ -6,20 +6,226 @@
   <title>ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    /* ...existing styles... (unchanged) */
-
-    /* Only ADD/UPDATE below for arrow rotation */
-    .arrow {
-      display: inline-block;
-      transition: transform 0.3s ease;
-      margin-left: 4px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .dropdown.open .arrow {
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #e5e5e5;
+    }
+
+    header {
+      background-color: #111;
+      color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .site-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .menu-toggle {
+      font-size: 1.6rem;
+      background: none;
+      color: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #e5e5e5;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      display: block;
+    }
+
+    nav a:hover {
+      color: #00ffc3;
+    }
+
+    .search-box {
+      margin-top: 1rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 6px;
+      background: #111;
+      color: #e5e5e5;
+      border: 1px solid #333;
+    }
+
+    .hero {
+      background-color: #111;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-top: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #00ffc3;
+      padding: 0.7rem 1.3rem;
+      font-weight: 600;
+      border-radius: 12px;
+      border: 2px solid #00ffc3;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .features article {
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .features article:hover {
+      transform: translateY(-4px);
+    }
+
+    .features h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc3;
+    }
+
+    .features p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .features h3 a {
+      text-decoration: none;
+      color: #00ffc3;
+    }
+
+    .features h3 a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #111;
+      border: 1px solid #222;
+      min-width: 180px;
+      z-index: 999;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 255, 195, 0.15);
+      padding: 0.5rem 0;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #e5e5e5;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #1c1c1c;
+      color: #00ffc3;
+    }
+
+    .dropdown-toggle {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .rotate {
       transform: rotate(180deg);
     }
 
-    /* ...rest of the existing styles (unchanged)... */
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0;
+        position: static;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .search-box {
+        margin-top: 0;
+        margin-left: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -29,8 +235,11 @@
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
-        <div class="dropdown" id="miniDropdown">
-          <a href="#" id="miniGuidesLink">📚 Mini Guides <span class="arrow">▾</span></a>
+        <div class="dropdown">
+          <a href="#" id="miniGuidesLink">
+            <span>📚 Mini Guides</span>
+            <span class="dropdown-toggle">▾</span>
+          </a>
           <div class="dropdown-menu">
             <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
             <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
@@ -45,7 +254,30 @@
   </header>
 
   <main class="container">
-    <!-- ...existing hero and features section (unchanged)... -->
+    <section class="hero">
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
+      <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
+      <a href="consult.html" class="btn">Request Private Consultation</a>
+    </section>
+
+    <section class="features">
+      <article>
+        <h3><a href="osint.html">Open Source Intelligence</a></h3>
+        <p>Master the art of finding information using public tools. From usernames to geo-tagging, learn the techniques step-by-step.</p>
+      </article>
+      <article>
+        <h3><a href="opsec.html">Digital OPSEC</a></h3>
+        <p>Protect your digital identity with zero-trust methods. Learn the mindset, tools, and routines that truly keep you safe.</p>
+      </article>
+      <article>
+        <h3><a href="survival.html">Analog Survival</a></h3>
+        <p>Live without digital dependency. Use maps, radios, button phones, and traditional tools like a ghost in the machine.</p>
+      </article>
+      <article>
+        <h3><a href="money.html">Money = Privacy</a></h3>
+        <p>Control your financial trail. Discover offline banking, hidden cashflow, and untraceable asset management techniques.</p>
+      </article>
+    </section>
   </main>
 
   <footer>
@@ -59,34 +291,24 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      const miniDropdown = document.getElementById('miniDropdown');
       const miniLink = document.getElementById('miniGuidesLink');
       const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
 
       miniLink.addEventListener('click', function (e) {
         e.preventDefault();
-        e.stopPropagation();
-        const isOpen = miniDropdown.classList.toggle('open');
-        dropdownMenu.style.display = isOpen ? 'block' : 'none';
+        const isOpen = dropdownMenu.style.display === 'block';
+        dropdownMenu.style.display = isOpen ? 'none' : 'block';
+        arrow.classList.toggle('rotate', !isOpen);
       });
 
       document.addEventListener('click', function (e) {
-        if (!miniDropdown.contains(e.target)) {
-          miniDropdown.classList.remove('open');
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
           dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
         }
-      });
-
-      document.querySelectorAll('#mainNav a').forEach(link => {
-        link.addEventListener('click', () => {
-          if (window.innerWidth < 768) {
-            document.getElementById("mainNav").style.display = "none";
-            dropdownMenu.style.display = "none";
-            miniDropdown.classList.remove('open');
-          }
-        });
       });
     });
   </script>
 </body>
-</html>
+  </html>
