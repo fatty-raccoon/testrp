@@ -158,39 +158,25 @@
     }
 
     .dropdown {
-      position: relative;
-      display: inline-block;
+      display: block;
     }
 
     .dropdown-menu {
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #111;
-      border: 1px solid #222;
-      min-width: 180px;
-      z-index: 999;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 12px rgba(0, 255, 195, 0.15);
-      padding: 0.5rem 0;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding-left: 1rem;
+      margin-top: 0.25rem;
     }
 
     .dropdown-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #e5e5e5;
-      text-decoration: none;
-    }
-
-    .dropdown-menu a:hover {
-      background-color: #1c1c1c;
-      color: #00ffc3;
+      padding: 0.3rem 0;
     }
 
     .dropdown-toggle {
       transition: transform 0.3s ease;
       display: inline-block;
+      margin-left: 0.25rem;
     }
 
     .rotate {
@@ -224,6 +210,19 @@
       .search-box {
         margin-top: 0;
         margin-left: auto;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .dropdown-menu a {
+        padding: 0.2rem 0;
       }
     }
   </style>
@@ -297,8 +296,8 @@
 
       miniLink.addEventListener('click', function (e) {
         e.preventDefault();
-        const isOpen = dropdownMenu.style.display === 'block';
-        dropdownMenu.style.display = isOpen ? 'none' : 'block';
+        const isOpen = dropdownMenu.style.display === 'flex';
+        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
         arrow.classList.toggle('rotate', !isOpen);
       });
 
