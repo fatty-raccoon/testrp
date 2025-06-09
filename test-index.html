@@ -93,7 +93,7 @@
     .hero h2 {
       font-size: 2rem;
       margin-bottom: 0.8rem;
-      color: #ffffff; /* changed to white */
+      color: #ffffff;
     }
 
     .hero p {
@@ -104,12 +104,12 @@
 
     .btn {
       display: inline-block;
-      background-color: transparent; /* transparent background */
-      color: #00ffc3; /* neon text */
+      background-color: transparent;
+      color: #00ffc3;
       padding: 0.7rem 1.3rem;
       font-weight: 600;
       border-radius: 12px;
-      border: 2px solid #00ffc3; /* neon border */
+      border: 2px solid #00ffc3;
       text-decoration: none;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
@@ -157,6 +157,37 @@
       text-decoration: underline;
     }
 
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #111;
+      border: 1px solid #222;
+      min-width: 180px;
+      z-index: 999;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 255, 195, 0.15);
+      padding: 0.5rem 0;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #e5e5e5;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #1c1c1c;
+      color: #00ffc3;
+    }
+
     footer {
       background-color: #111;
       text-align: center;
@@ -195,7 +226,6 @@
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
-
         <div class="dropdown">
           <a href="#" id="miniGuidesLink">📚 Mini Guides ▾</a>
           <div class="dropdown-menu">
@@ -204,7 +234,6 @@
             <a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a>
           </div>
         </div>
-
         <a href="mobile.html" class="active">📱 Mobile Privacy</a>
         <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
         <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
@@ -248,6 +277,22 @@
       const nav = document.getElementById("mainNav");
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+
+      miniLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
   </html>
