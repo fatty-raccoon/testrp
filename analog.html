@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analog Survival – Live Untraceable | ShadowSec</title>
+  <title>ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -16,17 +16,15 @@
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
-      line-height: 1.6;
     }
 
     header {
       background-color: #111;
       color: #f0f0f0;
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.5rem;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid #222;
     }
 
     .container {
@@ -35,20 +33,20 @@
     }
 
     .site-title {
-      font-size: 2rem;
+      font-size: 2.3rem;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      color: #ffffff;
     }
 
     .menu-toggle {
       font-size: 1.6rem;
       background: none;
-      color: white;
+      color: #f0f0f0;
       border: none;
       cursor: pointer;
       display: block;
       position: absolute;
-      top: 1.3rem;
+      top: 1.2rem;
       right: 1.5rem;
     }
 
@@ -60,67 +58,14 @@
     }
 
     nav a {
-      color: #ccc;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 0.5rem 0;
-      display: block;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: #00ffc3;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      cursor: pointer;
-      color: #ccc;
-      font-weight: 600;
-    }
-
-    .dropdown-toggle:hover {
-      color: #00ffc3;
-    }
-
-    .arrow {
-      transition: transform 0.3s ease;
-      display: inline-block;
-    }
-
-    .arrow.open {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 0.5rem;
-      padding: 0.5rem 0;
-      z-index: 999;
-      min-width: 180px;
-      box-shadow: 0 0 10px rgba(0, 255, 195, 0.1);
-    }
-
-    .dropdown-menu a {
-      padding: 0.6rem 1rem;
-      display: block;
       color: #e5e5e5;
+      font-weight: 600;
       text-decoration: none;
+      padding: 0.5rem 0;
+      display: block;
     }
 
-    .dropdown-menu a:hover {
-      background: #222;
+    nav a:hover {
       color: #00ffc3;
     }
 
@@ -132,50 +77,110 @@
       width: 100%;
       padding: 0.6rem;
       border-radius: 6px;
+      background: #111;
+      color: #e5e5e5;
       border: 1px solid #333;
-      background-color: #1a1a1a;
-      color: #eee;
     }
 
-    main {
-      padding: 2rem 1.5rem;
+    .hero {
+      background-color: #111;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-top: 2rem;
     }
 
-    main h2 {
+    .hero h2 {
       font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #00ffc3;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
     }
 
-    article h3 {
-      font-size: 1.25rem;
-      margin-top: 1.8rem;
-      margin-bottom: 0.6rem;
-      color: #fff;
-    }
-
-    article p,
-    article ul {
-      font-size: 1rem;
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
       color: #ccc;
-      margin-bottom: 1rem;
     }
 
-    article ul {
-      padding-left: 1.2rem;
-    }
-
-    article ul li {
-      margin-bottom: 0.4rem;
-    }
-
-    a {
+    .btn {
+      display: inline-block;
+      background-color: transparent;
       color: #00ffc3;
+      padding: 0.7rem 1.3rem;
+      font-weight: 600;
+      border-radius: 12px;
+      border: 2px solid #00ffc3;
       text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    a:hover {
+    .btn:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .features article {
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .features article:hover {
+      transform: translateY(-4px);
+    }
+
+    .features h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc3;
+    }
+
+    .features p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .features h3 a {
+      text-decoration: none;
+      color: #00ffc3;
+    }
+
+    .features h3 a:hover {
       text-decoration: underline;
+    }
+
+    .dropdown {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding-left: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .dropdown-menu a {
+      padding: 0.3rem 0;
+    }
+
+    .dropdown-toggle {
+      transition: transform 0.4s ease; /* ✅ Smooth rotation speed */
+      display: inline-block;
+      margin-left: 0.25rem;
+    }
+
+    .rotate {
+      transform: rotate(180deg);
     }
 
     footer {
@@ -185,14 +190,13 @@
       font-size: 0.9rem;
       color: #666;
       border-top: 1px solid #222;
-      margin-top: 2rem;
     }
 
     @media (min-width: 768px) {
       nav {
         display: flex !important;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
         gap: 1.5rem;
         margin-top: 0;
@@ -208,24 +212,22 @@
         margin-left: auto;
       }
 
-      .dropdown:hover .dropdown-menu {
-        display: block;
-      }
-    }
-
-    @media (max-width: 767px) {
       .dropdown-menu {
         position: static;
-        box-shadow: none;
-        border: none;
         background: none;
-        padding-left: 1rem;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .dropdown-menu a {
+        padding: 0.2rem 0;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="container">
       <div class="site-title">ShadowSec</div>
@@ -233,11 +235,11 @@
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
         <div class="dropdown">
-          <div class="dropdown-toggle" onclick="toggleDropdown()">
+          <a href="#" id="miniGuidesLink">
             <span>📚 Mini Guides</span>
-            <span class="arrow" id="dropdownArrow">▾</span>
-          </div>
-          <div class="dropdown-menu" id="dropdownMenu">
+            <span class="dropdown-toggle">▾</span>
+          </a>
+          <div class="dropdown-menu">
             <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
             <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
             <a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a>
@@ -249,61 +251,36 @@
       </nav>
     </div>
   </header>
-  
+
   <main class="container">
-    <h2>Analog Survival – Disappear Without Going Offline</h2>
-    <article>
-      <h3>📻 Why Analog Still Wins</h3>
-      <p>In a hyperconnected world, analog tools offer the ultimate stealth. No tracking, no updates, no backdoors—just pure control.</p>
+    <section class="hero">
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
+      <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
+      <a href="consult.html" class="btn">Request Private Consultation</a>
+    </section>
 
-      <h3>📞 Communication Methods</h3>
-      <ul>
-        <li>Use feature phones (no GPS, no apps)</li>
-        <li>Replace SIM often, prefer prepaid with cash</li>
-        <li>Use walkie-talkies or shortwave radios where legal</li>
-      </ul>
-
-      <h3>📓 Information Management</h3>
-      <ul>
-        <li>Keep sensitive notes in physical notebooks (use codes/ciphers)</li>
-        <li>Use maps, paper address books, and printed contacts</li>
-        <li>Use old-school planners and logbooks instead of apps</li>
-      </ul>
-
-      <h3>🧰 Analog Tools to Keep</h3>
-      <ul>
-        <li>Compass, printed maps, offline survival manuals</li>
-        <li>Mechanical watches, flashlights, solar chargers</li>
-        <li>Cash-only wallet, notebooks, pencils, Faraday pouch</li>
-      </ul>
-
-      <h3>🕵️ Tactics for Staying Invisible</h3>
-      <ul>
-        <li>Don't carry your main phone everywhere</li>
-        <li>Use decoy devices or leave them at home</li>
-        <li>Never mix digital and analog trails</li>
-        <li>Watch CCTV blind spots; prefer low-traffic paths</li>
-      </ul>
-
-      <h3>🌐 Links and Resources</h3>
-      <ul>
-        <li><a href="https://www.privacytools.io" target="_blank">PrivacyTools.io</a> – Context & tools</li>
-        <li><a href="https://www.survivallibrary.com" target="_blank">Survival Library</a> – Offline skills archive</li>
-        <li><a href="https://www.survivalistboards.com" target="_blank">Survivalist Boards</a> – Analog living forums</li>
-        <li><a href="https://www.reddit.com/r/LowTech" target="_blank">r/LowTech</a> – Digital minimalism tips</li>
-      </ul>
-
-      <h3>💡 Suggestions</h3>
-      <ul>
-        <li>Have a bugout bag with analog tools prepped</li>
-        <li>Plan a digital detox weekend monthly</li>
-        <li>Document and test your analog workflows</li>
-      </ul>
-    </article>
+    <section class="features">
+      <article>
+        <h3><a href="osint.html">Open Source Intelligence</a></h3>
+        <p>Master the art of finding information using public tools. From usernames to geo-tagging, learn the techniques step-by-step.</p>
+      </article>
+      <article>
+        <h3><a href="opsec.html">Digital OPSEC</a></h3>
+        <p>Protect your digital identity with zero-trust methods. Learn the mindset, tools, and routines that truly keep you safe.</p>
+      </article>
+      <article>
+        <h3><a href="survival.html">Analog Survival</a></h3>
+        <p>Live without digital dependency. Use maps, radios, dumbphones, and traditional tools like a ghost in the machine.</p>
+      </article>
+      <article>
+        <h3><a href="money.html">Money = Privacy</a></h3>
+        <p>Control your financial trail. Discover offline banking, hidden cashflow, and untraceable asset management techniques.</p>
+      </article>
+    </section>
   </main>
 
   <footer>
-    <p>Created by छछुंदर. &copy; 2025 ShadowSec</p>
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
   </footer>
 
   <script>
@@ -312,13 +289,25 @@
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
 
-    function toggleDropdown() {
-      const menu = document.getElementById("dropdownMenu");
-      const arrow = document.getElementById("dropdownArrow");
-      const isOpen = menu.style.display === "block";
-      menu.style.display = isOpen ? "none" : "block";
-      arrow.classList.toggle("open", !isOpen);
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
+
+      miniLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === 'flex';
+        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
+        arrow.classList.toggle('rotate', !isOpen);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
+        }
+      });
+    });
   </script>
 </body>
-  </html>
+</html>
