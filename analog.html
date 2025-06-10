@@ -64,11 +64,13 @@
       padding: 0.5rem 0;
       display: block;
     }
-
-    nav a:hover,
-    nav a.active {
+    
+.home-link {
+  color: #00ffc3;
+}
+    
+    nav a:hover {
       color: #00ffc3;
-      text-decoration: underline;
     }
 
     .search-box {
@@ -176,7 +178,7 @@
     }
 
     .dropdown-toggle {
-      transition: transform 0.4s ease;
+      transition: transform 0.4s ease; /* ✅ Smooth rotation speed */
       display: inline-block;
       margin-left: 0.25rem;
     }
@@ -235,7 +237,7 @@
       <div class="site-title">ShadowSec</div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
-        <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
+        <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
         <div class="dropdown">
           <a href="#" id="miniGuidesLink">
             <span>📚 Mini Guides</span>
@@ -247,7 +249,7 @@
             <a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a>
           </div>
         </div>
-        <a href="https://lamboar.github.io/shadowsec/mobpriv.html">📱 Mobile Privacy</a>
+        <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
         <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
         <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
       </nav>
@@ -292,7 +294,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-      
       const miniLink = document.getElementById('miniGuidesLink');
       const dropdownMenu = miniLink.nextElementSibling;
       const arrow = miniLink.querySelector('.dropdown-toggle');
@@ -308,17 +309,6 @@
         if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
           dropdownMenu.style.display = 'none';
           arrow.classList.remove('rotate');
-        }
-      });
-
-      
-      const currentPath = window.location.pathname;
-      const navLinks = document.querySelectorAll("nav a");
-
-      navLinks.forEach(link => {
-        const linkPath = new URL(link.href).pathname;
-        if (linkPath === currentPath || currentPath.endsWith('/') && linkPath.endsWith('/shadowsec/')) {
-          link.classList.add("active");
         }
       });
     });
