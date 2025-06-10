@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OSINT Tools & Guides | ShadowSec</title>
+  <title>Analog Survival – Live Untraceable | ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -74,6 +74,28 @@
 
     .dropdown {
       position: relative;
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      color: #ccc;
+      font-weight: 600;
+    }
+
+    .dropdown-toggle:hover {
+      color: #00ffc3;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .arrow.open {
+      transform: rotate(180deg);
     }
 
     .dropdown-menu {
@@ -171,6 +193,7 @@
         display: flex !important;
         flex-direction: row;
         justify-content: flex-start;
+        align-items: center;
         gap: 1.5rem;
         margin-top: 0;
         position: static;
@@ -207,20 +230,21 @@
       <div class="site-title">ShadowSec</div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
-        <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
+        <a href="index.html">🏠 Home</a>
 
         <div class="dropdown">
-          <a href="#" id="miniGuidesLink">📚 Mini Guides ▾</a>
-          <div class="dropdown-menu">
-            <a href="https://lamboar.github.io/shadowsec/osint.html" class="active">🕵️ OSINT</a>
-            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-            <a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a>
+          <div class="dropdown-toggle" onclick="toggleDropdown(event)">
+            📚 Mini Guides <span class="arrow" id="dropdownArrow">▾</span>
+          </div>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="osint.html">🕵️ OSINT</a>
+            <a href="opsec.html">🛡️ OPSEC</a>
+            <a href="survival.html" class="active">📻 Analog Survival</a>
           </div>
         </div>
 
-        <a href="https://lamboar.github.io/shadowsec/mobpriv.html">📱 Mobile Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
+        <a href="money.html">💵 Money = Privacy</a>
+        <a href="consult.html">🧠 Consultation</a>
 
         <div class="search-box">
           <input type="text" id="siteSearch" placeholder="Search this page...">
@@ -230,47 +254,59 @@
   </header>
 
   <main class="container">
-    <h2>Open Source Intelligence (OSINT) Tools & Methods</h2>
+    <h2>Analog Survival – Disappear Without Going Offline</h2>
     <article>
-      <h3>What is OSINT?</h3>
-      <p>OSINT is the collection and analysis of publicly available data to produce actionable intelligence. From usernames to addresses, social media to geolocation — the surface web has it all.</p>
+      <h3>📻 Why Analog Still Wins</h3>
+      <p>In a hyperconnected world, analog tools offer the ultimate stealth. No tracking, no updates, no backdoors—just pure control.</p>
 
-      <h3>🛠️ Top Free OSINT Tools</h3>
+      <h3>📞 Communication Methods</h3>
       <ul>
-        <li><a href="https://osintframework.com" target="_blank">OSINT Framework</a> – A directory of categorized OSINT tools</li>
-        <li><a href="https://namechk.com" target="_blank">Namechk</a> – Check username availability across platforms</li>
-        <li><a href="https://socialgrep.com" target="_blank">SocialGrep</a> – Reddit deep search engine</li>
-        <li><a href="https://intelx.io" target="_blank">IntelX</a> – Deep web and breached data search</li>
-        <li><a href="https://exif.tools" target="_blank">EXIF.tools</a> – View image metadata</li>
+        <li>Use feature phones (no GPS, no apps)</li>
+        <li>Replace SIM often, prefer prepaid with cash</li>
+        <li>Use walkie-talkies or shortwave radios where legal</li>
       </ul>
 
-      <h3>🔍 Investigation Techniques</h3>
+      <h3>📓 Information Management</h3>
       <ul>
-        <li>Reverse image search with Google, Yandex, or TinEye</li>
-        <li>Cross-check email leaks using <a href="https://haveibeenpwned.com" target="_blank">HaveIBeenPwned</a></li>
-        <li>Scrape LinkedIn, Twitter, or GitHub for patterns</li>
-        <li>Use metadata from PDFs and photos to find origin devices</li>
+        <li>Keep sensitive notes in physical notebooks (use codes/ciphers)</li>
+        <li>Use maps, paper address books, and printed contacts</li>
+        <li>Use old-school planners and logbooks instead of apps</li>
       </ul>
 
-      <h3>📚 Learning Resources</h3>
+      <h3>🧰 Analog Tools to Keep</h3>
       <ul>
-        <li><a href="https://osintcurio.us" target="_blank">OSINT Curious</a> – Expert-written blog for OSINT learning</li>
-        <li><a href="https://start.me/p/DPYpmx/osint" target="_blank">start.me OSINT dashboard</a> – Bookmarks, feeds, and toolkits</li>
-        <li><a href="https://www.bellingcat.com" target="_blank">Bellingcat</a> – Real investigations done with open data</li>
+        <li>Compass, printed maps, offline survival manuals</li>
+        <li>Mechanical watches, flashlights, solar chargers</li>
+        <li>Cash-only wallet, notebooks, pencils, Faraday pouch</li>
       </ul>
 
-      <h3>💡 Suggestions for You</h3>
-      <p>If you're a beginner:</p>
+      <h3>🕵️ Tactics for Staying Invisible</h3>
       <ul>
-        <li>Start with usernames and social media tracking</li>
-        <li>Practice with your own data to understand what’s exposed</li>
-        <li>Join OSINT communities (Reddit, Discord, etc.)</li>
+        <li>Don't carry your main phone everywhere</li>
+        <li>Use decoy devices or leave them at home</li>
+        <li>Never mix digital and analog trails</li>
+        <li>Watch CCTV blind spots; prefer low-traffic paths</li>
+      </ul>
+
+      <h3>🌐 Links and Resources</h3>
+      <ul>
+        <li><a href="https://www.privacytools.io" target="_blank">PrivacyTools.io</a> – Context & tools</li>
+        <li><a href="https://www.survivallibrary.com" target="_blank">Survival Library</a> – Offline skills archive</li>
+        <li><a href="https://www.survivalistboards.com" target="_blank">Survivalist Boards</a> – Analog living forums</li>
+        <li><a href="https://www.reddit.com/r/LowTech" target="_blank">r/LowTech</a> – Digital minimalism tips</li>
+      </ul>
+
+      <h3>💡 Suggestions</h3>
+      <ul>
+        <li>Have a bugout bag with analog tools prepped</li>
+        <li>Plan a digital detox weekend monthly</li>
+        <li>Document and test your analog workflows</li>
       </ul>
     </article>
   </main>
 
   <footer>
-    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
+    <p>Created by छछुंदर. &copy; 2025 ShadowSec</p>
   </footer>
 
   <script>
@@ -279,15 +315,14 @@
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
 
-    const dropdownLink = document.getElementById("miniGuidesLink");
-    const dropdownMenu = dropdownLink.nextElementSibling;
-
-    dropdownLink.addEventListener("click", function (e) {
-      if (window.innerWidth < 768) {
-        e.preventDefault();
-        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-      }
-    });
+    function toggleDropdown(e) {
+      e.preventDefault();
+      const menu = document.getElementById("dropdownMenu");
+      const arrow = document.getElementById("dropdownArrow");
+      const isOpen = menu.style.display === "block";
+      menu.style.display = isOpen ? "none" : "block";
+      arrow.classList.toggle("open", !isOpen);
+    }
   </script>
 </body>
-  </html>
+            </html>
