@@ -76,21 +76,6 @@
       position: relative;
     }
 
-    #miniGuidesLink {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem; /* Space between text and arrow */
-    }
-
-    .arrow {
-      display: inline-block;
-      transition: transform 0.4s ease;
-    }
-
-    .arrow.rotate {
-      transform: rotate(180deg);
-    }
-
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -169,6 +154,27 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    
+    #miniGuidesLink {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none !important;
+    }
+
+    #miniGuidesLink:hover {
+      text-decoration: none;
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.4s ease;
+    }
+
+    .arrow.rotate {
+      transform: rotate(180deg);
     }
 
     footer {
@@ -302,8 +308,8 @@
     }
 
     const dropdownLink = document.getElementById("miniGuidesLink");
-    const arrow = dropdownLink.querySelector(".arrow");
     const dropdownMenu = dropdownLink.nextElementSibling;
+    const arrow = dropdownLink.querySelector(".arrow");
 
     dropdownLink.addEventListener("click", function (e) {
       if (window.innerWidth < 768) {
@@ -315,4 +321,5 @@
     });
   </script>
 </body>
-</html>
+  </html>
+
