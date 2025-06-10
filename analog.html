@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OSINT Tools & Guides | ShadowSec</title>
+  <title>OPSEC – Digital Self Defense | ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -156,6 +156,27 @@
       text-decoration: underline;
     }
 
+    /* Remove underline from dropdown link and fix spacing */
+    #miniGuidesLink {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none !important;
+    }
+
+    #miniGuidesLink:hover {
+      text-decoration: none;
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.4s ease;
+    }
+
+    .arrow.rotate {
+      transform: rotate(180deg);
+    }
+
     footer {
       background-color: #111;
       text-align: center;
@@ -199,22 +220,6 @@
         padding-left: 1rem;
       }
     }
-
-    
-    #arrow {
-      display: inline-block;
-      transition: transform 0.4s ease;
-      margin-left: 4px;
-    }
-
-    #arrow.rotated {
-      transform: rotate(180deg);
-    }
-
-    
-    #miniGuidesLink {
-      text-decoration: none !important;
-    }
   </style>
 </head>
 <body>
@@ -226,10 +231,10 @@
         <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
 
         <div class="dropdown">
-          <a href="#" id="miniGuidesLink">📚 Mini Guides <span id="arrow">▾</span></a>
+          <a href="#" id="miniGuidesLink">📚 Mini Guides <span class="arrow">▾</span></a>
           <div class="dropdown-menu">
-            <a href="https://lamboar.github.io/shadowsec/osint.html" class="active">🕵️ OSINT</a>
-            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
+            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
+            <a href="https://lamboar.github.io/shadowsec/opsec.html" class="active">🛡️ OPSEC</a>
             <a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a>
           </div>
         </div>
@@ -246,41 +251,48 @@
   </header>
 
   <main class="container">
-    <h2>Open Source Intelligence (OSINT) Tools & Methods</h2>
+    <h2>OPSEC – Operational Security in the Digital Age</h2>
     <article>
-      <h3>What is OSINT?</h3>
-      <p>OSINT is the collection and analysis of publicly available data to produce actionable intelligence. From usernames to addresses, social media to geolocation — the surface web has it all.</p>
+      <h3>🧠 What is OPSEC?</h3>
+      <p>OPSEC is the process of identifying, assessing, and protecting critical information from exploitation. It’s not just tools—it’s mindset, discipline, and lifestyle.</p>
 
-      <h3>🛠️ Top Free OSINT Tools</h3>
+      <h3>📌 Core OPSEC Principles</h3>
       <ul>
-        <li><a href="https://osintframework.com" target="_blank">OSINT Framework</a> – A directory of categorized OSINT tools</li>
-        <li><a href="https://namechk.com" target="_blank">Namechk</a> – Check username availability across platforms</li>
-        <li><a href="https://socialgrep.com" target="_blank">SocialGrep</a> – Reddit deep search engine</li>
-        <li><a href="https://intelx.io" target="_blank">IntelX</a> – Deep web and breached data search</li>
-        <li><a href="https://exif.tools" target="_blank">EXIF.tools</a> – View image metadata</li>
+        <li>Don't overshare (online or offline)</li>
+        <li>Segregate identities: use alias, burner emails, and different devices</li>
+        <li>Only connect to trusted networks; avoid public Wi-Fi or use secure VPNs</li>
+        <li>Be invisible digitally—turn off location, permissions, and telemetry</li>
       </ul>
 
-      <h3>🔍 Investigation Techniques</h3>
+      <h3>🛠️ Tools to Support Your OPSEC</h3>
       <ul>
-        <li>Reverse image search with Google, Yandex, or TinEye</li>
-        <li>Cross-check email leaks using <a href="https://haveibeenpwned.com" target="_blank">HaveIBeenPwned</a></li>
-        <li>Scrape LinkedIn, Twitter, or GitHub for patterns</li>
-        <li>Use metadata from PDFs and photos to find origin devices</li>
+        <li><a href="https://grapheneos.org" target="_blank">GrapheneOS</a> – Hardened OS for Pixel phones</li>
+        <li><a href="https://rethinkdns.com" target="_blank">RethinkDNS</a> – App firewall & DNS-based blocking</li>
+        <li><a href="https://www.kuketz-blog.de/" target="_blank">Kuketz Blog</a> – Deep dives into mobile privacy</li>
+        <li><a href="https://proton.me" target="_blank">Proton Mail & VPN</a> – Secure Swiss-based services</li>
+        <li><a href="https://www.torproject.org" target="_blank">Tor Browser</a> – For anonymous browsing</li>
       </ul>
 
-      <h3>📚 Learning Resources</h3>
+      <h3>📦 Compartmentalization Techniques</h3>
       <ul>
-        <li><a href="https://osintcurio.us" target="_blank">OSINT Curious</a> – Expert-written blog for OSINT learning</li>
-        <li><a href="https://start.me/p/DPYpmx/osint" target="_blank">start.me OSINT dashboard</a> – Bookmarks, feeds, and toolkits</li>
-        <li><a href="https://www.bellingcat.com" target="_blank">Bellingcat</a> – Real investigations done with open data</li>
+        <li>One SIM = One Purpose = One Account</li>
+        <li>Isolated logins, VPN tunnels, and browser containers</li>
+        <li>Use offline tools (KeePass, Aegis, etc.) for credentials and codes</li>
       </ul>
 
-      <h3>💡 Suggestions for You</h3>
-      <p>If you're a beginner:</p>
+      <h3>📚 Resources for Deeper Learning</h3>
       <ul>
-        <li>Start with usernames and social media tracking</li>
-        <li>Practice with your own data to understand what’s exposed</li>
-        <li>Join OSINT communities (Reddit, Discord, etc.)</li>
+        <li><a href="https://ssd.eff.org" target="_blank">EFF Surveillance Self Defense</a></li>
+        <li><a href="https://www.privacytools.io" target="_blank">PrivacyTools.io</a></li>
+        <li><a href="https://techlore.tech" target="_blank">Techlore</a> – Privacy education and guides</li>
+        <li><a href="https://nixnet.services" target="_blank">NixNet</a> – Privacy-friendly services</li>
+      </ul>
+
+      <h3>💡 Suggestions for Practice</h3>
+      <ul>
+        <li>Audit your phone and digital behavior weekly</li>
+        <li>Uninstall unnecessary apps; disable permissions</li>
+        <li>Practice offline days and device disconnection</li>
       </ul>
     </article>
   </main>
@@ -297,16 +309,16 @@
 
     const dropdownLink = document.getElementById("miniGuidesLink");
     const dropdownMenu = dropdownLink.nextElementSibling;
-    const arrow = document.getElementById("arrow");
+    const arrow = dropdownLink.querySelector(".arrow");
 
     dropdownLink.addEventListener("click", function (e) {
       if (window.innerWidth < 768) {
         e.preventDefault();
         const isOpen = dropdownMenu.style.display === "block";
         dropdownMenu.style.display = isOpen ? "none" : "block";
-        arrow.classList.toggle("rotated", !isOpen);
+        arrow.classList.toggle("rotate", !isOpen);
       }
     });
   </script>
 </body>
-</html>
+  </html>
