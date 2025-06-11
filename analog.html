@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analog Survival – Live Untraceable | ShadowSec</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile Privacy – Own Your Device | ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
@@ -76,28 +75,6 @@
       position: relative;
     }
 
-    .dropdown-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      cursor: pointer;
-      color: #ccc;
-      font-weight: 600;
-    }
-
-    .dropdown-toggle:hover {
-      color: #00ffc3;
-    }
-
-    .arrow {
-      transition: transform 0.3s ease;
-      display: inline-block;
-    }
-
-    .arrow.open {
-      transform: rotate(180deg);
-    }
-
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -124,68 +101,14 @@
       color: #00ffc3;
     }
 
-    .search-box {
-      margin-top: 1rem;
+    .dropdown-toggle {
+      display: inline-block;
+      margin-left: 0.25rem;
+      transition: transform 0.3s ease;
     }
 
-    .search-box input {
-      width: 100%;
-      padding: 0.6rem;
-      border-radius: 6px;
-      border: 1px solid #333;
-      background-color: #1a1a1a;
-      color: #eee;
-    }
-
-    main {
-      padding: 2rem 1.5rem;
-    }
-
-    main h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #00ffc3;
-    }
-
-    article h3 {
-      font-size: 1.25rem;
-      margin-top: 1.8rem;
-      margin-bottom: 0.6rem;
-      color: #fff;
-    }
-
-    article p,
-    article ul {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 1rem;
-    }
-
-    article ul {
-      padding-left: 1.2rem;
-    }
-
-    article ul li {
-      margin-bottom: 0.4rem;
-    }
-
-    a {
-      color: #00ffc3;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      background-color: #111;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #222;
-      margin-top: 2rem;
+    .rotate {
+      transform: rotate(180deg);
     }
 
     @media (min-width: 768px) {
@@ -193,7 +116,6 @@
         display: flex !important;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: center;
         gap: 1.5rem;
         margin-top: 0;
         position: static;
@@ -201,11 +123,6 @@
 
       .menu-toggle {
         display: none;
-      }
-
-      .search-box {
-        margin-top: 0;
-        margin-left: auto;
       }
 
       .dropdown:hover .dropdown-menu {
@@ -222,10 +139,54 @@
         padding-left: 1rem;
       }
     }
+
+    main {
+      padding: 2rem 1.5rem;
+    }
+
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 1.6rem;
+      color: #ffffff;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+
+    ul.arrow-list {
+      list-style: none;
+      padding-left: 1.2rem;
+    }
+
+    ul.arrow-list li {
+      margin-bottom: 0.8rem;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    ul.arrow-list li::before {
+      content: "➤";
+      color: #00ffc3;
+      margin-right: 0.6rem;
+      font-size: 1rem;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
-
   <header>
     <div class="container">
       <div class="site-title">ShadowSec</div>
@@ -233,78 +194,62 @@
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
         <div class="dropdown">
-          <div class="dropdown-toggle" onclick="toggleDropdown()">
-            <span>📚 Mini Guides</span>
-            <span class="arrow" id="dropdownArrow">▾</span>
-          </div>
-          <div class="dropdown-menu" id="dropdownMenu">
+          <a href="#" id="miniGuidesLink">
+            📚 Mini Guides<span class="dropdown-toggle">▾</span>
+          </a>
+          <div class="dropdown-menu">
             <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
             <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-            <a href="https://lamboar.github.io/shadowsec/survival.html" class="active">📻 Analog Survival</a>
-            <a href="https://lamboar.github.io/shadowsec/mobpriv.html">📱 Mobile Privacy</a>
+            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
+            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
         <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
           </div>
         </div>
-        <a href=" https://lamboar.github.io/construction-pages/analog.html">🛠️ Privacy & Security Tools</a>
+        <a href="https://lamboar.github.io/construction-pages/mobpriv.html">🛠️ Privacy & Security Tools</a>
         <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
       </nav>
     </div>
   </header>
-  
+
   <main class="container">
-    <h2>Analog Survival – Disappear Without Going Offline</h2>
-    <article>
-      <h3>📻 Why Analog Still Wins</h3>
-      <p>In a hyperconnected world, analog tools offer the ultimate stealth. No tracking, no updates, no backdoors—just pure control.</p>
+    <h2>📱 Mobile Privacy – Own Your Device, Own Your Life</h2>
 
-      <h3>📞 Communication Methods</h3>
-      <ul>
-        <li>Use feature phones (no GPS, no apps)</li>
-        <li>Replace SIM often, prefer prepaid with cash</li>
-        <li>Use walkie-talkies or shortwave radios where legal</li>
-      </ul>
+    <h3>🔐 App Permissions</h3>
+    <ul class="arrow-list">
+      <li>Review permissions for each app manually.</li>
+      <li>Revoke access to location, camera, mic, and storage when not needed.</li>
+      <li>Use tools like Bouncer or permission logs to track permission usage.</li>
+    </ul>
 
-      <h3>📓 Information Management</h3>
-      <ul>
-        <li>Keep sensitive notes in physical notebooks (use codes/ciphers)</li>
-        <li>Use maps, paper address books, and printed contacts</li>
-        <li>Use old-school planners and logbooks instead of apps</li>
-      </ul>
+    <h3>📡 Network Controls</h3>
+    <ul class="arrow-list">
+      <li>Use RethinkDNS or NetGuard to control app-level network access.</li>
+      <li>Turn off background data for non-critical apps.</li>
+      <li>Disable Wi-Fi/Bluetooth when not needed to reduce passive leaks.</li>
+    </ul>
 
-      <h3>🧰 Analog Tools to Keep</h3>
-      <ul>
-        <li>Compass, printed maps, offline survival manuals</li>
-        <li>Mechanical watches, flashlights, solar chargers</li>
-        <li>Cash-only wallet, notebooks, pencils, Faraday pouch</li>
-      </ul>
+    <h3>🧱 App Sandboxing</h3>
+    <ul class="arrow-list">
+      <li>Use Shelter or Island to clone and isolate sensitive apps.</li>
+      <li>Prevent cross-data access by keeping profiles separate.</li>
+      <li>Ensure personal and work environments don’t overlap.</li>
+    </ul>
 
-      <h3>🕵️ Tactics for Staying Invisible</h3>
-      <ul>
-        <li>Don't carry your main phone everywhere</li>
-        <li>Use decoy devices or leave them at home</li>
-        <li>Never mix digital and analog trails</li>
-        <li>Watch CCTV blind spots; prefer low-traffic paths</li>
-      </ul>
-
-      <h3>🌐 Links and Resources</h3>
-      <ul>
-        <li><a href="https://www.privacytools.io" target="_blank">PrivacyTools.io</a> – Context & tools</li>
-        <li><a href="https://www.survivallibrary.com" target="_blank">Survival Library</a> – Offline skills archive</li>
-        <li><a href="https://www.survivalistboards.com" target="_blank">Survivalist Boards</a> – Analog living forums</li>
-        <li><a href="https://www.reddit.com/r/LowTech" target="_blank">r/LowTech</a> – Digital minimalism tips</li>
-      </ul>
-
-      <h3>💡 Suggestions</h3>
-      <ul>
-        <li>Have a bugout bag with analog tools prepped</li>
-        <li>Plan a digital detox weekend monthly</li>
-        <li>Document and test your analog workflows</li>
-      </ul>
-    </article>
+    <h3>📲 Fresh Phone Setup</h3>
+    <ul class="arrow-list">
+      <li>Start with a clean Android ROM if possible.</li>
+      <li>Avoid signing in to Google or other tracking-heavy accounts.</li>
+      <li>Install verified APKs only from trusted repositories.</li>
+    </ul>
+    <p style="margin-top: 2rem;">
+      <a href="https://lamboar.github.io/shadowsec/construction.html" style="color:#00ffc3; text-decoration:none; font-weight:600;">
+       🔧 A detailed blog on this topic is under construction. Stay sharp - coming soon!
+      </a>
+    </p>
   </main>
 
   <footer>
-    <p>Created by छछुंदर. | &copy; 2025 ShadowSec</p>
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
   </footer>
 
   <script>
@@ -313,13 +258,27 @@
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
 
-    function toggleDropdown() {
-      const menu = document.getElementById("dropdownMenu");
-      const arrow = document.getElementById("dropdownArrow");
-      const isOpen = menu.style.display === "block";
-      menu.style.display = isOpen ? "none" : "block";
-      arrow.classList.toggle("open", !isOpen);
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
+
+      miniLink.addEventListener('click', function (e) {
+        if (window.innerWidth < 768) {
+          e.preventDefault();
+          const isOpen = dropdownMenu.style.display === 'flex' || dropdownMenu.style.display === 'block';
+          dropdownMenu.style.display = isOpen ? 'none' : 'block';
+          arrow.classList.toggle('rotate', !isOpen);
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target) && window.innerWidth < 768) {
+          dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
+        }
+      });
+    });
   </script>
 </body>
-          </html>
+                                                                                                    </html>
