@@ -12,31 +12,33 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      height: 100%;
+      overflow: hidden;
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
-      line-height: 1.6;
     }
 
     .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      max-width: 600px;
+      margin: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
     }
 
     .back-link {
-      display: inline-block;
-      margin-bottom: 1.5rem;
+      text-decoration: none;
       color: #00ffc3;
       font-weight: 600;
-      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+      align-self: flex-start;
     }
 
     .back-link:hover {
@@ -44,66 +46,59 @@
     }
 
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.6rem;
       color: #00ffc3;
-      text-align: center;
-      animation: bounceIn 1s ease;
-    }
-
-    @keyframes bounceIn {
-      0% { transform: scale(0.9); opacity: 0; }
-      50% { transform: scale(1.05); opacity: 1; }
-      100% { transform: scale(1); }
+      margin-bottom: 0.5rem;
     }
 
     form {
       background-color: #111;
-      padding: 2rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 0 12px rgba(0, 255, 195, 0.2);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 8px rgba(0, 255, 195, 0.2);
+      font-size: 0.85rem;
     }
 
     label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
       color: #ccc;
+      text-align: left;
       font-weight: 600;
     }
 
     input, textarea {
       width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 0.8rem;
       background: #0e0e0e;
       border: 1px solid #333;
-      border-radius: 0.5rem;
+      border-radius: 0.4rem;
       color: #e5e5e5;
-      transition: border 0.3s, box-shadow 0.3s;
+      font-size: 0.85rem;
     }
 
     input:focus, textarea:focus {
       border-color: #00ffc3;
       outline: none;
-      box-shadow: 0 0 5px rgba(0, 255, 195, 0.5);
     }
 
     textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 80px;
     }
 
     button {
       background: transparent;
       color: #00ffc3;
       border: 2px solid #00ffc3;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      display: block;
-      margin: 0 auto;
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
     }
 
     button:hover {
@@ -113,55 +108,53 @@
     .confirmation {
       background: #111;
       border: 1px solid #333;
-      padding: 1rem;
-      border-radius: 0.5rem;
+      padding: 0.7rem;
+      border-radius: 0.4rem;
       color: #00ffc3;
-      margin-top: 1.5rem;
-      text-align: center;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
       display: none;
     }
 
     footer {
-      background-color: #111;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       color: #666;
-      border-top: 1px solid #222;
-      margin-top: 3rem;
+      text-align: center;
+      margin-top: 0.8rem;
     }
   </style>
 </head>
 <body>
 
-  <main class="container">
+  <div class="container">
     <a class="back-link" href="https://lamboar.github.io/shadowsec/">← Back to Home</a>
-    <h2>📨 Hit Us Up, Shadow Operative</h2>
+
+    <h2>📧 Connect with Us</h2>
 
     <form id="contactForm" action="https://usebasin.com/f/29beafa5cc14" method="POST">
-      <label for="name">Codename</label>
-      <input type="text" id="name" name="name" placeholder="ShadowAgent007" required />
+      <label for="name">🐰 Name</label>
+      <input type="text" id="name" name="name" placeholder="your name please 👉🏼👈🏼" required />
 
-      <label for="email">Secure Email</label>
-      <input type="email" id="email" name="email" placeholder="you@protonmail.com" required />
+      <label for="email">📨 Email</label>
+      <input type="email" id="email" name="email" placeholder="you@yourmail.com ✉️" required />
 
-      <label for="phone">Burner Number (optional)</label>
-      <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+      <label for="phone">📱 Contact Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="number please, call karunga raatme 😝" />
 
-      <label for="message">Your Intel</label>
-      <textarea id="message" name="message" placeholder="Leave your message, ops report, or tip-off..." required></textarea>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Kya baat karni hai? 👀" required></textarea>
 
-      <button type="submit">Send Encrypted Message</button>
+      <button type="submit">Send Message</button>
     </form>
 
     <div class="confirmation" id="confirmationMsg">
-      ✅ Message received, operative. We’ll reply within 72 hours.
+      ✅ Message received. We'll respond within 72 hours.
     </div>
-  </main>
 
-  <footer>
-    Crafted by छछुंदर | &copy; 2025 ShadowSec. All rights reserved.
-  </footer>
+    <footer>
+      Crafted with छछुंदर | &copy; 2025 ShadowSec. All rights reserved.
+    </footer>
+  </div>
 
   <script>
     const form = document.getElementById('contactForm');
@@ -187,4 +180,4 @@
     });
   </script>
 </body>
-  </html>
+        </html>
