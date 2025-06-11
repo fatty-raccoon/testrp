@@ -6,9 +6,18 @@
   <title>Thank You | ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet" />
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
       background-color: #0e0e0e;
       color: #e5e5e5;
       font-family: 'Inter', sans-serif;
@@ -16,8 +25,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -33,8 +42,9 @@
 
     p {
       color: #ccc;
-      font-size: 1.2rem;
+      font-size: 0.9rem; /* Subtext size reduced */
       margin-bottom: 2.5rem;
+      max-width: 90%;
     }
 
     a.button {
@@ -51,6 +61,13 @@
     a.button:hover {
       background-color: rgba(0, 255, 195, 0.1);
     }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.75rem;
+      color: #666;
+    }
   </style>
 </head>
 <body>
@@ -58,7 +75,9 @@
   <div class="emoji">🥳</div>
   <h1>Thank you for filling up this form, motherfucker.</h1>
   <p>We got your message and will reach you within 72 hours. You may go back and keep doing your shady shit.</p>
-  <a class="button" href="index.html">← Back to Home</a>
+  <a class="button" href="https://lamboar.github.io/shadowsec/">← Back to Home</a>
+
+  <footer>Crafted by छछुंदर | &copy; 2025 ShadowSec. All rights reserved.</footer>
 
 </body>
-</html>
+  </html>
