@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShadowSec</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     * {
       margin: 0;
@@ -16,175 +16,94 @@
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
-    }
-
-    header {
-      background-color: #111;
-      color: #f0f0f0;
-      padding: 1rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      line-height: 1.6;
     }
 
     .container {
       max-width: 1000px;
       margin: 0 auto;
+      padding: 2rem 1.5rem;
     }
 
-    .site-title {
-      font-size: 2.3rem;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    .menu-toggle {
-      font-size: 1.6rem;
-      background: none;
-      color: #f0f0f0;
-      border: none;
-      cursor: pointer;
-      display: block;
-      position: absolute;
-      top: 1.2rem;
-      right: 1.5rem;
-    }
-
-    nav {
-      display: none;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    nav a {
-      color: #e5e5e5;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 0.5rem 0;
-      display: block;
-    }
-    
-.home-link {
-  color: #00ffc3;
-}
-    
-    nav a:hover {
-      color: #00ffc3;
-    }
-
-    .search-box {
-      margin-top: 1rem;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 0.6rem;
-      border-radius: 6px;
-      background: #111;
-      color: #e5e5e5;
-      border: 1px solid #333;
-    }
-
-    .hero {
-      background-color: #111;
-      padding: 2.5rem 1rem;
-      text-align: center;
-      border-radius: 1rem;
-      margin-top: 2rem;
-    }
-
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-      color: #ffffff;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: #ccc;
-    }
-
-    .btn {
+    .back-link {
       display: inline-block;
-      background-color: transparent;
+      margin-bottom: 1.5rem;
       color: #00ffc3;
-      padding: 0.7rem 1.3rem;
       font-weight: 600;
-      border-radius: 12px;
-      border: 2px solid #00ffc3;
       text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .btn:hover {
-      background-color: rgba(0, 255, 195, 0.1);
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .features article {
-      background-color: #111;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .features article:hover {
-      transform: translateY(-4px);
-    }
-
-    .features h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: #00ffc3;
-    }
-
-    .features p {
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-
-    .features h3 a {
-      text-decoration: none;
-      color: #00ffc3;
-    }
-
-    .features h3 a:hover {
+    .back-link:hover {
       text-decoration: underline;
     }
 
-    .dropdown {
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    form {
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 10px rgba(0, 255, 195, 0.1);
+    }
+
+    label {
       display: block;
+      margin-bottom: 0.5rem;
+      color: #ccc;
+      font-weight: 600;
     }
 
-    .dropdown-menu {
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.5rem;
+      background: #0e0e0e;
+      border: 1px solid #333;
+      border-radius: 0.5rem;
+      color: #e5e5e5;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00ffc3;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 255, 195, 0.6);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background: transparent;
+      color: #00ffc3;
+      border: 2px solid #00ffc3;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
+
+    .confirmation {
+      background: #111;
+      border: 1px solid #333;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      color: #00ffc3;
+      margin-top: 1rem;
+      text-align: center;
       display: none;
-      flex-direction: column;
-      gap: 0.25rem;
-      padding-left: 1rem;
-      margin-top: 0.25rem;
-    }
-
-    .dropdown-menu a {
-      padding: 0.3rem 0;
-    }
-
-    .dropdown-toggle {
-      transition: transform 0.4s ease; /* ✅ Smooth rotation speed */
-      display: inline-block;
-      margin-left: 0.25rem;
-    }
-
-    .rotate {
-      transform: rotate(180deg);
     }
 
     footer {
@@ -194,93 +113,34 @@
       font-size: 0.9rem;
       color: #666;
       border-top: 1px solid #222;
-    }
-
-    @media (min-width: 768px) {
-      nav {
-        display: flex !important;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1.5rem;
-        margin-top: 0;
-        position: static;
-      }
-
-      .menu-toggle {
-        display: none;
-      }
-
-      .search-box {
-        margin-top: 0;
-        margin-left: auto;
-      }
-
-      .dropdown-menu {
-        position: static;
-        background: none;
-        border: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .dropdown-menu a {
-        padding: 0.2rem 0;
-      }
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="site-title">ShadowSec</div>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <nav id="mainNav">
-        <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
-        <div class="dropdown">
-          <a href="#" id="miniGuidesLink">
-            <span>📚 Mini Guides</span>
-            <span class="dropdown-toggle">▾</span>
-          </a>
-          <div class="dropdown-menu">
-            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
-            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-            <a href="https://lamboar.github.io/shadowsec/survival.html">📻 Analog Survival</a>
-          </div>
-        </div>
-        <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
-      </nav>
-    </div>
-  </header>
-
   <main class="container">
-    <section class="hero">
-      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
-      <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
-      <a href="consult.html" class="btn">Request Private Consultation</a>
-    </section>
+    <a class="back-link" href="https://lamboar.github.io/shadowsec/">← Back to Home</a>
+    <h2>📨 Contact Us</h2>
 
-    <section class="features">
-      <article>
-        <h3><a href="osint.html">Open Source Intelligence</a></h3>
-        <p>Master the art of finding information using public tools. From usernames to geo-tagging, learn the techniques step-by-step.</p>
-      </article>
-      <article>
-        <h3><a href="opsec.html">Digital OPSEC</a></h3>
-        <p>Protect your digital identity with zero-trust methods. Learn the mindset, tools, and routines that truly keep you safe.</p>
-      </article>
-      <article>
-        <h3><a href="survival.html">Analog Survival</a></h3>
-        <p>Live without digital dependency. Use maps, radios, dumbphones, and traditional tools like a ghost in the machine.</p>
-      </article>
-      <article>
-        <h3><a href="money.html">Money = Privacy</a></h3>
-        <p>Control your financial trail. Discover offline banking, hidden cashflow, and untraceable asset management techniques.</p>
-      </article>
-    </section>
+    <form id="contactForm" action="https://contact-handler.lamboar86.workers.dev/" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="confirmation" id="confirmationMsg">
+      ✅ Message sent successfully. We'll get back to you soon.
+    </div>
   </main>
 
   <footer>
@@ -288,29 +148,40 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-    }
+    const form = document.getElementById('contactForm');
+    const confirmation = document.getElementById('confirmationMsg');
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const miniLink = document.getElementById('miniGuidesLink');
-      const dropdownMenu = miniLink.nextElementSibling;
-      const arrow = miniLink.querySelector('.dropdown-toggle');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
 
-      miniLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isOpen = dropdownMenu.style.display === 'flex';
-        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
-        arrow.classList.toggle('rotate', !isOpen);
-      });
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value
+      };
 
-      document.addEventListener('click', function (e) {
-        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-          dropdownMenu.style.display = 'none';
-          arrow.classList.remove('rotate');
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          form.reset();
+          confirmation.innerText = "✅ Message sent successfully. We'll get back to you soon.";
+          confirmation.style.display = 'block';
+        } else {
+          confirmation.innerText = "❌ Something went wrong. Try again later.";
+          confirmation.style.display = 'block';
         }
-      });
+      } catch (err) {
+        confirmation.innerText = "❌ Network error. Try again later.";
+        confirmation.style.display = 'block';
+      }
     });
   </script>
 </body>
