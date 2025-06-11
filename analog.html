@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mobile Privacy – Own Your Device | ShadowSec</title>
+  <title>Financial Privacy – Control Your Flow | ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     * {
@@ -103,7 +103,7 @@
 
     .dropdown-toggle {
       display: inline-block;
-      margin-left: 0.25rem;
+      margin-left: 0.5rem; 
       transition: transform 0.3s ease;
     }
 
@@ -147,7 +147,7 @@
     main h2 {
       font-size: 2rem;
       margin-bottom: 1.6rem;
-      color: #ffffff;
+      color: #00ffc3;
     }
 
     h3 {
@@ -157,22 +157,28 @@
       color: #fff;
     }
 
-    ul.arrow-list {
-      list-style: none;
+    article p,
+    article ul {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    article ul {
       padding-left: 1.2rem;
     }
 
-    ul.arrow-list li {
-      margin-bottom: 0.8rem;
-      color: #ccc;
-      line-height: 1.5;
+    article ul li {
+      margin-bottom: 0.4rem;
     }
 
-    ul.arrow-list li::before {
-      content: "➤";
+    a {
       color: #00ffc3;
-      margin-right: 0.6rem;
-      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     footer {
@@ -194,62 +200,78 @@
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
         <div class="dropdown">
-          <a href="#" id="miniGuidesLink">
-            📚 Mini Guides<span class="dropdown-toggle">▾</span>
+          <a href="#" id="miniGuidesLink" style="text-decoration: none;">
+            📚 Mini Guides <span class="dropdown-toggle">▾</span>
           </a>
           <div class="dropdown-menu">
             <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
             <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
             <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+            <a href="https://lamboar.github.io/shadowsec/mobpriv.html">📱 Mobile Privacy</a>
+        <a href="https://lamboar.github.io/shadowsec/money.html" class="active">💵 Financial Privacy</a>
           </div>
         </div>
-        <a href="https://lamboar.github.io/construction-pages/mobpriv.html">🛠️ Privacy & Security Tools</a>
+        <a href="https://lamboar.github.io/construction-pages/money.html">🛠️ Privacy & Security Tools</a>
         <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <h2>📱 Mobile Privacy – Own Your Device, Own Your Life</h2>
+    <h2>Financial Privacy – Control the Flow, Control the Risk</h2>
+    <article>
+      <h3>💵 Why Financial Privacy Matters</h3>
+      <p>Your financial footprint can expose your entire life—habits, patterns, intentions. To control exposure, control your money's movement.</p>
 
-    <h3>🔐 App Permissions</h3>
-    <ul class="arrow-list">
-      <li>Review permissions for each app manually.</li>
-      <li>Revoke access to location, camera, mic, and storage when not needed.</li>
-      <li>Use tools like Bouncer or permission logs to track permission usage.</li>
-    </ul>
+      <h3>🏦 Offline Banking Tactics</h3>
+      <ul>
+        <li>Choose banks without biometric-heavy policies</li>
+        <li>Prefer banks like <strong>IPPB</strong> with branch visits, minimal surveillance</li>
+        <li>Withdraw/Deposit at counters instead of ATMs</li>
+        <li>Use passbooks and avoid mobile banking apps</li>
+      </ul>
 
-    <h3>📡 Network Controls</h3>
-    <ul class="arrow-list">
-      <li>Use RethinkDNS or NetGuard to control app-level network access.</li>
-      <li>Turn off background data for non-critical apps.</li>
-      <li>Disable Wi-Fi/Bluetooth when not needed to reduce passive leaks.</li>
-    </ul>
+      <h3>🪙 Cash Is King</h3>
+      <ul>
+        <li>Use cash wherever possible, break it into parts</li>
+        <li>Buy essentials in cash, avoid loyalty cards</li>
+        <li>Keep small bills for daily purchases</li>
+        <li>Hide emergency cash in analog safe spots</li>
+      </ul>
 
-    <h3>🧱 App Sandboxing</h3>
-    <ul class="arrow-list">
-      <li>Use Shelter or Island to clone and isolate sensitive apps.</li>
-      <li>Prevent cross-data access by keeping profiles separate.</li>
-      <li>Ensure personal and work environments don’t overlap.</li>
-    </ul>
+      <h3>📱 Digital Payments with OPSEC</h3>
+      <ul>
+        <li>Use UPI with alias accounts, non-primary SIMs</li>
+        <li>Use non-KYC wallets for one-time payments</li>
+        <li>Disable SMS, location & permissions for finance apps</li>
+        <li>Use sandboxed app profiles (like Shelter, Island)</li>
+      </ul>
 
-    <h3>📲 Fresh Phone Setup</h3>
-    <ul class="arrow-list">
-      <li>Start with a clean Android ROM if possible.</li>
-      <li>Avoid signing in to Google or other tracking-heavy accounts.</li>
-      <li>Install verified APKs only from trusted repositories.</li>
-    </ul>
-    <p style="margin-top: 2rem;">
-      <a href="https://lamboar.github.io/shadowsec/construction.html" style="color:#00ffc3; text-decoration:none; font-weight:600;">
-       🔧 A detailed blog on this topic is under construction. Stay sharp - coming soon!
-      </a>
-    </p>
+      <h3>🧰 Tools for Private Finance</h3>
+      <ul>
+        <li><a href="https://www.privacy.com" target="_blank">Privacy.com</a> – US-based card masking</li>
+        <li><a href="https://monerujo.io" target="_blank">Monerujo</a> – Mobile wallet for Monero</li>
+        <li><a href="https://cash.app" target="_blank">Cash App</a> – Peer payments with privacy controls</li>
+      </ul>
+
+      <h3>📚 Learning More</h3>
+      <ul>
+        <li><a href="https://localmonero.co" target="_blank">LocalMonero</a> – Buy/sell XMR anonymously</li>
+        <li><a href="https://dark.fail" target="_blank">Dark.fail</a> – Directory of privacy-focused hidden services</li>
+        <li><a href="https://bisq.network" target="_blank">Bisq</a> – Decentralized crypto exchange</li>
+      </ul>
+
+      <h3>💡 Suggestions</h3>
+      <ul>
+        <li>Store transaction logs offline only</li>
+        <li>Have a system: cash for daily, UPI for rare needs, crypto for anonymous trades</li>
+        <li>Rotate usage patterns and don't build habits</li>
+      </ul>
+    </article>
   </main>
 
   <footer>
-    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
+    <p>Crafted by छछुंदर | &copy; 2025 Shadowsec</p>
   </footer>
 
   <script>
@@ -281,4 +303,4 @@
     });
   </script>
 </body>
-                                                                                                    </html>
+  </html>
