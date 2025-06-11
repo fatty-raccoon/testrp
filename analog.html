@@ -147,42 +147,43 @@
     <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
   </footer>
 
-  <script>
-    const form = document.getElementById('contactForm');
-    const confirmation = document.getElementById('confirmationMsg');
+<script>
+  const form = document.getElementById('contactForm');
+  const confirmation = document.getElementById('confirmationMsg');
 
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        message: form.message.value
-      };
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      message: form.message.value
+    };
 
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
 
-        if (response.ok) {
-          form.reset();
-          confirmation.innerText = "✅ Message sent successfully. We'll get back to you soon.";
-          confirmation.style.display = 'block';
-        } else {
-          confirmation.innerText = "❌ Something went wrong. Try again later.";
-          confirmation.style.display = 'block';
-        }
-      } catch (err) {
-        confirmation.innerText = "❌ Network error. Try again later.";
+      if (response.ok) {
+        form.reset();
+        confirmation.innerText = "✅ Message sent successfully. We'll get back to you soon.";
+        confirmation.style.display = 'block';
+      } else {
+        confirmation.innerText = "❌ Something went wrong. Try again later.";
         confirmation.style.display = 'block';
       }
-    });
-  </script>
+    } catch (err) {
+      confirmation.innerText = "❌ Network error. Try again later.";
+      confirmation.style.display = 'block';
+    }
+  });
+</script>
+  
 </body>
   </html>
