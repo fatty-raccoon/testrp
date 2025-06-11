@@ -2,72 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | ShadowSec</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
-    body {
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      margin: 0;
-      padding: 0 1rem;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
-    header {
-      margin-top: 2rem;
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    main.container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .back-link {
+      align-self: flex-start;
+      margin-bottom: 1.5rem;
+      color: #00ffc3;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    h2 {
+      font-size: 1.8rem;
       margin-bottom: 1rem;
+      color: #ffffff;
       text-align: center;
     }
 
-    header h1 {
-      font-size: 2rem;
-      color: #00ffc3;
-      letter-spacing: 1px;
-    }
-
-    a.back-link {
-      display: inline-block;
-      margin: 1rem 0;
-      color: #00ffc3;
-      font-weight: bold;
-      text-decoration: none;
-      border-bottom: 1px solid #00ffc3;
-    }
-
     form {
-      max-width: 600px;
       width: 100%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+      max-width: 600px;
+      background-color: #111;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 10px rgba(0, 255, 195, 0.1);
+      overflow-y: auto;
+      max-height: 65vh;
     }
 
     label {
-      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
       color: #ccc;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-weight: 600;
     }
 
     input, textarea {
-      background: none;
-      border: none;
-      border-bottom: 1px solid #333;
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      background: #0e0e0e;
+      border: 1px solid #333;
+      border-radius: 0.5rem;
       color: #e5e5e5;
-      font-size: 1rem;
-      padding: 0.5rem 0;
-      font-family: 'Inter', sans-serif;
+      transition: border 0.3s, box-shadow 0.3s;
     }
 
     input:focus, textarea:focus {
+      border-color: #00ffc3;
       outline: none;
-      border-bottom: 1px solid #00ffc3;
+      box-shadow: 0 0 5px rgba(0, 255, 195, 0.6);
     }
 
     textarea {
@@ -76,63 +88,94 @@
     }
 
     button {
-      background: none;
+      background: transparent;
       color: #00ffc3;
-      border: 1px solid #00ffc3;
-      padding: 0.5rem 1rem;
-      font-weight: bold;
+      border: 2px solid #00ffc3;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 600;
       cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
       background-color: rgba(0, 255, 195, 0.1);
     }
 
-    footer {
-      margin-top: auto;
+    .confirmation {
+      background: #111;
+      border: 1px solid #333;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      color: #00ffc3;
+      margin-top: 1rem;
       text-align: center;
-      padding: 2rem 1rem 1rem;
-      font-size: 0.8rem;
-      color: #555;
+      display: none;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+      border-top: 1px solid #222;
     }
   </style>
 </head>
 <body>
-
-  <header>
+  <main class="container">
     <a class="back-link" href="https://lamboar.github.io/shadowsec/">← Back to Home</a>
-    <h1>CONTACT US</h1>
-  </header>
+    <h2>📨 Contact Us</h2>
 
-  <form action="https://usebasin.com/f/29beafa5cc14" method="POST">
-    <div>
+    <form id="contactForm" action="https://usebasin.com/f/29beafa5cc14" method="POST">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" required />
-    </div>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
 
-    <div>
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
-    </div>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
 
-    <div>
       <label for="phone">Phone (optional)</label>
-      <input type="tel" id="phone" name="phone" />
-    </div>
+      <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
 
-    <div>
       <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
-    </div>
+      <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
 
-    <button type="submit">Send</button>
-  </form>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="confirmation" id="confirmationMsg">
+      ✅ Message sent successfully. We'll get back to you soon.
+    </div>
+  </main>
 
   <footer>
-    Crafted by छछुंदर | &copy; 2025 ShadowSec. All rights reserved.
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
   </footer>
 
+  <script>
+    const form = document.getElementById('contactForm');
+    const confirmation = document.getElementById('confirmationMsg');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        confirmation.style.display = 'block';
+        confirmation.innerText = '✅ Message sent successfully. We\'ll get back to you soon.';
+      } else {
+        confirmation.innerText = '❌ Something went wrong. Try again later.';
+        confirmation.style.display = 'block';
+      }
+    });
+  </script>
 </body>
       </html>
