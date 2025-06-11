@@ -7,87 +7,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      overflow: hidden;
+    body {
       font-family: 'Inter', sans-serif;
       background-color: #0e0e0e;
       color: #e5e5e5;
+      line-height: 1.6;
     }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
     }
-
-    main.container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 1.5rem;
-    }
-
     .back-link {
-      align-self: flex-start;
-      margin-top: -1rem; /* moved upwards */
-      margin-bottom: 1.5rem;
+      display: inline-block;
+      margin-bottom: 1.7rem;
       color: #00ffc3;
       font-weight: 600;
       text-decoration: none;
     }
     .back-link:hover { text-decoration: underline; }
-
     h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
       color: #ffffff;
       text-align: center;
     }
-
     form {
-      width: 100%;
-      max-width: 600px;
       background-color: #111;
-      padding: 1.5rem;
+      padding: 2rem;
       border-radius: 0.75rem;
       box-shadow: 0 0 10px rgba(0, 255, 195, 0.1);
-      overflow-y: auto;
-      max-height: 65vh;
     }
-
     label {
       display: block;
       margin-bottom: 0.5rem;
       color: #ccc;
       font-weight: 600;
     }
-
     input, textarea {
       width: 100%;
       padding: 0.7rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       background: #0e0e0e;
       border: 1px solid #333;
       border-radius: 0.5rem;
       color: #e5e5e5;
       transition: border 0.3s, box-shadow 0.3s;
     }
-
     input:focus, textarea:focus {
       border-color: #00ffc3;
       outline: none;
       box-shadow: 0 0 5px rgba(0, 255, 195, 0.6);
     }
-
     textarea {
       resize: vertical;
-      min-height: 100px;
+      min-height: 120px;
     }
-
     button {
       background: transparent;
       color: #00ffc3;
@@ -98,11 +73,9 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
     button:hover {
       background-color: rgba(0, 255, 195, 0.1);
     }
-
     .confirmation {
       background: #111;
       border: 1px solid #333;
@@ -113,40 +86,40 @@
       text-align: center;
       display: none;
     }
-
     footer {
       background-color: #111;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.85rem;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
       color: #666;
       border-top: 1px solid #222;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <main class="container">
     <a class="back-link" href="https://lamboar.github.io/shadowsec/">⬅️ Back to Home</a>
-    <h2>✉️ Connect with Us</h2>
+    <h2>📨 Contact Us</h2>
 
     <form id="contactForm" action="https://usebasin.com/f/29beafa5cc14" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="your good name please 👉🏼👈🏼" required />
+      <label for="name">🤔 Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="scam emails bhejunga yaha 😋" required />
+      <label for="email">📨 Email (optional)</label>
+      <input type="email" id="email" name="email" placeholder="spam emails bhejunga 😋" />
 
-      <label for="phone">Phone (optional)</label>
-      <input type="tel" id="phone" name="phone" placeholder="raat me baat karenge 😝" />
+      <label for="phone">📞 Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="raat me baat karenge 😝" required />
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="apni baat batao ji kya kehna ya puchna hai? 🤔" required></textarea>
+      <label for="message">Describe your Message</label>
+      <textarea id="message" name="message" placeholder="koi sawaal..? 👀" required></textarea>
 
       <button type="submit">Send Message</button>
     </form>
 
     <div class="confirmation" id="confirmationMsg">
-      ✅ Message sent successfully. We'll get back to you within 72 hours.
+      ✅ Message sent successfully. We'll get back to you soon.
     </div>
   </main>
 
@@ -171,7 +144,7 @@
       if (response.ok) {
         form.reset();
         confirmation.style.display = 'block';
-        confirmation.innerText = '✅ Message sent successfully. We\'ll get back to you within 72 hours.';
+        confirmation.innerText = '✅ Message sent successfully. We\'ll get back to you soon.';
       } else {
         confirmation.innerText = '❌ Something went wrong. Try again later.';
         confirmation.style.display = 'block';
@@ -179,4 +152,4 @@
     });
   </script>
 </body>
-  </html>
+    </html>
