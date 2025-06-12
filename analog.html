@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
@@ -47,10 +47,10 @@
       color: #f0f0f0;
       border: none;
       cursor: pointer;
+      display: block;
       position: absolute;
       top: 1.2rem;
       right: 1.5rem;
-      z-index: 1100;
     }
 
     nav {
@@ -60,7 +60,7 @@
       margin-top: 1rem;
     }
 
-    nav.show-menu {
+    nav.open {
       display: flex;
     }
 
@@ -78,6 +78,10 @@
 
     nav a:hover {
       color: #00ffc3;
+    }
+
+    .search-box {
+      margin-top: 1rem;
     }
 
     .search-box input {
@@ -164,6 +168,32 @@
       text-decoration: underline;
     }
 
+    .dropdown {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding-left: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .dropdown-menu a {
+      padding: 0.3rem 0;
+    }
+
+    .dropdown-toggle {
+      transition: transform 0.4s ease;
+      display: inline-block;
+      margin-left: 0.25rem;
+    }
+
+    .rotate {
+      transform: rotate(180deg);
+    }
+
     footer {
       background-color: #111;
       text-align: center;
@@ -171,6 +201,40 @@
       font-size: 0.9rem;
       color: #666;
       border-top: 1px solid #222;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0;
+        position: static;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .search-box {
+        margin-top: 0;
+        margin-left: auto;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .dropdown-menu a {
+        padding: 0.2rem 0;
+      }
     }
   </style>
 </head>
@@ -181,12 +245,20 @@
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
-        <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
-        <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-        <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-        <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
-        <a href="https://lamboar.github.io/construction-pages/homepage.html">🛠️ Privacy & Security Tools</a>
+        <div class="dropdown">
+          <a href="#" id="miniGuidesLink">
+            <span>📚 Mini Guides</span>
+            <span class="dropdown-toggle">▾</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
+            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
+            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
+            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
+            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+          </div>
+        </div>
+        <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
         <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
       </nav>
     </div>
@@ -194,36 +266,64 @@
 
   <main class="container">
     <section class="hero">
-      <h2>Live Anonymously. Think Critically. Stay Hidden.</h2>
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
       <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
       <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
     </section>
 
     <section class="features">
       <article>
-        <h3><a href="#">Geolocation Spoofing</a></h3>
-        <p>Fool apps and sites without root access or compromising your device.</p>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Geolocation Spoofing: Hide your Real Location easily</a></h3>
+        <p>Learn how to fool websites and apps into thinking you are somewhere else - whithout breaking your phone.</p>
       </article>
       <article>
-        <h3><a href="#">Safe Browsing</a></h3>
-        <p>Fingerprinting resistance and identity cloaking in real use.</p>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Safe Browsing & Fingerprinting Resistance: Beyond Incognito Mode</a></h3>
+        <p>How the trackers track you without cookies - and learn how to blend in or spoof it completely.</p>
       </article>
       <article>
-        <h3><a href="#">Offline Storage</a></h3>
-        <p>Keep your secrets locked — even from the cloud.</p>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Offline or Encrypted: Storage that Answers No One - Except you</a></h3>
+        <p>From zero-knowledge cloud vaults to SD cards and Physical Drives, Learn how to make your storage keep its mouth shut.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Invisible Ink: What your files secretly reveal</a></h3>
+        <p>One photo can betray your location, camera & timestamp - Learn how to erase Metadata from your files and stop leaking your digital trail.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">App Traffic Monitoring: Who's talking behind your back?</a></h3>
+        <p>Your apps are calling home, even when you're not using them. Learn how to watch and block their silent internet activity - all from your phone.</p>
       </article>
     </section>
   </main>
 
   <footer>
-    <p>Crafted by छछुंदर | &copy; 2025 ShadowSec</p>
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
   </footer>
 
   <script>
     function toggleMenu() {
       const nav = document.getElementById("mainNav");
-      nav.classList.toggle("show-menu");
+      nav.classList.toggle("open");
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
+
+      miniLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === 'flex';
+        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
+        arrow.classList.toggle('rotate', !isOpen);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
+        }
+      });
+    });
   </script>
 </body>
-  </html>
+    </html>
