@@ -203,16 +203,14 @@
       border-top: 1px solid #222;
     }
 
-nav {
-  display: none;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-nav.open {
-  display: flex;
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        gap: 1.5rem;
+        margin-top: 0;
       }
+
       .menu-toggle {
         display: none;
       }
@@ -265,7 +263,7 @@ nav.open {
 
   <main class="container">
     <section class="hero">
-      <h2>Live Private. Think Critically. Stay Hidden.</h2>
+      <h2>Live secsy. Think Critically. Stay Hidden.</h2>
       <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
       <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
     </section>
@@ -325,4 +323,4 @@ nav.open {
     });
   </script>
 </body>
-    </html>
+              </html>
