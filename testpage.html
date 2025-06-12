@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShadowSec</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+  <style>
+    /* [unchanged CSS omitted for brevity — same as yours] */
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="site-title">ShadowSec</div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="mainNav">
+        <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
+        <div class="dropdown">
+          <a href="#" id="miniGuidesLink">
+            <span>📚 Mini Guides</span>
+            <span class="dropdown-toggle">▾</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
+            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
+            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
+            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
+            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+          </div>
+        </div>
+        <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
+        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
+      <p>Master privacy tactics, analog survival, and deep OPSEC to disconnect from the noise and move like a ghost.</p>
+      <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
+    </section>
+
+    <section class="features">
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Geolocation Spoofing: Hide Your Real Location</a></h3>
+        <p>Trick apps and websites into believing you're somewhere else — all without rooting your phone or breaking it.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Safe Browsing & Fingerprint Resistance: Beyond Incognito</a></h3>
+        <p>Cookies aren't the only snitches. Learn how your device fingerprints betray you — and how to fight back or vanish into the crowd.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Offline & Encrypted: Storage That Stays Silent</a></h3>
+        <p>From zero-knowledge cloud vaults to offline SDs, build storage that keeps its mouth shut — even under pressure.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Invisible Ink: What Your Files Secretly Reveal</a></h3>
+        <p>One photo can leak your camera, location, and time. Learn to erase metadata and wipe your digital fingerprints clean.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">App Traffic Monitoring: Who's Whispering Behind Your Back?</a></h3>
+        <p>Even when idle, your apps talk. Monitor and block their secret internet chatter — directly from your phone, no root needed.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
+
+      miniLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === 'flex';
+        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
+        arrow.classList.toggle('rotate', !isOpen);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
+        }
+      });
+    });
+  </script>
+</body>
+  </html>
