@@ -230,6 +230,18 @@
       .dropdown-menu a {
         padding: 0.2rem 0;
       }
+
+      @media (max-width: 767px) {
+  #mainNav {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  #mainNav.show-menu {
+    display: flex;
+  }
     }
   </style>
 </head>
@@ -296,8 +308,7 @@
 
   <script>
     function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+  document.getElementById("mainNav").classList.toggle("show-menu");
     }
 
     document.addEventListener('DOMContentLoaded', function () {
