@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ShadowSec</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -34,10 +34,10 @@
     }
 
     .site-title {
-  font-family: 'Silkscreen', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+      font-family: 'Silkscreen', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
 
     .menu-toggle {
@@ -66,11 +66,11 @@
       padding: 0.5rem 0;
       display: block;
     }
-    
-.home-link {
-  color: #00ffc3;
-}
-    
+
+    .home-link {
+      color: #00ffc3;
+    }
+
     nav a:hover {
       color: #00ffc3;
     }
@@ -180,7 +180,7 @@
     }
 
     .dropdown-toggle {
-      transition: transform 0.4s ease; /* ✅ Smooth rotation speed */
+      transition: transform 0.4s ease;
       display: inline-block;
       margin-left: 0.25rem;
     }
@@ -198,6 +198,7 @@
       border-top: 1px solid #222;
     }
 
+    /* ✅ Desktop layout */
     @media (min-width: 768px) {
       nav {
         display: flex !important;
@@ -230,18 +231,20 @@
       .dropdown-menu a {
         padding: 0.2rem 0;
       }
+    }
 
-      @media (max-width: 767px) {
-  #mainNav {
-    display: none;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
+    /* ✅ Mobile menu show/hide fix */
+    @media (max-width: 767px) {
+      #mainNav {
+        display: none;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
 
-  #mainNav.show-menu {
-    display: flex;
-  }
+      #mainNav.show-menu {
+        display: flex;
+      }
     }
   </style>
 </head>
@@ -261,8 +264,8 @@
             <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
             <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
             <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-        <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
+            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
           </div>
         </div>
         <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
@@ -281,11 +284,11 @@
     <section class="features">
       <article>
         <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Geolocation Spoofing: Hide your Real Location easily</a></h3>
-        <p>Learn how to fool websites and apps into thinking you are somewhere else - whithout breaking your phone.</p>
+        <p>Learn how to fool websites and apps into thinking you are somewhere else - without breaking your phone.</p>
       </article>
       <article>
         <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Safe Browsing & Fingerprinting Resistance: Beyond Incognito Mode</a></h3>
-        </p>How the trackers track you without cookies - and learn how to blend in or spoof it completely.</p>
+        <p>How the trackers track you without cookies - and learn how to blend in or spoof it completely.</p>
       </article>
       <article>
         <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Offline or Encrypted: Storage that Answers No One - Except you</a></h3>
@@ -293,7 +296,7 @@
       </article>
       <article>
         <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Invisible Ink: What your files secretly reveal</a></h3>
-        <p>One photo can betray your location, camera & timestamp - Learn how to erase Metadata from your files and stop leaking you digital trail.</p>
+        <p>One photo can betray your location, camera & timestamp - Learn how to erase Metadata from your files and stop leaking your digital trail.</p>
       </article>
       <article>
         <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">App Traffic Monitoring: Who's talking behind your back?</a></h3>
@@ -308,7 +311,7 @@
 
   <script>
     function toggleMenu() {
-  document.getElementById("mainNav").classList.toggle("show-menu");
+      document.getElementById("mainNav").classList.toggle("show-menu");
     }
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -332,4 +335,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
