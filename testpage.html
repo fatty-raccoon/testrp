@@ -2,100 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShadowSec</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notices - ShadowSec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    /* [unchanged CSS omitted for brevity — same as yours] */
+    body {
+      background-color: #0e0e0e;
+      color: #e5e5e5;
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc3;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 2rem;
+      padding: 0.5rem 1.2rem;
+      font-weight: 600;
+      color: #00ffc3;
+      border: 2px solid #00ffc3;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
+
+    .notice {
+      background-color: #111;
+      border-left: 4px solid #00ffc3;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0, 255, 195, 0.08);
+    }
+
+    .notice time {
+      display: block;
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .notice p {
+      font-size: 1rem;
+      color: #ccc;
+      margin: 0;
+    }
+
+    @media (min-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .back-btn {
+        font-size: 1rem;
+      }
+
+      .notice p {
+        font-size: 1.05rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="site-title">ShadowSec</div>
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <nav id="mainNav">
-        <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
-        <div class="dropdown">
-          <a href="#" id="miniGuidesLink">
-            <span>📚 Mini Guides</span>
-            <span class="dropdown-toggle">▾</span>
-          </a>
-          <div class="dropdown-menu">
-            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
-            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
-          </div>
-        </div>
-        <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
-        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
-      </nav>
-    </div>
-  </header>
+  <h1>📢 Notices</h1>
+  <a href="#" class="back-btn">⬅️ Back</a>
 
-  <main class="container">
-    <section class="hero">
-      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
-      <p>Master privacy tactics, analog survival, and deep OPSEC to disconnect from the noise and move like a ghost.</p>
-      <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
-    </section>
+  <div class="notice">
+    <time datetime="2025-06-10">June 10, 2025 — 5:45 PM</time>
+    <p>New section on Mobile Privacy launched. Explore methods to secure your Android without root.</p>
+  </div>
 
-    <section class="features">
-      <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Geolocation Spoofing: Hide Your Real Location</a></h3>
-        <p>Trick apps and websites into believing you're somewhere else — all without rooting your phone or breaking it.</p>
-      </article>
-      <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Safe Browsing & Fingerprint Resistance: Beyond Incognito</a></h3>
-        <p>Cookies aren't the only snitches. Learn how your device fingerprints betray you — and how to fight back or vanish into the crowd.</p>
-      </article>
-      <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Offline & Encrypted: Storage That Stays Silent</a></h3>
-        <p>From zero-knowledge cloud vaults to offline SDs, build storage that keeps its mouth shut — even under pressure.</p>
-      </article>
-      <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">Invisible Ink: What Your Files Secretly Reveal</a></h3>
-        <p>One photo can leak your camera, location, and time. Learn to erase metadata and wipe your digital fingerprints clean.</p>
-      </article>
-      <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">App Traffic Monitoring: Who's Whispering Behind Your Back?</a></h3>
-        <p>Even when idle, your apps talk. Monitor and block their secret internet chatter — directly from your phone, no root needed.</p>
-      </article>
-    </section>
-  </main>
+  <div class="notice">
+    <time datetime="2025-06-07">June 7, 2025 — 8:10 AM</time>
+    <p>Analog Survival Guides are now live. Learn how to go full low-tech when the grid fails.</p>
+  </div>
 
-  <footer>
-    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const miniLink = document.getElementById('miniGuidesLink');
-      const dropdownMenu = miniLink.nextElementSibling;
-      const arrow = miniLink.querySelector('.dropdown-toggle');
-
-      miniLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isOpen = dropdownMenu.style.display === 'flex';
-        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
-        arrow.classList.toggle('rotate', !isOpen);
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-          dropdownMenu.style.display = 'none';
-          arrow.classList.remove('rotate');
-        }
-      });
-    });
-  </script>
+  <div class="notice">
+    <time datetime="2025-06-01">June 1, 2025 — 3:30 PM</time>
+    <p>Initial ShadowSec site launched with OSINT, OPSEC, and Security Tools sections.</p>
+  </div>
 </body>
   </html>
