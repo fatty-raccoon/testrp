@@ -3,70 +3,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RottenPing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }body {
-  font-family: 'Inter', sans-serif;
   background-color: #000;
-  color: #e0e0e0;
+  color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 header {
-  background-color: #000;
-  padding: 1rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid #222;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  background: #000;
+  border-bottom: 1px solid #1a1a1a;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-
-.site-title {
-  display: flex;
   align-items: center;
 }
 
-.site-title img {
+.logo img {
   height: 50px;
-  object-fit: contain;
 }
 
-.menu-toggle {
+.nav-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-}
-
-.menu-toggle img {
-  width: 32px;
-  height: 32px;
-  filter: invert(1);
 }
 
 nav {
-  display: none;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
 }
 
 nav a {
-  color: #e0e0e0;
+  color: #ccc;
   text-decoration: none;
-  padding: 0.5rem 0;
-  display: block;
   font-weight: 600;
 }
 
@@ -74,33 +51,72 @@ nav a:hover {
   color: #fff;
 }
 
-.dropdown-menu {
-  display: none;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding-left: 1rem;
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
 }
 
-.dropdown-toggle {
-  margin-left: 0.25rem;
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+.btn-start {
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.rotate {
-  transform: rotate(180deg);
+.btn-start:hover {
+  background: #fff;
+  color: #000;
 }
 
-@media (min-width: 768px) {
+.section-dark {
+  background: #0a0a0a;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-dark h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.section-dark p {
+  color: #aaa;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: #000;
+  color: #555;
+  font-size: 0.9rem;
+  border-top: 1px solid #1a1a1a;
+}
+
+@media (max-width: 768px) {
   nav {
-    display: flex !important;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 0;
-  }
-
-  .menu-toggle {
     display: none;
   }
 }
@@ -109,57 +125,32 @@ nav a:hover {
 </head>
 <body>
   <header>
-    <div class="container">
-      <div class="site-title">
-        <img src="rottenping.png" alt="RottenPing Logo">
-      </div>
-      <button class="menu-toggle" onclick="toggleMenu()">
-        <img src="menu-icon.png" alt="Menu" />
-      </button>
-      <nav id="mainNav">
-        <a href="https://lamboar.github.io/shadowsec/">🏠 Home</a>
-        <div class="dropdown">
-          <a href="#" id="miniGuidesLink">
-            <span>📚 Mini Guides</span>
-            <span class="dropdown-toggle">▾</span>
-          </a>
-          <div class="dropdown-menu">
-            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
-            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
-          </div>
-        </div>
-        <a href="https://lamboar.github.io/construction-pages/homepage.html">🛠️ Privacy & Security Tools</a>
-        <a href="https://lamboar.github.io/shadowsec/notices.html">🔔 Notices & Updates</a>
-        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
-      </nav>
+    <div class="logo">
+      <img src="rottenping.png" alt="RottenPing Logo">
     </div>
-  </header>  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-    }
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Guides</a>
+      <a href="#">Tools</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>  <main>
+    <section class="hero">
+      <h1>RottenPing</h1>
+      <p>This isn't just another privacy site. It's a mindset. A cleaner signal in a world full of noise.</p>
+      <button class="btn-start">Start Learning</button>
+    </section><section class="section-dark">
+  <h2>Built for the Quiet Observer</h2>
+  <p>You don't need loud tools or flashy apps. You need clarity, control, and the kind of knowledge that travels offline too.</p>
+</section>
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const miniLink = document.getElementById('miniGuidesLink');
-      const dropdownMenu = miniLink.nextElementSibling;
-      const arrow = miniLink.querySelector('.dropdown-toggle');
+<section class="section-dark">
+  <h2>Why RottenPing?</h2>
+  <p>Because good pings don't come from perfect networks. They come from people who see beyond the surface. This is where they start.</p>
+</section>
 
-      miniLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isOpen = dropdownMenu.style.display === 'flex';
-        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
-        arrow.classList.toggle('rotate', !isOpen);
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-          dropdownMenu.style.display = 'none';
-          arrow.classList.remove('rotate');
-        }
-      });
-    });
-  </script></body>
-          </html>
+  </main>  <footer>
+    <p>Crafted by छछुंदर | &copy; 2025 RottenPing</p>
+  </footer>
+</body>
+</html>
