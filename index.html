@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RottenPing</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,14 +14,15 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0e0e0e;
-      color: #e5e5e5;
+      background-color: #000;
+      color: #f5f5f5;
     }
 
     header {
-      background-color: #111;
-      color: #f0f0f0;
+      background-color: #000;
+      color: #f5f5f5;
       padding: 1rem 1.5rem;
+      border-bottom: 1px solid #444;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -33,26 +33,24 @@
       margin: 0 auto;
     }
 
-  .site-title {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 50px;
-margin-left: -20px;
+    .site-title {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: -20px;
+      height: 50px;
+    }
 
-}
-
-.site-title img {
-  height: 175px;
-  max-width: 100%;
-  object-fit: contain;
-}
- 
+    .site-title img {
+      height: 175px;
+      max-width: 100%;
+      object-fit: contain;
+    }
 
     .menu-toggle {
       font-size: 1.6rem;
       background: none;
-      color: #f0f0f0;
+      color: #f5f5f5;
       border: none;
       cursor: pointer;
       display: block;
@@ -69,46 +67,41 @@ margin-left: -20px;
     }
 
     nav a {
-      color: #e5e5e5;
+      color: #f5f5f5;
       font-weight: 600;
       text-decoration: none;
       padding: 0.5rem 0;
       display: block;
     }
 
-    .home-link {
-      color: #00ffc3;
-    }
-
     nav a:hover {
-      color: #00ffc3;
+      text-decoration: underline;
     }
 
-    .search-box {
-      margin-top: 1rem;
+    .home-link {
+      font-weight: bold;
     }
 
     .search-box input {
       width: 100%;
       padding: 0.6rem;
-      border-radius: 6px;
-      background: #111;
-      color: #e5e5e5;
-      border: 1px solid #333;
+      background: #000;
+      color: #f5f5f5;
+      border: 1px solid #555;
     }
 
     .hero {
-      background-color: #111;
+      background-color: #000;
       padding: 2.5rem 1rem;
       text-align: center;
-      border-radius: 1rem;
       margin-top: 2rem;
+      border: 1px solid #333;
     }
 
     .hero h2 {
       font-size: 2rem;
       margin-bottom: 0.8rem;
-      color: #ffffff;
+      color: #fff;
     }
 
     .hero p {
@@ -119,18 +112,18 @@ margin-left: -20px;
 
     .btn {
       display: inline-block;
-      background-color: transparent;
-      color: #00ffc3;
+      background-color: #000;
+      color: #f5f5f5;
       padding: 0.7rem 1.3rem;
       font-weight: 600;
-      border-radius: 12px;
-      border: 2px solid #00ffc3;
+      border: 2px solid #f5f5f5;
       text-decoration: none;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .btn:hover {
-      background-color: rgba(0, 255, 195, 0.1);
+      background-color: #f5f5f5;
+      color: #000;
     }
 
     .features {
@@ -141,31 +134,25 @@ margin-left: -20px;
     }
 
     .features article {
-      background-color: #111;
+      background-color: #000;
       padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .features article:hover {
-      transform: translateY(-4px);
+      border: 1px solid #444;
     }
 
     .features h3 {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
-      color: #00ffc3;
+      color: #fff;
     }
 
     .features p {
       font-size: 0.95rem;
-      color: #ccc;
+      color: #bbb;
     }
 
     .features h3 a {
       text-decoration: none;
-      color: #00ffc3;
+      color: #f5f5f5;
     }
 
     .features h3 a:hover {
@@ -199,12 +186,12 @@ margin-left: -20px;
     }
 
     footer {
-      background-color: #111;
+      background-color: #000;
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #222;
+      color: #777;
+      border-top: 1px solid #444;
     }
 
     @media (min-width: 768px) {
@@ -231,7 +218,6 @@ margin-left: -20px;
         position: static;
         background: none;
         border: none;
-        box-shadow: none;
         padding: 0;
         margin: 0;
       }
@@ -246,7 +232,7 @@ margin-left: -20px;
   <header>
     <div class="container">
       <div class="site-title">
-        <img src="rottenping.png" alt="ShadowSec Logo" height="40">
+        <img src="rottenping.png" alt="RottenPing Logo">
       </div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
@@ -257,16 +243,16 @@ margin-left: -20px;
             <span class="dropdown-toggle">▾</span>
           </a>
           <div class="dropdown-menu">
-            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
-            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+            <a href="#">🕵️ OSINT</a>
+            <a href="#">🛡️ OPSEC</a>
+            <a href="#">📻 Analog Survival</a>
+            <a href="#" class="active">📱 Mobile Privacy</a>
+            <a href="#">💵 Financial Privacy</a>
           </div>
         </div>
-        <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
-        <a href="https://lamboar.github.io/shadowsec/notices.html">🔔 Notices & Updates</a>
-        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
+        <a href="#">🛠️ Privacy & Security Tools</a>
+        <a href="#">🔔 Notices & Updates</a>
+        <a href="#">🔗 Contact Us</a>
       </nav>
     </div>
   </header>
@@ -275,35 +261,35 @@ margin-left: -20px;
     <section class="hero">
       <h2>Live Freely. Think Critically. Stay Hidden.</h2>
       <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
-      <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
+      <a href="#" class="btn">Beginner's Guide</a>
     </section>
 
     <section class="features">
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📍 Geolocation Spoofing</a></h3>
+        <h3><a href="#">📍 Geolocation Spoofing</a></h3>
         <p>Fake your location without rooting your phone. Trick apps and sites into thinking you're somewhere else - safely.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
+        <h3><a href="#">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
         <p>Go beyond incognito. Learn how sites track you without cookies - and how to spoof or blend in.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🔒 Offline & Encrypted Storage</a></h3>
+        <h3><a href="#">🔒 Offline & Encrypted Storage</a></h3>
         <p>From encrypted physical drives to zero-knowledge clouds - make your storage answer to no one but you.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🕵️ Invisible Metadata</a></h3>
+        <h3><a href="#">🕵️ Invisible Metadata</a></h3>
         <p>One photo can reveal your location, device and timestamp. Learn how to erase that digital fingerprint.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📡 App Traffic Monitoring</a></h3>
+        <h3><a href="#">📡 App Traffic Monitoring</a></h3>
         <p>Your apps are talking behind your back - see who is leaking data and shut them down from your phone.</p>
       </article>
     </section>
   </main>
 
   <footer>
-    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
+    <p>Crafted by छछुंदर. | &copy; 2025 RottenPing</p>
   </footer>
 
   <script>
