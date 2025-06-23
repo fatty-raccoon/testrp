@@ -131,43 +131,41 @@
       background-color: rgba(0, 255, 195, 0.1);
     }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
+    .custom-tiles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem auto;
+      padding: 0 1rem;
     }
 
-    .features article {
-      background-color: #000000;
-      padding: 1rem;
+    .tile-box {
+      max-width: 700px;
+      width: 100%;
+      background-color: #0e0e0e;
+      border: 1px solid #666;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(255, 255, 255, 0.04);
       transition: transform 0.3s ease;
     }
 
-    .features article:hover {
-      transform: translateY(-4px);
+    .tile-box:hover {
+      transform: translateY(-6px);
     }
 
-    .features h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+    .tile-box h3 {
       color: #00ffc3;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
     }
 
-    .features p {
-      font-size: 0.95rem;
-      color: #bbbbbb;
-    }
-
-    .features h3 a {
-      text-decoration: none;
-      color: #00ffc3;
-    }
-
-    .features h3 a:hover {
-      text-decoration: underline;
+    .tile-box p {
+      color: #cccccc;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     .dropdown {
@@ -237,41 +235,6 @@
       .dropdown-menu a {
         padding: 0.2rem 0;
       }
-      .custom-tiles {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  margin: 2rem auto;
-}
-
-.tile-box {
-  max-width: 700px;
-  width: 90%;
-  padding: 1.5rem;
-  border: 1px solid #666666;
-  border-radius: 12px;
-  background-color: #0e0e0e;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.02);
-  transition: transform 0.3s ease;
-}
-
-.tile-box:hover {
-  transform: translateY(-5px);
-}
-
-.tile-box h3 {
-  color: #00ffc3;
-  font-size: 1.4rem;
-  margin-bottom: 0.7rem;
-}
-
-.tile-box p {
-  color: #cccccc;
-  font-size: 1rem;
-  line-height: 1.6;
-}
     }
   </style>
 </head>
@@ -312,15 +275,15 @@
     </section>
 
     <section class="custom-tiles">
-  <div class="tile-box">
-    <h3>❓ Why RottenPing?</h3>
-    <p>Because deception is the new defense. RottenPing is your edge — crafted for those who refuse to be mapped, tracked, or decoded. It's more than a name. It's a statement.</p>
-  </div>
+      <div class="tile-box">
+        <h3>❓ Why RottenPing?</h3>
+        <p>Because deception is the new defense. RottenPing is your edge — crafted for those who refuse to be mapped, tracked, or decoded. It's more than a name. It's a statement.</p>
+      </div>
 
-  <div class="tile-box">
-    <h3>🌀 Decoy Browsing</h3>
-    <p>Flood trackers with fake trails. Learn how to mix real activity with noise, spoof behavior, and stay unpredictable in the eyes of surveillance systems.</p>
-  </div>
+      <div class="tile-box">
+        <h3>🌀 Decoy Browsing</h3>
+        <p>Flood trackers with fake trails. Learn how to mix real activity with noise, spoof behavior, and stay unpredictable in the eyes of surveillance systems.</p>
+      </div>
     </section>
   </main>
 
@@ -355,4 +318,4 @@
     });
   </script>
 </body>
-  </html>
+    </html>
