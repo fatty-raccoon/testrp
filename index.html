@@ -3,48 +3,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RottenPing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }body {
-  background-color: #000;
-  color: #f5f5f5;
   font-family: 'Inter', sans-serif;
+  background-color: #000;
+  color: #fff;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 header {
-  padding: 1.5rem 2rem;
-  background: #000;
-  border-bottom: 1px solid #1a1a1a;
+  background-color: #0a0a0a;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo img {
-  height: 50px;
+  height: 42px;
+  object-fit: contain;
 }
 
-.nav-toggle {
+.menu-toggle {
   background: none;
   border: none;
   cursor: pointer;
 }
 
+.menu-toggle img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+}
+
 nav {
-  display: flex;
-  gap: 1.5rem;
+  display: none;
+  flex-direction: column;
+  background-color: #111;
+  padding: 1rem;
 }
 
 nav a {
-  color: #ccc;
+  color: #eee;
   text-decoration: none;
-  font-weight: 600;
+  padding: 0.5rem 0;
+  display: block;
+  font-weight: 500;
 }
 
 nav a:hover {
@@ -52,71 +64,71 @@ nav a:hover {
 }
 
 .hero {
+  padding: 3rem 1.2rem 2rem;
   text-align: center;
-  padding: 5rem 2rem 3rem;
 }
 
 .hero h1 {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 2.4rem;
   margin-bottom: 1rem;
-  color: #fff;
 }
 
 .hero p {
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  font-size: 1.2rem;
-  color: #aaa;
+  font-size: 1.05rem;
+  color: #ccc;
+  margin-bottom: 2rem;
 }
 
-.btn-start {
-  background: none;
-  border: 2px solid #fff;
+.btn-primary {
+  background-color: transparent;
   color: #fff;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  font-size: 1rem;
+  border: 1px solid #fff;
+  padding: 0.7rem 1.2rem;
   border-radius: 8px;
-  cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.btn-start:hover {
-  background: #fff;
+.btn-primary:hover {
+  background-color: #fff;
   color: #000;
 }
 
-.section-dark {
-  background: #0a0a0a;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.section-dark h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
-.section-dark p {
-  color: #aaa;
+.about {
+  padding: 2rem 1.2rem;
   max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.1rem;
+  margin: auto;
+}
+
+.about h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.about p {
+  color: #aaa;
 }
 
 footer {
-  padding: 2rem;
+  background-color: #0a0a0a;
+  padding: 1.5rem 1rem;
   text-align: center;
-  background: #000;
-  color: #555;
-  font-size: 0.9rem;
-  border-top: 1px solid #1a1a1a;
+  font-size: 0.85rem;
+  color: #666;
+  border-top: 1px solid #111;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   nav {
+    display: flex !important;
+    flex-direction: row;
+    gap: 2rem;
+    position: static;
+    background: none;
+    padding: 0;
+  }
+
+  .menu-toggle {
     display: none;
   }
 }
@@ -128,29 +140,28 @@ footer {
     <div class="logo">
       <img src="rottenping.png" alt="RottenPing Logo">
     </div>
-    <nav>
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <img src="menu-icon.png" alt="Menu">
+    </button>
+    <nav id="mainNav">
       <a href="#">Home</a>
-      <a href="#">Guides</a>
-      <a href="#">Tools</a>
-      <a href="#">Contact</a>
+      <a href="#about">About</a>
+      <a href="#guides">Guides</a>
+      <a href="#contact">Contact</a>
     </nav>
-  </header>  <main>
-    <section class="hero">
-      <h1>RottenPing</h1>
-      <p>This isn't just another privacy site. It's a mindset. A cleaner signal in a world full of noise.</p>
-      <button class="btn-start">Start Learning</button>
-    </section><section class="section-dark">
-  <h2>Built for the Quiet Observer</h2>
-  <p>You don't need loud tools or flashy apps. You need clarity, control, and the kind of knowledge that travels offline too.</p>
-</section>
-
-<section class="section-dark">
-  <h2>Why RottenPing?</h2>
-  <p>Because good pings don't come from perfect networks. They come from people who see beyond the surface. This is where they start.</p>
-</section>
-
-  </main>  <footer>
-    <p>Crafted by छछुंदर | &copy; 2025 RottenPing</p>
-  </footer>
-</body>
-</html>
+  </header>  <section class="hero">
+    <h1>Think Quiet. Ping Rotten.</h1>
+    <p>The digital underground isn’t built on noise. It’s crafted in silence, privacy, and purpose.</p>
+    <a href="#guides" class="btn-primary">Start Learning</a>
+  </section>  <section class="about" id="about">
+    <h2>Why RottenPing?</h2>
+    <p>Because true privacy isn’t aesthetic—it’s raw, uncomfortable, and real. We’re here to peel back the clean web’s illusion and hand you control. Your life isn’t a brand. Don’t let it be treated like one.</p>
+  </section>  <footer>
+    <p>&copy; 2025 RottenPing. Crafted in silence by छछुंदर.</p>
+  </footer>  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    }
+  </script></body>
+  </html>
