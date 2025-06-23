@@ -1,220 +1,57 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RottenPing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
+    body {
+      background-color: #000; /* AMOLED black */
+      color: #e0e0e0; /* Light gray text */
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }body {
-  font-family: 'Inter', sans-serif;
-  background-color: #000;
-  color: #f0f0f0;
-}
+    }
 
-header {
-  background-color: #000;
-  padding: 1rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid #222;
-}
+    header {
+      background-color: #111;
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
+    .logo img {
+      height: 100px;
+      object-fit: contain;
+    }
 
-.site-title {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 60px;
-  margin-left: -20px;
-}
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
 
-.site-title img {
-  height: 175px;
-  max-width: 100%;
-  object-fit: contain;
-}
+    h1 {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
 
-.menu-toggle {
-  font-size: 1.6rem;
-  background: none;
-  color: #f0f0f0;
-  border: none;
-  cursor: pointer;
-  display: block;
-  position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
-}
-
-nav {
-  display: none;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-nav a {
-  color: #f0f0f0;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5rem 0;
-  display: block;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 5px #fff;
-}
-
-.home-link {
-  color: #ffffff;
-}
-
-.hero {
-  background-color: #0a0a0a;
-  padding: 2.5rem 1rem;
-  text-align: center;
-  border-radius: 1rem;
-  margin-top: 2rem;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.04);
-}
-
-.hero h2 {
-  font-size: 2rem;
-  margin-bottom: 0.8rem;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #ccc;
-}
-
-.btn {
-  display: inline-block;
-  background-color: transparent;
-  color: #f0f0f0;
-  padding: 0.7rem 1.3rem;
-  font-weight: 600;
-  border-radius: 12px;
-  border: 2px solid #f0f0f0;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.features article {
-  background-color: #0a0a0a;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.02);
-  transition: transform 0.3s ease;
-}
-
-.features article:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.04);
-}
-
-.features h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.features h3 a {
-  text-decoration: none;
-  color: #f0f0f0;
-}
-
-.features h3 a:hover {
-  text-shadow: 0 0 5px #fff;
-}
-
-.features p {
-  font-size: 0.95rem;
-  color: #ccc;
-}
-
-.dropdown-menu {
-  display: none;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding-left: 1rem;
-  margin-top: 0.25rem;
-}
-
-.dropdown-menu a {
-  padding: 0.3rem 0;
-}
-
-.dropdown-toggle {
-  transition: transform 0.4s ease;
-  display: inline-block;
-  margin-left: 0.25rem;
-}
-
-.rotate {
-  transform: rotate(180deg);
-}
-
-footer {
-  background-color: #000;
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #666;
-  border-top: 1px solid #222;
-}
-
-@media (min-width: 768px) {
-  nav {
-    display: flex !important;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 0;
-    position: static;
-  }
-
-  .menu-toggle {
-    display: none;
-  }
-
-  .dropdown-menu {
-    position: static;
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-  }
-}
-
+    p {
+      color: #aaa;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
-  <!-- All your content structure stays unchanged -->
+  <header>
+    <div class="logo">
+      <img src="rottenping.png" alt="RottenPing Logo" />
+    </div>
+  </header>
+
+  <main>
+    <h1>Welcome to RottenPing</h1>
+    <p>If you're seeing this, the theme is loading correctly.</p>
+  </main>
 </body>
-  </html>
+</html>
