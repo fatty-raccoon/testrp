@@ -1,167 +1,336 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RottenPing</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }body {
-  font-family: 'Inter', sans-serif;
-  background-color: #000;
-  color: #fff;
-  line-height: 1.6;
-}
+    }
 
-header {
-  background-color: #0a0a0a;
-  padding: 1rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #e5e5e5;
+    }
+
+    header {
+      background-color: #111;
+      color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+  .site-title {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start;
+  height: 50px;
+margin-left: -20px;
+
 }
 
-.logo img {
-  height: 42px;
+.site-title img {
+  height: 175px;
+  max-width: 100%;
   object-fit: contain;
 }
+ 
 
-.menu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+    .menu-toggle {
+      font-size: 1.6rem;
+      background: none;
+      color: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+    }
 
-.menu-toggle img {
-  width: 28px;
-  height: 28px;
-  filter: invert(1);
-}
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
 
-nav {
-  display: none;
-  flex-direction: column;
-  background-color: #111;
-  padding: 1rem;
-}
+    nav a {
+      color: #e5e5e5;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      display: block;
+    }
 
-nav a {
-  color: #eee;
-  text-decoration: none;
-  padding: 0.5rem 0;
-  display: block;
-  font-weight: 500;
-}
+    .home-link {
+      color: #00ffc3;
+    }
 
-nav a:hover {
-  color: #fff;
-}
+    nav a:hover {
+      color: #00ffc3;
+    }
 
-.hero {
-  padding: 3rem 1.2rem 2rem;
-  text-align: center;
-}
+    .search-box {
+      margin-top: 1rem;
+    }
 
-.hero h1 {
-  font-size: 2.4rem;
-  margin-bottom: 1rem;
-}
+    .search-box input {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 6px;
+      background: #111;
+      color: #e5e5e5;
+      border: 1px solid #333;
+    }
 
-.hero p {
-  font-size: 1.05rem;
-  color: #ccc;
-  margin-bottom: 2rem;
-}
+    .hero {
+      background-color: #111;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-top: 2rem;
+    }
 
-.btn-primary {
-  background-color: transparent;
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 0.7rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+    }
 
-.btn-primary:hover {
-  background-color: #fff;
-  color: #000;
-}
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
 
-.about {
-  padding: 2rem 1.2rem;
-  max-width: 700px;
-  margin: auto;
-}
+    .btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #00ffc3;
+      padding: 0.7rem 1.3rem;
+      font-weight: 600;
+      border-radius: 12px;
+      border: 2px solid #00ffc3;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-.about h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-}
+    .btn:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
 
-.about p {
-  color: #aaa;
-}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
 
-footer {
-  background-color: #0a0a0a;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #666;
-  border-top: 1px solid #111;
-}
+    .features article {
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
+      transition: transform 0.3s ease;
+    }
 
-@media (min-width: 768px) {
-  nav {
-    display: flex !important;
-    flex-direction: row;
-    gap: 2rem;
-    position: static;
-    background: none;
-    padding: 0;
-  }
+    .features article:hover {
+      transform: translateY(-4px);
+    }
 
-  .menu-toggle {
-    display: none;
-  }
-}
+    .features h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc3;
+    }
 
+    .features p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .features h3 a {
+      text-decoration: none;
+      color: #00ffc3;
+    }
+
+    .features h3 a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding-left: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .dropdown-menu a {
+      padding: 0.3rem 0;
+    }
+
+    .dropdown-toggle {
+      transition: transform 0.4s ease;
+      display: inline-block;
+      margin-left: 0.25rem;
+    }
+
+    .rotate {
+      transform: rotate(180deg);
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0;
+        position: static;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .search-box {
+        margin-top: 0;
+        margin-left: auto;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .dropdown-menu a {
+        padding: 0.2rem 0;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="rottenping.png" alt="RottenPing Logo">
+    <div class="container">
+      <div class="site-title">
+        <img src="rottenping.png" alt="ShadowSec Logo" height="40">
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="mainNav">
+        <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
+        <div class="dropdown">
+          <a href="#" id="miniGuidesLink">
+            <span>📚 Mini Guides</span>
+            <span class="dropdown-toggle">▾</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
+            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
+            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
+            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
+            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+          </div>
+        </div>
+        <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
+        <a href="https://lamboar.github.io/shadowsec/notices.html">🔔 Notices & Updates</a>
+        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
+      </nav>
     </div>
-    <button class="menu-toggle" onclick="toggleMenu()">
-      <img src="menu-icon.png" alt="Menu">
-    </button>
-    <nav id="mainNav">
-      <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#guides">Guides</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>  <section class="hero">
-    <h1>Think Quiet. Ping Rotten.</h1>
-    <p>The digital underground isn’t built on noise. It’s crafted in silence, privacy, and purpose.</p>
-    <a href="#guides" class="btn-primary">Start Learning</a>
-  </section>  <section class="about" id="about">
-    <h2>Why RottenPing?</h2>
-    <p>Because true privacy isn’t aesthetic—it’s raw, uncomfortable, and real. We’re here to peel back the clean web’s illusion and hand you control. Your life isn’t a brand. Don’t let it be treated like one.</p>
-  </section>  <footer>
-    <p>&copy; 2025 RottenPing. Crafted in silence by छछुंदर.</p>
-  </footer>  <script>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
+      <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
+      <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
+    </section>
+
+    <section class="features">
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📍 Geolocation Spoofing</a></h3>
+        <p>Fake your location without rooting your phone. Trick apps and sites into thinking you're somewhere else - safely.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
+        <p>Go beyond incognito. Learn how sites track you without cookies - and how to spoof or blend in.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🔒 Offline & Encrypted Storage</a></h3>
+        <p>From encrypted physical drives to zero-knowledge clouds - make your storage answer to no one but you.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🕵️ Invisible Metadata</a></h3>
+        <p>One photo can reveal your location, device and timestamp. Learn how to erase that digital fingerprint.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📡 App Traffic Monitoring</a></h3>
+        <p>Your apps are talking behind your back - see who is leaking data and shut them down from your phone.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
+  </footer>
+
+  <script>
     function toggleMenu() {
       const nav = document.getElementById("mainNav");
       nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
-  </script></body>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
+
+      miniLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === 'flex';
+        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
+        arrow.classList.toggle('rotate', !isOpen);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
+        }
+      });
+    });
+  </script>
+</body>
   </html>
