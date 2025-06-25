@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clan Members - The Shitmasters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: #000000;
+        font-family: 'Silkscreen', monospace;
+      }
+      .inter-font {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col items-center px-6 py-10">
+    <!-- Top Left Logo + Title -->
+    <div class="absolute top-4 left-4 flex items-center space-x-4">
+      <img src="logo-placeholder.png" alt="Logo" class="w-10 h-10 object-contain" />
+      <span class="text-white text-lg sm:text-xl font-bold">The Shitmasters Trajectory</span>
+    </div>
+
+    <!-- Page Title -->
+    <h1 class="text-white text-4xl sm:text-5xl font-bold mb-10 mt-10 text-center">
+      Clan Members
+    </h1>
+
+    <!-- Members List -->
+    <div class="w-full max-w-xl space-y-6">
+      <!-- Member Entry Example -->
+      <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font">
+        <p class="text-white text-lg">📱 <strong>Poopbeast</strong></p>
+        <p class="text-gray-400 text-sm">Joined: Jan 2023</p>
+      </div>
+
+      <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font">
+        <p class="text-white text-lg">🎧 <strong>Poopbuds XC</strong></p>
+        <p class="text-gray-400 text-sm">Joined: June 2025</p>
+      </div>
+
+      <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font">
+        <p class="text-white text-lg">📱 <strong>Note 4 (Poopbeast in disguise)</strong></p>
+        <p class="text-gray-400 text-sm">Joined: ???</p>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <button
+      class="mt-10 bg-white text-black px-8 py-3 text-lg sm:text-xl rounded-2xl font-bold border-4 border-cyan-400 transition transform hover:scale-105 hover:shadow-[0_0_20px_#00ffff]"
+      onclick="goBack()"
+    >
+      Back to Briefing
+    </button>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-gray-500 text-xs">
+      &copy; 2025 The Shitmasters. All rights reserved.
+    </footer>
+
+    <script>
+      function goBack() {
+        window.location.href = "about.html"; // Change this if your briefing page has a different name
+      }
+    </script>
+  </body>
+  </html>
