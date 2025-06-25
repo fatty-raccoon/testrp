@@ -9,14 +9,19 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      html,
       body {
+        height: 100%;
+        margin: 0;
         background-color: #000000;
         font-family: 'Silkscreen', monospace;
+        overflow: hidden;
       }
     </style>
   </head>
-  <body class="flex items-center justify-center min-h-screen px-4">
-    <div class="text-center">
+  <body class="flex flex-col justify-center items-center h-full text-center">
+    <!-- Main Content -->
+    <div>
       <!-- Clan Logo Placeholder -->
       <img
         src="your-clan-logo.png"
@@ -37,6 +42,11 @@
   </button>
 </div>
 
+<!-- Footer -->
+<footer class="absolute bottom-2 text-gray-500 text-xs">
+  &copy; 2025 The Shitmasters. All rights reserved.
+</footer>
+
 <script>
   function enterClan() {
     // Replace the URL below with your desired destination
@@ -45,4 +55,4 @@
 </script>
 
   </body>
-</html>
+        </html>
