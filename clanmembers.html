@@ -13,40 +13,47 @@
         margin: 0;
         background-color: #000000;
         font-family: 'Silkscreen', monospace;
+        overflow: hidden;
       }
       .inter-font {
         font-family: 'Inter', sans-serif;
       }
     </style>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="flex flex-col h-full">
     <!-- Top Left Logo + Title -->
     <div class="absolute top-4 left-4 flex items-center space-x-4">
       <img src="logo-placeholder.png" alt="Logo" class="w-10 h-10 object-contain" />
       <span class="text-white text-lg sm:text-xl font-bold">The Shitmasters Trajectory</span>
     </div><!-- Main Content Wrapper -->
-<div class="flex-grow flex flex-col items-center px-6 pt-24 pb-10 overflow-y-auto">
+<div class="flex-grow flex flex-col items-center px-6 pt-24 pb-6 overflow-y-auto">
   <!-- Page Title -->
-  <h1 class="text-white text-4xl sm:text-5xl font-bold mb-10 text-center">
+  <h1 class="text-white text-4xl sm:text-5xl font-bold mb-8 text-center">
     Clan Members
   </h1>
 
   <!-- Members List -->
   <div class="w-full max-w-xl space-y-6">
-    <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font">
-      <p class="text-white text-lg">📱 <strong>Poopbeast</strong></p>
-      <p class="text-gray-400 text-sm">Joined: Jan 2023</p>
-    </div>
+    <a href="poopbeast.html">
+      <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font hover:shadow-[0_0_15px_#00ffff] transition">
+        <p class="text-white text-lg">📱 <strong>Poopbeast</strong></p>
+        <p class="text-gray-400 text-sm">Joined: Jan 2023</p>
+      </div>
+    </a>
 
-    <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font">
-      <p class="text-white text-lg">🎧 <strong>Poopbuds XC</strong></p>
-      <p class="text-gray-400 text-sm">Joined: June 2025</p>
-    </div>
+    <a href="poopbuds-xc.html">
+      <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font hover:shadow-[0_0_15px_#00ffff] transition">
+        <p class="text-white text-lg">🎧 <strong>Poopbuds XC</strong></p>
+        <p class="text-gray-400 text-sm">Joined: June 2025</p>
+      </div>
+    </a>
 
-    <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font">
-      <p class="text-white text-lg">📱 <strong>Note 4 (Poopbeast in disguise)</strong></p>
-      <p class="text-gray-400 text-sm">Joined: ???</p>
-    </div>
+    <a href="note4.html">
+      <div class="border border-cyan-400 rounded-xl p-4 text-left inter-font hover:shadow-[0_0_15px_#00ffff] transition">
+        <p class="text-white text-lg">📱 <strong>Note 4 (Poopbeast in disguise)</strong></p>
+        <p class="text-gray-400 text-sm">Joined: ???</p>
+      </div>
+    </a>
   </div>
 
   <!-- Back Button -->
@@ -65,9 +72,9 @@
 
 <script>
   function goBack() {
-    window.location.href = "about.html"; // Change this if your briefing page has a different name
+    window.location.href = "about.html";
   }
 </script>
 
   </body>
-                                                                              </html>
+  </html>
