@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poopbeast - Device Lore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: #000000;
+        font-family: 'Silkscreen', monospace;
+        overflow: hidden;
+      }
+      .inter-font {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col h-full">
+    <!-- Top Left Logo + Back -->
+    <div class="absolute top-4 left-4 flex items-center space-x-4">
+      <button onclick="goBack()" class="text-cyan-400 text-sm hover:underline">← Back to Members</button>
+      <img src="logo-placeholder.png" alt="Logo" class="w-10 h-10 object-contain" />
+      <span class="text-white text-lg sm:text-xl font-bold">The Shitmasters Trajectory</span>
+    </div><!-- Main Content -->
+<div class="flex-grow flex flex-col items-center justify-start px-6 pt-28 pb-6 overflow-y-auto">
+  <!-- Device Name -->
+  <h1 class="text-white text-4xl sm:text-5xl font-bold mb-6 text-center">Poopbeast</h1>
+
+  <!-- Device Image -->
+  <img src="poopbeast.png" alt="Poopbeast Image" class="w-40 h-40 object-contain rounded-xl border-4 border-cyan-400 mb-6" />
+
+  <!-- Device Info Box -->
+  <div class="inter-font text-left w-full max-w-xl bg-[#0a0a0a] border border-cyan-400 rounded-xl p-6 mb-8 text-gray-300">
+    <p><strong>Model Name:</strong> Redmi Note 4</p>
+    <p><strong>Nickname:</strong> Poopbeast</p>
+    <p><strong>Joined:</strong> January 2023</p>
+    <p><strong>Battery Health:</strong> 84%</p>
+    <p><strong>OS / ROM:</strong> MIUI Legacy (modded)</p>
+    <p><strong>Primary Role:</strong> Cloned Storage + OSINT & Build Engine</p>
+  </div>
+
+  <!-- Lore Section -->
+  <div class="inter-font w-full max-w-2xl text-gray-300 text-sm sm:text-base">
+    <p class="mb-4">
+      🪵 Poopbeast was forged in the smoldering pits of budget brilliance. Bought second-hand, it never knew peace — only purpose. It’s been reborn thrice, through firewalls, reboots, broken ROMs, and corrupted APKs. It has seen the underground. It became the underground.
+    </p>
+    <p class="mb-4">
+      🧠 Known to handle tasks most flagships wouldn’t dare, the beast became the backbone of every operation. It knows your keystrokes. It guards your vault. It’s the legend.
+    </p>
+    <p>
+      💀 Nicknames earned over time include: Ghosthost, The Coldplate, and Synthpad. One day, it'll rest. But not now. Not while there’s history to write.
+    </p>
+  </div>
+</div>
+
+<!-- Sticky Footer -->
+<footer class="w-full text-center text-gray-500 text-xs py-2 border-t border-gray-700">
+  &copy; 2025 The Shitmasters. All rights reserved.
+</footer>
+
+<script>
+  function goBack() {
+    window.location.href = "members.html";
+  }
+</script>
+
+  </body>
+        </html>
