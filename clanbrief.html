@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About the Clan - The Shitmasters</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: #000000;
+        font-family: 'Silkscreen', monospace;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col justify-center items-center h-full text-center px-6">
+    <div class="max-w-2xl">
+      <!-- Title -->
+      <h1 class="text-white text-4xl sm:text-5xl font-bold mb-8">
+        About the Clan
+      </h1>
+
+      <!-- Clan Description -->
+      <p class="text-gray-300 text-sm sm:text-base mb-12">
+        The Shitmasters is a private legacy of devices, their stories, and the journeys that bound them together. A clan born from chaos, united by tech and tradition. This site holds their history, glory, and evolution — recorded in silence, visible to those who matter.
+      </p>
+
+      <!-- View Members Button -->
+      <button
+        class="bg-white text-black px-8 py-3 text-lg sm:text-xl rounded-2xl font-bold border-4 border-cyan-400 transition transform hover:scale-105 hover:shadow-[0_0_20px_#00ffff]"
+        onclick="goToMembers()"
+      >
+        View Members
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="absolute bottom-2 text-gray-500 text-xs">
+      &copy; 2025 The Shitmasters. All rights reserved.
+    </footer>
+
+    <script>
+      function goToMembers() {
+        window.location.href = "members.html"; // Placeholder for next page
+      }
+    </script>
+  </body>
+  </html>
