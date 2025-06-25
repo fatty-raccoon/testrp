@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RottenPing</title>
+  <title>ShadowSec</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <style>
@@ -11,239 +10,233 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
+    }body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #000000;
-      color: #ffffff;
-    }
+header {
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
 
-    header {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 1rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+.site-title {
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
 
-    .site-title {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      height: 50px;
-      margin-left: -20px;
-    }
+.menu-toggle {
+  font-size: 1.6rem;
+  background: none;
+  color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+}
 
-    .site-title img {
-      height: 175px;
-      max-width: 100%;
-      object-fit: contain;
-    }
+nav {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
 
-    .menu-toggle {
-      font-size: 1.6rem;
-      background: none;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-      display: block;
-      position: absolute;
-      top: 1.2rem;
-      right: 1.5rem;
-    }
+nav a {
+  color: #f0f0f0;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  display: block;
+}
 
-    nav {
-      display: none;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
+.home-link {
+  color: #ffffff;
+}
 
-    nav a {
-      color: #ffffff;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 0.5rem 0;
-      display: block;
-    }
+nav a:hover {
+  color: #aaa;
+}
 
-    .home-link {
-      color: #00ffc3;
-    }
+.search-box {
+  margin-top: 1rem;
+}
 
-    nav a:hover {
-      color: #00ffc3;
-    }
+.search-box input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  background: #1c1c1c;
+  color: #f0f0f0;
+  border: 1px solid #333;
+}
 
-    .search-box {
-      margin-top: 1rem;
-    }
+.hero {
+  background-color: #1c1c1c;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
 
-    .search-box input {
-      width: 100%;
-      padding: 0.6rem;
-      border-radius: 6px;
-      background: #000000;
-      color: #ffffff;
-      border: 1px solid #444;
-    }
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+}
 
-    .hero {
-      background-color: #000000;
-      padding: 2.5rem 1rem;
-      text-align: center;
-      border-radius: 1rem;
-      margin-top: 0.7rem;
-    }
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #ccc;
+}
 
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-      color: #ffffff;
-    }
+.btn {
+  display: inline-block;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid #aaa;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: #bbbbbb;
-    }
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
 
-    .btn {
-      display: inline-block;
-      background-color: transparent;
-      color: #ffffff;
-      padding: 0.7rem 1.3rem;
-      font-weight: 600;
-      border-radius: 12px;
-      border: 4px solid #888888;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
 
-    .btn:hover {
-      background-color: rgba(0, 255, 195, 0.1);
-    }
+.features article {
+  background-color: #1c1c1c;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
 
-    .custom-tiles {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
+.features article:hover {
+  transform: translateY(-4px);
+}
 
-    .tile-box {
-      max-width: 700px;
-      width: 100%;
-      background-color: #0e0e0e;
-      border: 1px solid #666;
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 2px 12px rgba(255, 255, 255, 0.04);
-      transition: transform 0.3s ease;
-    }
+.features h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
 
-    .tile-box:hover {
-      transform: translateY(-6px);
-    }
+.features p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
 
-    .tile-box h3 {
-      color: #00ffc3;
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-    }
+.features h3 a {
+  text-decoration: none;
+  color: #ffffff;
+}
 
-    .tile-box p {
-      color: #cccccc;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+.features h3 a:hover {
+  text-decoration: underline;
+}
 
-    .dropdown {
-      display: block;
-    }
+.dropdown {
+  display: block;
+}
 
-    .dropdown-menu {
-      display: none;
-      flex-direction: column;
-      gap: 0.25rem;
-      padding-left: 1rem;
-      margin-top: 0.25rem;
-    }
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 1rem;
+  margin-top: 0.25rem;
+}
 
-    .dropdown-menu a {
-      padding: 0.3rem 0;
-    }
+.dropdown-menu a {
+  padding: 0.3rem 0;
+}
 
-    .dropdown-toggle {
-      transition: transform 0.4s ease;
-      display: inline-block;
-      margin-left: 0.25rem;
-    }
+.dropdown-toggle {
+  transition: transform 0.4s ease;
+  display: inline-block;
+  margin-left: 0.25rem;
+}
 
-    .rotate {
-      transform: rotate(180deg);
-    }
+.rotate {
+  transform: rotate(180deg);
+}
 
-    footer {
-      background-color: #000000;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid #444;
-    }
+footer {
+  background-color: #1c1c1c;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #333;
+}
 
-    @media (min-width: 768px) {
-      nav {
-        display: flex !important;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1.5rem;
-        margin-top: 0;
-        position: static;
-      }
+@media (min-width: 768px) {
+  nav {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0;
+    position: static;
+  }
 
-      .menu-toggle {
-        display: none;
-      }
+  .menu-toggle {
+    display: none;
+  }
 
-      .search-box {
-        margin-top: 0;
-        margin-left: auto;
-      }
+  .search-box {
+    margin-top: 0;
+    margin-left: auto;
+  }
 
-      .dropdown-menu {
-        position: static;
-        background: none;
-        border: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-      }
+  .dropdown-menu {
+    position: static;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
 
-      .dropdown-menu a {
-        padding: 0.2rem 0;
-      }
-    }
+  .dropdown-menu a {
+    padding: 0.2rem 0;
+  }
+}
+
   </style>
 </head>
 <body>
-  <header>
+    <header>
     <div class="container">
-      <div class="site-title">
-        <img src="rottenping.png" alt="ShadowSec Logo" height="40">
-      </div>
+      <div class="site-title">ShadowSec</div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
@@ -256,8 +249,8 @@
             <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
             <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
             <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-            <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-            <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+        <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
+        <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
           </div>
         </div>
         <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
@@ -269,26 +262,37 @@
 
   <main class="container">
     <section class="hero">
-      <h2>"Because freedom starts where surviellance ends"</h2>
-      <p>Uncover real privacy tactics, analog resilience, and learn strategies to stay lesser traceable in a connected world.</p>
-      <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Start Learning</a>
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
+      <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
+      <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
     </section>
 
-    <section class="custom-tiles">
-      <div class="tile-box">
-        <h3>❓ Why RottenPing?</h3>
-        <p>Because deception is the new defense. RottenPing is your edge — crafted for those who refuse to be mapped, tracked, or decoded. It's more than a name. It's a statement.</p>
-      </div>
-
-      <div class="tile-box">
-        <h3>🌀 Decoy Browsing</h3>
-        <p>Flood trackers with fake trails. Learn how to mix real activity with noise, spoof behavior, and stay unpredictable in the eyes of surveillance systems.</p>
-      </div>
+    <section class="features">
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📍 Geolocation Spoofing</a></h3>
+        <p>Fake your location without rooting your phone. Trick apps and sites into thinking you're somewhere else - safely.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
+        </p>Go beyond incognito. Learn how sites track you without cookies - and how to spoof or blend in.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🔒 Offline & Encrypted Storage</a></h3>
+        <p>From encrypted physical drives to zero-knowledge clouds - make your storage answer to no one but you.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🕵️ Invisible Metadata</a></h3>
+        <p>One photo can reveal your location, device and timestamp. Learn how to erase that digital fingerprint.</p>
+      </article>
+      <article>
+        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📡 App Traffic Monitoring</a></h3>
+        <p>Your apps are talking behind your back - see who is leaking data and shut them dowm from your phone.</p>
+      </article>
     </section>
   </main>
 
   <footer>
-    <p>Crafted by छछुंदर. | &copy; 2025 RottenPing</p>
+    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
   </footer>
 
   <script>
@@ -318,4 +322,4 @@
     });
   </script>
 </body>
-    </html>
+</html>
