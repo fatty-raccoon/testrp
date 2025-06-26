@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en">  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anonymous - Device Lore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: #000000;
+        font-family: 'Silkscreen', monospace;
+        overflow: hidden;
+      }
+      .inter-font {
+        font-family: 'Inter', sans-serif;
+      }
+      .bebas-font {
+        font-family: 'Bebas Neue', cursive;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col h-full">
+    <!-- Fixed Top Left Logo + Back with Background -->
+    <div class="fixed top-0 left-0 w-full bg-black z-10 px-4 py-3 flex items-center space-x-4 border-b border-gray-800">
+      <button onclick="goBack()" class="ml-[-8px]">
+        <img src="back-icon.png" alt="Back" class="w-5 h-5 hover:opacity-80" />
+      </button>
+      <img src="logo-placeholder.png" alt="Logo" class="w-10 h-10 object-contain" />
+      <span class="text-white text-lg sm:text-xl font-bold">The Shitmasters Trajectory</span>
+    </div><!-- Main Content -->
+<div class="flex-grow flex flex-col items-center justify-start px-6 pt-28 pb-6 overflow-y-auto">
+  <!-- Device Name -->
+  <h1 class="bebas-font text-white text-5xl sm:text-6xl mb-6 text-center">Anonymous</h1>
+
+  <!-- Device Image -->
+  <img src="anonymous.png" alt="Anonymous Image" class="w-40 h-40 object-contain rounded-xl grayscale opacity-40 mb-6" />
+
+  <!-- Locked Info Box -->
+  <div class="inter-font text-left w-full max-w-xl bg-[#0a0a0a] border border-gray-700 rounded-xl p-6 mb-4 text-gray-400 text-center">
+    <p class="mb-2">Identity Protected</p>
+    <p class="mb-2">Join Date: ???</p>
+    <p class="mb-4">Classified Entry</p>
+    <button id="reveal-button" onclick="revealIdentity()" class="mt-2 px-4 py-2 border border-cyan-400 rounded-xl text-cyan-400 hover:bg-cyan-900">Reveal Identity</button>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="secret-info" style="display: none;" class="inter-font w-full max-w-2xl text-gray-300 text-sm sm:text-base text-left">
+    <div class="mb-6 p-4 border border-cyan-400 rounded-xl">
+      <p><strong>Model/Build:</strong> Shadowmaster X</p>
+      <p><strong>Nickname:</strong> The Architect</p>
+      <p><strong>Joined:</strong> March 2022</p>
+      <p><strong>Primary Role:</strong> Clan Founder, Strategist, Overseer</p>
+    </div>
+    <p class="mb-4">
+      🕶️ Known only by the shadows they move through, the founder never leaves traces unless they want to. It’s said they crafted the first log, assembled the first beast, and unlocked the first gate.
+    </p>
+    <p>
+      🔐 When whispers echo in the clan’s vaults, they carry the Architect’s voice. The identity remains a secret to protect the trajectory.
+    </p>
+  </div>
+</div>
+
+<!-- Sticky Footer -->
+<footer class="w-full text-center text-gray-500 text-xs py-2 border-t border-gray-700">
+  &copy; 2025 The Shitmasters. All rights reserved.
+</footer>
+
+<script>
+  function goBack() {
+    window.location.href = "members.html";
+  }
+
+  function revealIdentity() {
+    const key = prompt("Enter passkey to reveal identity:");
+    if (key === "shitclave") {
+      document.getElementById("secret-info").style.display = "block";
+      document.getElementById("reveal-button").style.display = "none";
+    } else {
+      alert("Access Denied.");
+    }
+  }
+</script>
+
+  </body>
+</html>
