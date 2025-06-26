@@ -1,242 +1,247 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ShadowSec</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }body {
-  font-family: 'Inter', sans-serif;
-  background-color: #0a0a0a;
-  color: #f0f0f0;
-}
+    }
 
-header {
-  background-color: #1c1c1c;
-  color: #f0f0f0;
-  padding: 1rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid #333;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #e5e5e5;
+    }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
+    header {
+      background-color: #111;
+      color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
 .site-title {
-  font-family: 'Silkscreen', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  height: 50px;
 }
 
-.menu-toggle {
-  font-size: 1.6rem;
-  background: none;
-  color: #f0f0f0;
-  border: none;
-  cursor: pointer;
-  display: block;
-  position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
+.site-title img {
+  height: 100%;
 }
 
-nav {
-  display: none;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
+    .menu-toggle {
+      font-size: 1.6rem;
+      background: none;
+      color: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+    }
 
-nav a {
-  color: #f0f0f0;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5rem 0;
-  display: block;
-}
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
 
+    nav a {
+      color: #e5e5e5;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      display: block;
+    }
+    
 .home-link {
-  color: #ffffff;
+  color: #00ffc3;
 }
+    
+    nav a:hover {
+      color: #00ffc3;
+    }
 
-nav a:hover {
-  color: #aaa;
-}
+    .search-box {
+      margin-top: 1rem;
+    }
 
-.search-box {
-  margin-top: 1rem;
-}
+    .search-box input {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 6px;
+      background: #111;
+      color: #e5e5e5;
+      border: 1px solid #333;
+    }
 
-.search-box input {
-  width: 100%;
-  padding: 0.6rem;
-  border-radius: 6px;
-  background: #1c1c1c;
-  color: #f0f0f0;
-  border: 1px solid #333;
-}
+    .hero {
+      background-color: #111;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-top: 2rem;
+    }
 
-.hero {
-  background-color: #1c1c1c;
-  padding: 2.5rem 1rem;
-  text-align: center;
-  border-radius: 1rem;
-  margin-top: 2rem;
-}
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+    }
 
-.hero h2 {
-  font-size: 2rem;
-  margin-bottom: 0.8rem;
-  color: #ffffff;
-}
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
 
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #ccc;
-}
+    .btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #00ffc3;
+      padding: 0.7rem 1.3rem;
+      font-weight: 600;
+      border-radius: 12px;
+      border: 2px solid #00ffc3;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-.btn {
-  display: inline-block;
-  background-color: transparent;
-  color: #ffffff;
-  padding: 0.7rem 1.3rem;
-  font-weight: 600;
-  border-radius: 12px;
-  border: 2px solid #aaa;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+    .btn:hover {
+      background-color: rgba(0, 255, 195, 0.1);
+    }
 
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
-}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
 
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
+    .features article {
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
+      transition: transform 0.3s ease;
+    }
 
-.features article {
-  background-color: #1c1c1c;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease;
-}
+    .features article:hover {
+      transform: translateY(-4px);
+    }
 
-.features article:hover {
-  transform: translateY(-4px);
-}
+    .features h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #00ffc3;
+    }
 
-.features h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
+    .features p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
 
-.features p {
-  font-size: 0.95rem;
-  color: #ccc;
-}
+    .features h3 a {
+      text-decoration: none;
+      color: #00ffc3;
+    }
 
-.features h3 a {
-  text-decoration: none;
-  color: #ffffff;
-}
+    .features h3 a:hover {
+      text-decoration: underline;
+    }
 
-.features h3 a:hover {
-  text-decoration: underline;
-}
+    .dropdown {
+      display: block;
+    }
 
-.dropdown {
-  display: block;
-}
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding-left: 1rem;
+      margin-top: 0.25rem;
+    }
 
-.dropdown-menu {
-  display: none;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding-left: 1rem;
-  margin-top: 0.25rem;
-}
+    .dropdown-menu a {
+      padding: 0.3rem 0;
+    }
 
-.dropdown-menu a {
-  padding: 0.3rem 0;
-}
+    .dropdown-toggle {
+      transition: transform 0.4s ease;
+      display: inline-block;
+      margin-left: 0.25rem;
+    }
 
-.dropdown-toggle {
-  transition: transform 0.4s ease;
-  display: inline-block;
-  margin-left: 0.25rem;
-}
+    .rotate {
+      transform: rotate(180deg);
+    }
 
-.rotate {
-  transform: rotate(180deg);
-}
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+    }
 
-footer {
-  background-color: #1c1c1c;
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #666;
-  border-top: 1px solid #333;
-}
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0;
+        position: static;
+      }
 
-@media (min-width: 768px) {
-  nav {
-    display: flex !important;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 0;
-    position: static;
-  }
+      .menu-toggle {
+        display: none;
+      }
 
-  .menu-toggle {
-    display: none;
-  }
+      .search-box {
+        margin-top: 0;
+        margin-left: auto;
+      }
 
-  .search-box {
-    margin-top: 0;
-    margin-left: auto;
-  }
+      .dropdown-menu {
+        position: static;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
 
-  .dropdown-menu {
-    position: static;
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .dropdown-menu a {
-    padding: 0.2rem 0;
-  }
-}
-
+      .dropdown-menu a {
+        padding: 0.2rem 0;
+      }
+    }
   </style>
 </head>
 <body>
-    <header>
+  <header>
     <div class="container">
-      <div class="site-title">ShadowSec</div>
+      <div class="site-title">
+  <img src="böarsecurity.png" alt="ShadowSec Logo" style="height: 48px;" />
+      </div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
         <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
@@ -322,4 +327,4 @@ footer {
     });
   </script>
 </body>
-</html>
+  </html>
