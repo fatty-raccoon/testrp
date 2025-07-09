@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShadowSec</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+  <title>cookie-crumbs</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="https://emojiapi.dev/api/v1/cookie/64.png" />
+  <meta name="theme-color" content="#f7e9dc" />
+
   <style>
     * {
       margin: 0;
@@ -14,18 +19,19 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0e0e0e;
-      color: #e5e5e5;
+      font-family: 'Fredoka', sans-serif;
+      background-color: #f7e9dc;
+      color: #4b2e22;
     }
 
     header {
-      background-color: #111;
-      color: #f0f0f0;
+      background-color: #f1d7b6;
+      color: #4b2e22;
       padding: 1rem 1.5rem;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 6px rgba(150, 110, 90, 0.2);
     }
 
     .container {
@@ -33,20 +39,17 @@
       margin: 0 auto;
     }
 
-.site-title {
-  display: flex;
-  align-items: center;
-  height: 50px;
-}
-
-.site-title img {
-  height: 100%;
-}
+    .site-title {
+      font-family: 'Freckle Face', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
 
     .menu-toggle {
       font-size: 1.6rem;
       background: none;
-      color: #f0f0f0;
+      color: #4b2e22;
       border: none;
       cursor: pointer;
       display: block;
@@ -63,19 +66,19 @@
     }
 
     nav a {
-      color: #e5e5e5;
+      color: #4b2e22;
       font-weight: 600;
       text-decoration: none;
       padding: 0.5rem 0;
       display: block;
     }
-    
-.home-link {
-  color: #00ffc3;
-}
-    
+
+    .home-link {
+      color: #c97c42;
+    }
+
     nav a:hover {
-      color: #00ffc3;
+      color: #c97c42;
     }
 
     .search-box {
@@ -86,45 +89,46 @@
       width: 100%;
       padding: 0.6rem;
       border-radius: 6px;
-      background: #111;
-      color: #e5e5e5;
-      border: 1px solid #333;
+      background: #f4e3cd;
+      color: #4b2e22;
+      border: 1px solid #d4b89a;
     }
 
     .hero {
-      background-color: #111;
+      background-color: #f4e3cd;
       padding: 2.5rem 1rem;
       text-align: center;
       border-radius: 1rem;
       margin-top: 2rem;
+      box-shadow: 0 4px 12px rgba(100, 70, 50, 0.1);
     }
 
     .hero h2 {
       font-size: 2rem;
       margin-bottom: 0.8rem;
-      color: #ffffff;
+      color: #4b2e22;
     }
 
     .hero p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: #ccc;
+      color: #6e4a38;
     }
 
     .btn {
       display: inline-block;
       background-color: transparent;
-      color: #00ffc3;
+      color: #c97c42;
       padding: 0.7rem 1.3rem;
       font-weight: 600;
       border-radius: 12px;
-      border: 2px solid #00ffc3;
+      border: 2px solid #c97c42;
       text-decoration: none;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .btn:hover {
-      background-color: rgba(0, 255, 195, 0.1);
+      background-color: rgba(201, 124, 66, 0.1);
     }
 
     .features {
@@ -135,10 +139,10 @@
     }
 
     .features article {
-      background-color: #111;
+      background-color: #f1d7b6;
       padding: 1rem;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 255, 195, 0.05);
+      box-shadow: 0 2px 8px rgba(100, 70, 50, 0.1);
       transition: transform 0.3s ease;
     }
 
@@ -149,17 +153,17 @@
     .features h3 {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
-      color: #00ffc3;
+      color: #c97c42;
     }
 
     .features p {
       font-size: 0.95rem;
-      color: #ccc;
+      color: #6e4a38;
     }
 
     .features h3 a {
       text-decoration: none;
-      color: #00ffc3;
+      color: #c97c42;
     }
 
     .features h3 a:hover {
@@ -193,12 +197,12 @@
     }
 
     footer {
-      background-color: #111;
+      background-color: #f1d7b6;
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #222;
+      color: #8c6b50;
+      border-top: 1px solid #e0c4a3;
     }
 
     @media (min-width: 768px) {
@@ -239,65 +243,63 @@
 <body>
   <header>
     <div class="container">
-      <div class="site-title">
-  <img src="böarsecurity.png" alt="BöarSec Logo" style="transform: scale(4.2); display: block; margin-top: 10px; margin-left: 40px;" />
-      </div>
+      <div class="site-title">🍪 cookie-crumbs</div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
-        <a href="https://lamboar.github.io/shadowsec/" class="home-link">🏠 Home</a>
+        <a href="https://fatty-raccoon.github.io/cookie-crumbs" class="home-link">🏠 Home</a>
         <div class="dropdown">
           <a href="#" id="miniGuidesLink">
             <span>📚 Mini Guides</span>
             <span class="dropdown-toggle">▾</span>
           </a>
           <div class="dropdown-menu">
-            <a href="https://lamboar.github.io/shadowsec/osint.html">🕵️ OSINT</a>
-            <a href="https://lamboar.github.io/shadowsec/opsec.html">🛡️ OPSEC</a>
-            <a href="https://lamboar.github.io/shadowsec/analog.html">📻 Analog Survival</a>
-        <a href="https://lamboar.github.io/shadowsec/mobpriv.html" class="active">📱 Mobile Privacy</a>
-        <a href="https://lamboar.github.io/shadowsec/money.html">💵 Financial Privacy</a>
+            <a href="osint.html">🕵️ OSINT</a>
+            <a href="opsec.html">🛡️ OPSEC</a>
+            <a href="analog.html">📻 Analog Survival</a>
+            <a href="mobpriv.html" class="active">📱 Mobile Privacy</a>
+            <a href="money.html">💵 Financial Privacy</a>
           </div>
         </div>
-        <a href="https://lamboar.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
-        <a href="https://lamboar.github.io/shadowsec/notices.html">🔔 Notices & Updates</a>
-        <a href="https://lamboar.github.io/shadowsec/contact.html">🔗 Contact Us</a>
+        <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
+        <a href="notices.html">🔔 Notices & Updates</a>
+        <a href="contact.html">🔗 Contact Us</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
+      <h2>🍫 Live Freely. Think Critically. Stay Hidden.</h2>
       <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
-      <a href="https://lamboar.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
+      <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
     </section>
 
     <section class="features">
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📍 Geolocation Spoofing</a></h3>
+        <h3><a href="#">📍 Geolocation Spoofing</a></h3>
         <p>Fake your location without rooting your phone. Trick apps and sites into thinking you're somewhere else - safely.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
-        </p>Go beyond incognito. Learn how sites track you without cookies - and how to spoof or blend in.</p>
+        <h3><a href="#">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
+        <p>Go beyond incognito. Learn how sites track you without cookies - and how to spoof or blend in.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🔒 Offline & Encrypted Storage</a></h3>
+        <h3><a href="#">🔒 Offline & Encrypted Storage</a></h3>
         <p>From encrypted physical drives to zero-knowledge clouds - make your storage answer to no one but you.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">🕵️ Invisible Metadata</a></h3>
+        <h3><a href="#">🕵️ Invisible Metadata</a></h3>
         <p>One photo can reveal your location, device and timestamp. Learn how to erase that digital fingerprint.</p>
       </article>
       <article>
-        <h3><a href="https://lamboar.github.io/construction-pages/homepage.html">📡 App Traffic Monitoring</a></h3>
-        <p>Your apps are talking behind your back - see who is leaking data and shut them dowm from your phone.</p>
+        <h3><a href="#">📡 App Traffic Monitoring</a></h3>
+        <p>Your apps are talking behind your back - see who is leaking data and shut them down from your phone.</p>
       </article>
     </section>
   </main>
 
   <footer>
-    <p>Crafted by छछुंदर. | &copy; 2025 ShadowSec</p>
+    <p>crafted by cookie eater 🍪 | &copy; 2025 cookie-crumbs</p>
   </footer>
 
   <script>
@@ -328,3 +330,4 @@
   </script>
 </body>
   </html>
+  
