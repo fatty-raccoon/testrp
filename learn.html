@@ -73,6 +73,20 @@ h2, .subtext {
   cursor: pointer;
   }
 
+    .topic-container {
+  max-width: 500px;      /* Adjust this value as needed */
+  margin: 0 auto;         /* Center horizontally */
+  padding: 0 1rem;
+}
+
+.topic-box {
+  border: 2px solid #f9e8d2;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
     .hint-footer {
       text-align: center;
       font-size: 0.9rem;
@@ -140,7 +154,7 @@ h2, .subtext {
   <main>
     <h2>start learning 🍪</h2>
     <p class="subtext">pick your cookie, bite into the topic.</p>
-
+  <div class="topic-container">
   <div class="topic-box">
   <div class="topic-row" onclick="goTo('osint.html')">🕵️ OSINT</div>
   <div class="topic-row" onclick="goTo('opsec.html')">🛡️ OPSEC</div>
@@ -149,7 +163,7 @@ h2, .subtext {
   <div class="topic-row" onclick="goTo('money.html')">💵 Financial Privacy</div>
   <div class="topic-row" onclick="goTo('https://fatty-raccoon.github.io/construction-pages/homepage.html')">🛠️ Privacy & Security Tools</div>
   </div>
-    
+  </div> 
   </main>
 
   <!-- 🍪 The cookie dropper -->
