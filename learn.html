@@ -42,45 +42,46 @@ p.subtext {
 
 .tile {
   display: inline-block;
+  position: relative;
   font-family: 'Inter', sans-serif;
   padding: 0.6rem 1rem;
-  margin: 0.4rem;
+  margin: 0.2rem 0.3rem; /* Less gap between buttons */
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.4px;
   color: #f9e8d2;
-  background: linear-gradient(145deg, #111, #1a1a1a);
-  border: 1px solid #f9e8d255;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03); /* Subtle glass effect */
+  border: 1px solid rgba(249, 232, 210, 0.2);
+  border-radius: 10px;
   text-decoration: none;
-  box-shadow: 0 0 5px rgba(249, 232, 210, 0.15);
+  box-shadow: 0 0 6px rgba(249, 232, 210, 0.08);
+  backdrop-filter: blur(4px); /* Glass */
   transition: all 0.3s ease-in-out;
-  position: relative;
   overflow: hidden;
 }
 
 .tile:hover {
   color: #000;
   background: #f9e8d2;
-  box-shadow: 0 0 10px #f9e8d2aa, 0 0 20px #d7b88baa;
+  box-shadow: 0 0 12px #f9e8d2aa, 0 0 20px #d7b88baa;
   transform: scale(1.04);
 }
 
-.tile::before {
-  content: '🍪';
+.tile::after {
+  content: '🍪🍪🍪🍪';
   position: absolute;
-  left: -20px;
+  right: -3.5rem;
   top: 50%;
   transform: translateY(-50%);
   font-size: 1rem;
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: right 0.4s ease, opacity 0.4s ease;
 }
 
-.tile:hover::before {
-  left: 0.5rem;
+.tile:hover::after {
+  right: 0.5rem;
   opacity: 1;
-    }
+  }
 
 footer {
   text-align: center;
