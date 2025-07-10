@@ -185,15 +185,15 @@
 
 .cookie-roll {
   position: absolute;
-  top: 55%; 
-  left: 0;
-  transform: translateY(-50%) translateX(-150px) rotate(0deg);
+  top: 50%;
+  left: -3rem;
+  transform: translateY(-50%) translateX(0) rotate(0deg);
   font-size: 3rem;
   opacity: 0;
-  transition: transform 1.2s ease, opacity 1.2s ease;
-  z-index: 9999;
+  transition: transform 1.2s ease, opacity 0.5s ease;
+  z-index: 10;
   pointer-events: none;
-      }
+    }
     }
   </style>
 </head>
@@ -212,11 +212,12 @@
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
-      <a id="startBtn" class="btn">Start Eating 🍪</a>
-      <hr class="midline" />
-    </section>
+<section class="hero">
+  <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
+  <a id="startBtn" class="btn">Start Eating 🍪</a>
+  <div id="cookieRollBtn" class="cookie-roll">🍪</div>
+  <hr class="midline" />
+</section>
 
    <section class="blended-tile">
   <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem;">did you know?</h3>
@@ -241,11 +242,11 @@ By the way, this site simply shares what I’ve learned about online tracking, i
 const cookieRoll = document.getElementById("cookieRollBtn");
 
 startBtn.addEventListener("click", () => {
-
   startBtn.style.opacity = "0";
-
   cookieRoll.style.opacity = "1";
-  cookieRoll.style.transform = "translateY(-50%) translateX(50vw) rotate(720deg)";
+
+  // Move across hero section (about 80% width), spin
+  cookieRoll.style.transform = "translateY(-50%) translateX(80%) rotate(720deg)";
 
   setTimeout(() => {
     window.location.href = "learn.html";
