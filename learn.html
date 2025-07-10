@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,101 +11,155 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }body {
-  font-family: 'Inter', sans-serif;
-  background-color: #000;
-  color: #fff;
-  min-height: 100vh;
-  padding: 2rem 1rem;
-}
+    }
 
-h2 {
-  text-align: center;
-  font-family: 'Slackey', cursive;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #fff;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
 
-p.subtext {
-  text-align: center;
-  color: #ccc;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
+    h2 {
+      text-align: center;
+      font-family: 'Slackey', cursive;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
 
-.tile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+    p.subtext {
+      text-align: center;
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
 
-.tile {
-  display: inline-block;
-  position: relative;
-  font-family: 'Inter', sans-serif;
-  padding: 0.6rem 1rem;
-  margin: 0.2rem 0.3rem; /* Less gap between buttons */
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  color: #f9e8d2;
-  background: rgba(255, 255, 255, 0.03); /* Subtle glass effect */
-  border: 1px solid rgba(249, 232, 210, 0.2);
-  border-radius: 10px;
-  text-decoration: none;
-  box-shadow: 0 0 6px rgba(249, 232, 210, 0.08);
-  backdrop-filter: blur(4px); /* Glass */
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-}
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-.tile:hover {
-  color: #000;
-  background: #f9e8d2;
-  box-shadow: 0 0 12px #f9e8d2aa, 0 0 20px #d7b88baa;
-  transform: scale(1.04);
-}
+    .tile {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px dashed #f9e8d2;
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      text-decoration: none;
+      color: #f9e8d2;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #000;
+      position: relative;
+      overflow: hidden;
+    }
 
-.tile::after {
-  content: '🍪🍪🍪🍪';
-  position: absolute;
-  right: -3.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1rem;
-  opacity: 0;
-  transition: right 0.4s ease, opacity 0.4s ease;
-}
+    .tile:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 15px #f9e8d288;
+      transform: scale(1.025);
+    }
 
-.tile:hover::after {
-  right: 0.5rem;
-  opacity: 1;
-  }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 3rem;
+    }
 
-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  color: #666;
-  margin-top: 3rem;
-}
+    /* Falling Cookie Styles */
+    #cookieDrop {
+      position: fixed;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 5rem;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: top 1s ease-out, opacity 0.5s ease-in;
+    }
 
+    /* Rotation Animation */
+    .rotate-wobble {
+      animation: spinFall 1s ease-in-out forwards;
+    }
+
+    @keyframes spinFall {
+      0% {
+        top: -100px;
+        opacity: 0;
+        transform: translateX(-50%) rotate(0deg);
+      }
+      30% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(60deg);
+      }
+      60% {
+        transform: translateX(-50%) rotate(-45deg);
+      }
+      100% {
+        top: 120vh;
+        opacity: 0;
+        transform: translateX(-50%) rotate(360deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tile {
+        font-size: 0.9rem;
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>Start Learning. One Crunch at a Time 🍪</h2>
-  <p class="subtext">No fluff. Just tasty little pieces of privacy knowledge.</p>  <div class="tile-grid">
-    <a class="tile" href="osint.html">🍩 Internet Privacy</a>
-    <a class="tile" href="mobpriv.html">🍫 Mobile Privacy</a>
-    <a class="tile" href="opsec.html">🥠 OPSEC Basics</a>
-    <a class="tile" href="analog.html">🍪 Analog Survival</a>
-    <a class="tile" href="money.html">🍭 Financial Privacy</a>
-    <a class="tile" href="https://fatty-raccoon.github.io/construction-pages/homepage.html">🍘 Tools Page</a>
-    <a class="tile" href="notices.html">🥜 Notices & Updates</a>
-    <a class="tile" href="contact.html">🧁 Contact Us</a>
-  </div>  <footer>
+  <h2>Start Learning 🍪</h2>
+  <p class="subtext">pick your cookie, bite into the topic.</p>
+
+  <div class="tile-grid">
+    <a href="osint.html" class="tile">🕵️ OSINT</a>
+    <a href="opsec.html" class="tile">🛡️ OPSEC</a>
+    <a href="analog.html" class="tile">📻 Analog Survival</a>
+    <a href="mobpriv.html" class="tile">📱 Mobile Privacy</a>
+    <a href="money.html" class="tile">💵 Financial Privacy</a>
+    <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html" class="tile">🛠️ Privacy & Security Tools</a>
+  </div>
+
+  <!-- Falling cookie -->
+  <div id="cookieDrop">🍪</div>
+
+  <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
+
+  <script>
+    const tiles = document.querySelectorAll('.tile');
+    const cookieDrop = document.getElementById('cookieDrop');
+
+    tiles.forEach(tile => {
+      tile.addEventListener('click', e => {
+        e.preventDefault();
+        const href = tile.getAttribute('href');
+
+        // Reset animation
+        cookieDrop.classList.remove('rotate-wobble');
+        void cookieDrop.offsetWidth; // Force reflow
+
+        // Start animation
+        cookieDrop.classList.add('rotate-wobble');
+
+        // Redirect after animation
+        setTimeout(() => {
+          window.location.href = href;
+        }, 1000);
+      });
+    });
+  </script>
 </body>
 </html>
