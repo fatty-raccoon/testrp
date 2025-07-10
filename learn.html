@@ -15,9 +15,15 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #000;
+      background-color: #000; /* AMOLED */
       color: #fff;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
       padding: 2rem 1rem;
     }
 
@@ -44,69 +50,97 @@
     }
 
     .tile {
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px dashed #f9e8d2;
-      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.4));
+      border: 1px solid #f9e8d255;
+      border-radius: 16px;
       padding: 1.2rem;
       text-align: center;
       text-decoration: none;
       color: #f9e8d2;
       font-weight: 600;
-      backdrop-filter: blur(6px);
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px #000;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease-in-out;
+      box-shadow: 0 0 12px rgba(255, 223, 160, 0.2);
       position: relative;
-      overflow: hidden;
     }
 
     .tile:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 15px #f9e8d288;
-      transform: scale(1.025);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 18px #f9e8d288, 0 0 30px #f9e8d244;
+      transform: scale(1.04) rotate(0.5deg);
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid #f9e8d288;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .tile:hover::after {
+      opacity: 1;
+    }
+
+    .hint-footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+      margin-bottom: 0.2rem;
+      opacity: 0.6;
+      font-style: italic;
     }
 
     footer {
       text-align: center;
       font-size: 0.85rem;
       color: #666;
-      margin-top: 3rem;
+      padding: 1.5rem 1rem 1.5rem;
+      background-color: #000;
+      border-top: 1px solid #111;
     }
 
-    /* Giant Falling Cookie */
+    /* Massive Falling Cookie 🍪 */
     #cookieDrop {
-  position: fixed;
-  top: -1200px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 500px; /* Makes it huge */
-  transition: top 2s ease-out, opacity 1s ease-in;
-  opacity: 1;
-  pointer-events: none;
-  z-index: 9999;
-}
+      position: fixed;
+      top: -1000px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4000px;
+      height: 4000px;
+      transition: top 2s ease-out, opacity 1s ease-in;
+      opacity: 1;
+      z-index: 9999;
+      pointer-events: none;
+      font-size: 600px;
+      filter: none;
+      background: none;
+    }
 
-.rotate-wobble {
-  animation: bigSpinFall 2s ease-in-out forwards;
-}
+    .rotate-wobble {
+      animation: bigSpinFall 2s ease-in-out forwards;
+    }
 
-@keyframes bigSpinFall {
-  0% {
-    top: -100vh;
-    opacity: 0;
-    transform: translateX(-50%) rotate(0deg) scale(1);
-  }
-  25% {
-    opacity: 1;
-    transform: translateX(-50%) rotate(60deg) scale(1.05);
-  }
-  50% {
-    transform: translateX(-50%) rotate(-45deg) scale(1.1);
-  }
-  100% {
-    top: 130vh;
-    opacity: 0;
-    transform: translateX(-50%) rotate(720deg) scale(1.15);
-  }
+    @keyframes bigSpinFall {
+      0% {
+        top: -100vh;
+        opacity: 0;
+        transform: translateX(-50%) rotate(0deg) scale(1);
+      }
+      25% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(60deg) scale(1.05);
+      }
+      50% {
+        transform: translateX(-50%) rotate(-45deg) scale(1.1);
+      }
+      100% {
+        top: 130vh;
+        opacity: 0;
+        transform: translateX(-50%) rotate(720deg) scale(1.15);
+      }
     }
 
     @media (max-width: 480px) {
@@ -118,20 +152,24 @@
   </style>
 </head>
 <body>
-  <h2>start learning 🍪</h2>
-  <p class="subtext">pick your cookie, bite into the topic.</p>
+  <main>
+    <h2>start learning 🍪</h2>
+    <p class="subtext">pick your cookie, bite into the topic.</p>
 
-  <div class="tile-grid">
-    <a href="osint.html" class="tile">🕵️ OSINT</a>
-    <a href="opsec.html" class="tile">🛡️ OPSEC</a>
-    <a href="analog.html" class="tile">📻 Analog Survival</a>
-    <a href="mobpriv.html" class="tile">📱 Mobile Privacy</a>
-    <a href="money.html" class="tile">💵 Financial Privacy</a>
-    <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html" class="tile">🛠️ Privacy & Security Tools</a>
-  </div>
+    <div class="tile-grid">
+      <a href="osint.html" class="tile">🕵️ OSINT</a>
+      <a href="opsec.html" class="tile">🛡️ OPSEC</a>
+      <a href="analog.html" class="tile">📻 Analog Survival</a>
+      <a href="mobpriv.html" class="tile">📱 Mobile Privacy</a>
+      <a href="money.html" class="tile">💵 Financial Privacy</a>
+      <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html" class="tile">🛠️ Privacy & Security Tools</a>
+    </div>
+  </main>
 
-  <!-- Massive falling cookie -->
+  <!-- 🍪 The cookie dropper -->
   <div id="cookieDrop">🍪</div>
+
+  <div class="hint-footer">🍪 psst... check the cookies before they’re eaten.</div>
 
   <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
@@ -158,4 +196,4 @@
     });
   </script>
 </body>
-</html>
+        </html>
