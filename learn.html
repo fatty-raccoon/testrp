@@ -34,36 +34,44 @@
       margin-bottom: 0.5rem;
     }
     
-.vertical-box {
-  border: 2px dashed #f9e8d2;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  max-width: 500px;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 12px #f9e8d233;
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.vertical-box a {
-  display: block;
-  color: #f9e8d2;
-  text-decoration: none;
+h2, .subtext {
+  text-align: center;
+}
+
+.topic-box {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 1.5rem;
+  border: 1px dashed #f9e8d277;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.topic-row {
+  padding: 1rem 1rem;
+  text-align: center;
   font-weight: 600;
-  padding: 0.8rem 1rem;
-  border-bottom: 1px dashed #f9e8d244;
-  transition: all 0.2s ease-in-out;
+  color: #f9e8d2;
+  transition: background 0.3s;
+  border-bottom: 1px dashed #f9e8d288;
 }
 
-.vertical-box a:last-child {
+.topic-row:last-child {
   border-bottom: none;
 }
 
-.vertical-box a:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  transform: translateX(4px);
-  color: #ffeec0;
-    }
+.topic-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  }
 
     .hint-footer {
       text-align: center;
@@ -133,14 +141,15 @@
     <h2>start learning 🍪</h2>
     <p class="subtext">pick your cookie, bite into the topic.</p>
 
-    <div class="vertical-box">
-      <a href="osint.html" class="tile">🕵️ OSINT</a>
-      <a href="opsec.html" class="tile">🛡️ OPSEC</a>
-      <a href="analog.html" class="tile">📻 Analog Survival</a>
-      <a href="mobpriv.html" class="tile">📱 Mobile Privacy</a>
-      <a href="money.html" class="tile">💵 Financial Privacy</a>
-      <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html" class="tile">🛠️ Privacy & Security Tools</a>
-    </div>
+  <div class="topic-box">
+  <div class="topic-row" onclick="goTo('osint.html')">🕵️ OSINT</div>
+  <div class="topic-row" onclick="goTo('opsec.html')">🛡️ OPSEC</div>
+  <div class="topic-row" onclick="goTo('analog.html')">📻 Analog Survival</div>
+  <div class="topic-row" onclick="goTo('mobpriv.html')">📱 Mobile Privacy</div>
+  <div class="topic-row" onclick="goTo('money.html')">💵 Financial Privacy</div>
+  <div class="topic-row" onclick="goTo('https://fatty-raccoon.github.io/construction-pages/homepage.html')">🛠️ Privacy & Security Tools</div>
+  </div>
+    
   </main>
 
   <!-- 🍪 The cookie dropper -->
@@ -153,22 +162,17 @@
   </footer>
 
   <script>
-    const tiles = document.querySelectorAll('.tile');
-    const cookieDrop = document.getElementById('cookieDrop');
+    
+    function goTo(href) {
+  const cookieDrop = document.getElementById('cookieDrop');
+  cookieDrop.classList.remove('rotate-wobble');
+  void cookieDrop.offsetWidth;
+  cookieDrop.classList.add('rotate-wobble');
 
-    tiles.forEach(tile => {
-      tile.addEventListener('click', e => {
-        e.preventDefault();
-        const href = tile.getAttribute('href');
-
-        cookieDrop.classList.remove('rotate-wobble');
-        void cookieDrop.offsetWidth;
-
-        cookieDrop.classList.add('rotate-wobble');
-
-        setTimeout(() => {
-          window.location.href = href;
-        }, 2000);
+  setTimeout(() => {
+    window.location.href = href;
+  }, 1650);
+    }
       });
     });
   </script>
