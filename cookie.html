@@ -183,14 +183,14 @@
       flex: 1;
     }
 
-    .cookie-roll {
+.cookie-roll {
   position: absolute;
-  top: 0;
-  left: -100px;
-  transform: rotate(0deg);
+  top: 55%; 
+  left: 0;
+  transform: translateY(-50%) translateX(-150px) rotate(0deg);
   font-size: 3rem;
   opacity: 0;
-  transition: all 1.2s ease;
+  transition: transform 1.2s ease, opacity 1.2s ease;
   z-index: 9999;
   pointer-events: none;
       }
@@ -238,22 +238,19 @@ By the way, this site simply shares what I’ve learned about online tracking, i
   </footer>
 <script>
   const startBtn = document.getElementById("startBtn");
-  const cookieRoll = document.getElementById("cookieRollBtn");
+const cookieRoll = document.getElementById("cookieRollBtn");
 
-  startBtn.addEventListener("click", () => {
-    // Hide text immediately
-    startBtn.style.opacity = "0";
+startBtn.addEventListener("click", () => {
 
-    // Roll in the cookie
-    cookieRoll.style.left = "50%";
-    cookieRoll.style.opacity = "1";
-    cookieRoll.style.transform = "translateX(-50%) rotate(720deg)";
+  startBtn.style.opacity = "0";
 
-    // Redirect after roll
-    setTimeout(() => {
-      window.location.href = "learn.html";
-    }, 1600);
-  });
+  cookieRoll.style.opacity = "1";
+  cookieRoll.style.transform = "translateY(-50%) translateX(50vw) rotate(720deg)";
+
+  setTimeout(() => {
+    window.location.href = "learn.html";
+  }, 1600);
+});
 </script>
   <script>
     function toggleMenu() {
