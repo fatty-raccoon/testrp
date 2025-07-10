@@ -72,41 +72,40 @@
       margin-top: 3rem;
     }
 
-    /* Falling Cookie Styles */
+    /* Giant Falling Cookie */
     #cookieDrop {
       position: fixed;
-      top: -100px;
+      top: -120vh;
       left: 50%;
-      transform: translateX(-50%);
-      font-size: 5rem;
+      transform: translateX(-50%) scale(1);
+      font-size: 35vw;
       pointer-events: none;
       z-index: 9999;
       opacity: 0;
-      transition: top 1s ease-out, opacity 0.5s ease-in;
+      transition: top 3s ease-out, opacity 1s ease-in;
     }
 
-    /* Rotation Animation */
     .rotate-wobble {
-      animation: spinFall 1s ease-in-out forwards;
+      animation: bigSpinFall 3s ease-in-out forwards;
     }
 
-    @keyframes spinFall {
+    @keyframes bigSpinFall {
       0% {
-        top: -100px;
+        top: -100vh;
         opacity: 0;
-        transform: translateX(-50%) rotate(0deg);
+        transform: translateX(-50%) rotate(0deg) scale(1);
       }
-      30% {
+      25% {
         opacity: 1;
-        transform: translateX(-50%) rotate(60deg);
+        transform: translateX(-50%) rotate(60deg) scale(1.05);
       }
-      60% {
-        transform: translateX(-50%) rotate(-45deg);
+      50% {
+        transform: translateX(-50%) rotate(-45deg) scale(1.1);
       }
       100% {
-        top: 120vh;
+        top: 130vh;
         opacity: 0;
-        transform: translateX(-50%) rotate(360deg);
+        transform: translateX(-50%) rotate(720deg) scale(1.15);
       }
     }
 
@@ -131,7 +130,7 @@
     <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html" class="tile">🛠️ Privacy & Security Tools</a>
   </div>
 
-  <!-- Falling cookie -->
+  <!-- Massive falling cookie -->
   <div id="cookieDrop">🍪</div>
 
   <footer>
@@ -147,17 +146,14 @@
         e.preventDefault();
         const href = tile.getAttribute('href');
 
-        // Reset animation
         cookieDrop.classList.remove('rotate-wobble');
-        void cookieDrop.offsetWidth; // Force reflow
+        void cookieDrop.offsetWidth;
 
-        // Start animation
         cookieDrop.classList.add('rotate-wobble');
 
-        // Redirect after animation
         setTimeout(() => {
           window.location.href = href;
-        }, 1000);
+        }, 3000);
       });
     });
   </script>
