@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cookie-crumbs</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
+
   <style>
     * {
       margin: 0;
@@ -19,11 +22,13 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
+      transition: transform 2s ease-in-out;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #000000;
+      background-color: #000;
       color: #e5e5e5;
     }
 
@@ -44,8 +49,6 @@
     .site-title {
       font-family: 'Freckle Face', cursive;
       font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
     }
 
     .menu-toggle {
@@ -54,33 +57,32 @@
       color: #f0f0f0;
       border: none;
       cursor: pointer;
-      display: block;
       position: absolute;
       top: 1.2rem;
       right: 1.5rem;
     }
 
     nav {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
     }
-.nav-open {
-  max-height: 500px;
-  opacity: 1;
-  margin-top: 0.5rem;
-}
-    
+
+    .nav-open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 0.5rem;
+    }
+
     nav a {
       color: #e5e5e5;
       font-weight: 600;
       text-decoration: none;
       padding: 0.5rem 0;
-      display: block;
     }
 
     .home-link {
@@ -91,41 +93,30 @@
       color: #00ffc3;
     }
 
-.hero {
-  position: relative; 
-  background-color: #000000;
-  padding: 2.5rem 1rem;
-  text-align: center;
-  border-radius: 1rem;
-  margin-top: 0.2rem;
-}
-    
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-      color: #ffffff;
-      font-family: 'Slackey', cursive;
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1rem;
     }
 
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      color: #f5f5f5;
+    .hero h2 {
+      font-family: 'Slackey', cursive;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
     }
 
     .btn {
-      display: inline-block;
       background-color: transparent;
       color: #f9e8d2;
       padding: 0.7rem 1.3rem;
       font-weight: 600;
-      border-radius: 0px;
       border: 2px solid #f9e8d2;
       text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 0 6px #f9e8d288;
       margin-top: 0.5rem;
       margin-bottom: 1.2rem;
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
     .btn:hover {
@@ -133,42 +124,37 @@
       color: #0e0e0e;
       box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
     }
-    
+
     .midline {
-  width: 62%;
-  height: 2px;
-  margin: 1rem auto 0.5rem auto;
-  border: none;
-  background: linear-gradient(to right, #f9e8d2, #d7b88b, #f9e8d2);
-  box-shadow: 0 0 4px #f9e8d2aa;
+      width: 62%;
+      height: 2px;
+      margin: 1rem auto 0.5rem auto;
+      border: none;
+      background: linear-gradient(to right, #f9e8d2, #d7b88b, #f9e8d2);
+      box-shadow: 0 0 4px #f9e8d2aa;
     }
 
-.blended-tile {
-  background-color: #000;
-  padding: 1.2rem 1.5rem; 
-  font-size: 1rem;
-  color: #bbbbbb;
-  text-align: center;
-  border-radius: 0;
-  line-height: 1.6;
-  margin-top: -1.2rem;
-  margin-bottom: 0.6rem;
-      }
-  .blended-tile {
-  border: 2px dashed white;
+    .blended-tile {
+      background-color: #000;
+      color: #bbb;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+      border: 2px dashed white;
     }
 
-.quote-bar {
-  background-color: #000000;
-  color: #ffffff;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1rem;
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  margin-top: auto;
-      }
+    .quote-bar {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      margin-top: auto;
+    }
 
     footer {
       background-color: #111;
@@ -179,101 +165,71 @@
       border-top: 1px solid #222;
     }
 
-    main {
-      flex: 1;
-      
-@keyframes barrelRoll {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(1080deg); /* 3 full spins */
-  }
-      }
+    @keyframes barrelRoll {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(1080deg); } /* 3 spins */
+    }
+
+    .spin {
+      animation: barrelRoll 2s ease-in-out;
     }
   </style>
 </head>
+
 <body id="page">
   <header>
     <div class="container">
       <div class="site-title">🍪 cookie-crumbs</div>
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
-  <a href="https://fatty-raccoon.github.io/cookie-crumbs" class="home-link">🏠 Home</a>
-  <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html">🛠️ Privacy & Security Tools</a>
-  <a href="notices.html">🔔 Notices & Updates</a>
-  <a href="contact.html">🔗 Contact Us</a>
+        <a href="#" class="home-link">🏠 Home</a>
+        <a href="#">🛠️ Privacy & Security Tools</a>
+        <a href="#">🔔 Notices & Updates</a>
+        <a href="#">🔗 Contact Us</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-<section class="hero">
-  <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
-  <a id="startBtn" class="btn">Start Eating 🍪</a>
-  <hr class="midline" />
-</section>
+    <section class="hero">
+      <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
+      <a id="startBtn" class="btn">Start Eating 🍪</a>
+      <hr class="midline" />
+    </section>
 
-   <section class="blended-tile">
-  <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem;">did you know?</h3>
-  <p>
-    the developer of this site loves cookies a lot (just not the ones in browser).
-By the way, this site simply shares what I’ve learned about online tracking, identity, and basic privacy — not professional training, just real stuff that might help, depending on how you use it.
-    if you want to know more about the site, <a href="https://github.com/fatty-raccoon/cookie-crumbs/blob/main/README.md" style="color: #ffd966; text-decoration: underline;">check out the github README →</a>
-  </p>
-</section>
+    <section class="blended-tile">
+      <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem;">did you know?</h3>
+      <p>
+        the developer of this site loves cookies a lot (just not the ones in browser).<br/>
+        this site simply shares what I’ve learned about online tracking, identity, and basic privacy — not professional training, just real stuff that might help.<br/>
+        <a href="#" style="color: #ffd966; text-decoration: underline;">check out the github README →</a>
+      </p>
+    </section>
 
-<div class="quote-bar">
-  🍪 “eating some cookies can actually prove to be healthy, unless you're fat”
-</div>
-<div id="cookieRollBtn" class="cookie-roll">🍪</div>
+    <div class="quote-bar">
+      🍪 “eating some cookies can actually prove to be healthy, unless you're fat”
+    </div>
   </main>
 
   <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
-  <script>
-  const startBtn = document.getElementById("startBtn");
-  const page = document.getElementById("page");
-
-  startBtn.addEventListener("click", () => {
-    startBtn.style.opacity = "0";
-
-    // Apply the barrel roll animation to the whole page
-    page.style.animation = "barrelRoll 2s ease-in-out";
-
-    // Redirect after 2 seconds (when animation completes)
-    setTimeout(() => {
-      window.location.href = "learn.html";
-    }, 2000);
-  });
-  </script>
 
   <script>
-    function toggleMenu() {
-  const nav = document.getElementById("mainNav");
-  nav.classList.toggle("nav-open");
-    }
+    const startBtn = document.getElementById("startBtn");
+    const page = document.getElementById("page");
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const miniLink = document.getElementById('miniGuidesLink');
-      const dropdownMenu = miniLink.nextElementSibling;
-      const arrow = miniLink.querySelector('.dropdown-toggle');
-
-      miniLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isOpen = dropdownMenu.style.display === 'flex';
-        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
-        arrow.classList.toggle('rotate', !isOpen);
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-          dropdownMenu.style.display = 'none';
-          arrow.classList.remove('rotate');
-        }
-      });
+    startBtn.addEventListener("click", () => {
+      page.classList.add("spin");
+      setTimeout(() => {
+        window.location.href = "learn.html";
+      }, 2000);
     });
+
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      nav.classList.toggle("nav-open");
+    }
   </script>
 </body>
 </html>
