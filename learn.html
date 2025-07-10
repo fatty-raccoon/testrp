@@ -103,45 +103,41 @@
     }
 
     /* Massive Falling Cookie 🍪 */
-    #cookieDrop {
-      position: fixed;
-      top: -1000px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4000px;
-      height: 4000px;
-      transition: top 2s ease-out, opacity 1s ease-in;
-      opacity: 1;
-      z-index: 9999;
-      pointer-events: none;
-      font-size: 600px;
-      filter: none;
-      background: none;
-    }
+#cookieDrop {
+  position: fixed;
+  top: -100vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1200px;
+  opacity: 0;
+  z-index: 9999;
+  pointer-events: none;
+  line-height: 1;
+}
 
-    .rotate-wobble {
-      animation: bigSpinFall 2s ease-in-out forwards;
-    }
+.rotate-wobble {
+  animation: bigSpinFall 2.3s ease-in-out forwards;
+}
 
-    @keyframes bigSpinFall {
-      0% {
-        top: -100vh;
-        opacity: 0;
-        transform: translateX(-50%) rotate(0deg) scale(1);
+@keyframes bigSpinFall {
+  0% {
+    top: -100vh;
+    opacity: 0;
+    transform: translateX(-50%) rotate(0deg) scale(1);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(60deg) scale(1.05);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-45deg) scale(1.1);
+  }
+  100% {
+    top: 130vh;
+    opacity: 0;
+    transform: translateX(-50%) rotate(720deg) scale(1.15);
+  }
       }
-      25% {
-        opacity: 1;
-        transform: translateX(-50%) rotate(60deg) scale(1.05);
-      }
-      50% {
-        transform: translateX(-50%) rotate(-45deg) scale(1.1);
-      }
-      100% {
-        top: 130vh;
-        opacity: 0;
-        transform: translateX(-50%) rotate(720deg) scale(1.15);
-      }
-    }
 
     @media (max-width: 480px) {
       .tile {
