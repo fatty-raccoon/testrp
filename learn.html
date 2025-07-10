@@ -36,7 +36,7 @@
     
 main {
   flex: 1;
-  padding: 2rem 1rem;
+  padding: 3rem 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,6 +147,39 @@ h2, .subtext {
         font-size: 0.9rem;
         padding: 1rem;
       }
+      .search-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#searchInput {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #f9e8d255;
+  background-color: #111;
+  color: #f9e8d2;
+  width: 240px;
+  margin-right: 0.5rem;
+}
+
+#searchInput::placeholder {
+  color: #888;
+}
+
+.search-container button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #f9e8d2;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #ffeac2;
+  }
     }
   </style>
 </head>
@@ -154,6 +187,10 @@ h2, .subtext {
   <main>
     <h2>start learning 🍪</h2>
     <p class="subtext">pick your cookie, bite into the topic.</p>
+    <div class="search-container">
+  <input type="text" id="searchInput" placeholder="search topics..." />
+  <button onclick="searchTopics()">🔍</button>
+    </div>
   <div class="topic-container">
   <div class="topic-box">
   <div class="topic-row" onclick="goTo('osint.html')">🕵️ OSINT</div>
@@ -174,7 +211,27 @@ h2, .subtext {
   <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
+<script>
+  function searchTopics() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const boxes = document.querySelectorAll(".topic-box");
+    let found = false;
 
+    boxes.forEach(box => {
+      const text = box.textContent.toLowerCase();
+      if (text.includes(input)) {
+        box.style.display = "block";
+        found = true;
+      } else {
+        box.style.display = "none";
+      }
+    });
+
+    if (!found) {
+      alert("no topics found! 🤦🤷");
+    }
+  }
+</script>
   <script>
     
     function goTo(href) {
