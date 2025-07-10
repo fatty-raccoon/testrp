@@ -187,24 +187,19 @@
 
       .menu-toggle {
         display: none;
-      }
+  }
 
-      .search-box {
-        margin-top: 0;
-        margin-left: auto;
-      }
 
-      .dropdown-menu {
-        position: static;
-        background: none;
-        border: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .dropdown-menu a {
-        padding: 0.2rem 0;
+      .cookie-roll {
+  position: fixed;
+  top: 50%;
+  left: -100px;
+  transform: translateY(-50%) rotate(0deg);
+  font-size: 1.3rem;
+  opacity: 0;
+  transition: all 1.2s ease;
+  z-index: 9999;
+  pointer-events: none;
       }
     }
   </style>
@@ -216,18 +211,6 @@
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <nav id="mainNav">
         <a href="https://fatty-raccoon.github.io/cookie-crumbs" class="home-link">🏠 Home</a>
-        <div class="dropdown">
-          <a href="#" id="miniGuidesLink">
-            <span>📚 Mini Guides</span>
-            <span class="dropdown-toggle">▾</span>
-          </a>
-          <div class="dropdown-menu">
-            <a href="osint.html">🕵️ OSINT</a>
-            <a href="opsec.html">🛡️ OPSEC</a>
-            <a href="analog.html">📻 Analog Survival</a>
-            <a href="mobpriv.html" class="active">📱 Mobile Privacy</a>
-            <a href="money.html">💵 Financial Privacy</a>
-          </div>
         </div>
         <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
         <a href="notices.html">🔔 Notices & Updates</a>
@@ -239,7 +222,7 @@
   <main class="container">
     <section class="hero">
       <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
-      <a href="learn.html" class="btn">Start Eating 🍪</a>
+      <a id="startBtn" class="btn">Start Eating 🍪</a>
       <hr class="midline" />
     </section>
 
@@ -255,12 +238,31 @@ By the way, this site simply shares what I’ve learned about online tracking, i
 <div class="quote-bar">
   🍪 “eating some cookies can actually prove to be healthy, unless you're fat”
 </div>
+<div id="cookieRollBtn" class="cookie-roll">🍪</div>
   </main>
 
   <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const cookieRoll = document.getElementById("cookieRollBtn");
 
+  startBtn.addEventListener("click", () => {
+    // Hide text immediately
+    startBtn.style.opacity = "0";
+
+    // Roll in the cookie
+    cookieRoll.style.left = "50%";
+    cookieRoll.style.opacity = "1";
+    cookieRoll.style.transform = "translateX(-50%) rotate(720deg)";
+
+    // Redirect after roll
+    setTimeout(() => {
+      window.location.href = "learn.html";
+    }, 1600);
+  });
+</script>
   <script>
     function toggleMenu() {
       const nav = document.getElementById("mainNav");
