@@ -46,14 +46,42 @@
   color: #f9e8d2;
 }
 
-.menu-toggle {
-  font-size: 2.2rem; /* Bigger hamburger */
-  background: none;
-  color: #f9e8d2;
+
+
+    .menu-toggle {
+  width: 2.2rem;
+  height: 2.2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: none;
+  background: none;
   cursor: pointer;
+  padding: 0;
+  z-index: 1100;
 }
 
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #f9e8d2;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+.menu-toggle.active .top {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.menu-toggle.active .middle {
+  opacity: 0;
+}
+
+.menu-toggle.active .bottom {
+  transform: rotate(-45deg) translateY(-8px);
+}
+    
     nav {
       max-height: 0;
       overflow: hidden;
@@ -172,7 +200,11 @@
 <header>
   <div class="container header-bar">
     <div class="site-title">🍪 cookie-crumbs</div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+  <span class="bar top"></span>
+  <span class="bar middle"></span>
+  <span class="bar bottom"></span>
+    </button>
   </div>
   <nav id="mainNav">
     <a href="index.html" class="home-link">🏠 Home</a>
