@@ -33,55 +33,36 @@
       font-size: 2rem;
       margin-bottom: 0.5rem;
     }
+    
+.vertical-box {
+  border: 2px dashed #f9e8d2;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 12px #f9e8d233;
+}
 
-    p.subtext {
-      text-align: center;
-      color: #ccc;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
+.vertical-box a {
+  display: block;
+  color: #f9e8d2;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px dashed #f9e8d244;
+  transition: all 0.2s ease-in-out;
+}
 
-    .tile-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.8rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+.vertical-box a:last-child {
+  border-bottom: none;
+}
 
-    .tile {
-      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.4));
-      border: 1px solid #f9e8d255;
-      border-radius: 16px;
-      padding: 1.2rem;
-      text-align: center;
-      text-decoration: none;
-      color: #f9e8d2;
-      font-weight: 600;
-      backdrop-filter: blur(8px);
-      transition: all 0.25s ease-in-out;
-      box-shadow: 0 0 12px rgba(255, 223, 160, 0.2);
-      position: relative;
-    }
-
-    .tile:hover {
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 18px #f9e8d288, 0 0 30px #f9e8d244;
-      transform: scale(1.04) rotate(0.5deg);
-    }
-
-    .tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      border: 1px solid #f9e8d288;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    .tile:hover::after {
-      opacity: 1;
+.vertical-box a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
+  color: #ffeec0;
     }
 
     .hint-footer {
@@ -152,7 +133,7 @@
     <h2>start learning 🍪</h2>
     <p class="subtext">pick your cookie, bite into the topic.</p>
 
-    <div class="tile-grid">
+    <div class="vertical-box">
       <a href="osint.html" class="tile">🕵️ OSINT</a>
       <a href="opsec.html" class="tile">🛡️ OPSEC</a>
       <a href="analog.html" class="tile">📻 Analog Survival</a>
