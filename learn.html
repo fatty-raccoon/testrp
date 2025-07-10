@@ -75,39 +75,38 @@
     /* Giant Falling Cookie */
     #cookieDrop {
   position: fixed;
-  top: -600px;
+  top: -1000px;
   left: 50%;
   transform: translateX(-50%);
-  width: 4000px; /* Massive size */
-  height: 4000px;
+  font-size: 1000px; /* Makes it huge */
   transition: top 2s ease-out, opacity 1s ease-in;
   opacity: 1;
   pointer-events: none;
   z-index: 9999;
-      }
+}
 
-    .rotate-wobble {
-      animation: bigSpinFall 2s ease-in-out forwards;
-    }
+.rotate-wobble {
+  animation: bigSpinFall 2s ease-in-out forwards;
+}
 
-    @keyframes bigSpinFall {
-      0% {
-        top: -100vh;
-        opacity: 0;
-        transform: translateX(-50%) rotate(0deg) scale(1);
-      }
-      25% {
-        opacity: 1;
-        transform: translateX(-50%) rotate(60deg) scale(1.05);
-      }
-      50% {
-        transform: translateX(-50%) rotate(-45deg) scale(1.1);
-      }
-      100% {
-        top: 130vh;
-        opacity: 0;
-        transform: translateX(-50%) rotate(720deg) scale(1.15);
-      }
+@keyframes bigSpinFall {
+  0% {
+    top: -100vh;
+    opacity: 0;
+    transform: translateX(-50%) rotate(0deg) scale(1);
+  }
+  25% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(60deg) scale(1.05);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-45deg) scale(1.1);
+  }
+  100% {
+    top: 130vh;
+    opacity: 0;
+    transform: translateX(-50%) rotate(720deg) scale(1.15);
+  }
     }
 
     @media (max-width: 480px) {
