@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cookie-crumbs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000000;
+      color: #e5e5e5;
+    }
+
+    header {
+      background-color: #111;
+      color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .site-title {
+      font-family: 'Freckle Face', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .menu-toggle {
+      font-size: 1.6rem;
+      background: none;
+      color: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #e5e5e5;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      display: block;
+    }
+
+    .home-link {
+      color: #00ffc3;
+    }
+
+    nav a:hover {
+      color: #00ffc3;
+    }
+
+    .hero {
+      background-color: #000000;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      font-family: 'Slackey', cursive;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #f5f5f5;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #f9e8d2;
+      padding: 0.7rem 1.3rem;
+      font-weight: 600;
+      border-radius: 0px;
+      border: 2px solid #f9e8d2;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 6px #f9e8d288;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 245, 230, 0.07); 
+      color: #0e0e0e;
+      box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
+    }
+
+    .blended-tile {
+      background-color: #000;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #bbbbbb;
+    }
+
+    .quote-bar {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0;
+        position: static;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .search-box {
+        margin-top: 0;
+        margin-left: auto;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .dropdown-menu a {
+        padding: 0.2rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="site-title">🍪 cookie-crumbs</div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="mainNav">
+        <a href="https://fatty-raccoon.github.io/cookie-crumbs" class="home-link">🏠 Home</a>
+        <div class="dropdown">
+          <a href="#" id="miniGuidesLink">
+            <span>📚 Mini Guides</span>
+            <span class="dropdown-toggle">▾</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="osint.html">🕵️ OSINT</a>
+            <a href="opsec.html">🛡️ OPSEC</a>
+            <a href="analog.html">📻 Analog Survival</a>
+            <a href="mobpriv.html" class="active">📱 Mobile Privacy</a>
+            <a href="money.html">💵 Financial Privacy</a>
+          </div>
+        </div>
+        <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
+        <a href="notices.html">🔔 Notices & Updates</a>
+        <a href="contact.html">🔗 Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Stay Private, Eat Cookies</h2>
+      <p>Guard your identity like it's your grandma's cookie recipe.</p>
+      <a href="learn.html" class="btn">Start Eating 🍪</a>
+    </section>
+
+    <section class="blended-tile">
+      <p>This site serves bite-sized lessons on privacy, security, and digital survival. All under one crunchy roof.</p>
+    </section>
+
+    <div class="quote-bar">
+      🍪 “In a world full of trackers, be the cookie no one can find.”
+    </div>
+  </main>
+
+  <footer>
+    <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
+
+      miniLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === 'flex';
+        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
+        arrow.classList.toggle('rotate', !isOpen);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
