@@ -4,13 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cookie-crumbs</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="https://emojiapi.dev/api/v1/cookie/64.png" />
-  <meta name="theme-color" content="#000000" />
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
   <style>
     * {
       margin: 0;
@@ -18,58 +14,37 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Fredoka', sans-serif;
-      background-color: #000;
-      color: #f5e9dd;
-      position: relative;
-      z-index: 1;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-image: url('cookie-bg.png'); /* 👈 rename this to your actual filename */
-      background-size: 1200px;
-      background-repeat: no-repeat;
-      opacity: 0.05;
-      z-index: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0d1117;
+  color: #e5e5e5;
+}
 
     header {
-      background-color: #0e0e0e;
-      color: #fff2e5;
+      background-color: #111;
+      color: #f0f0f0;
       padding: 1rem 1.5rem;
       position: sticky;
       top: 0;
-      z-index: 2;
-      box-shadow: 0 2px 6px rgba(255, 235, 205, 0.1);
+      z-index: 1000;
     }
 
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
     }
 
     .site-title {
-      font-family: 'Freckle Face', cursive;
-      font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
+  font-family: 'Freckle Face', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
     }
-
+    
     .menu-toggle {
       font-size: 1.6rem;
       background: none;
-      color: #fff2e5;
+      color: #f0f0f0;
       border: none;
       cursor: pointer;
       display: block;
@@ -86,19 +61,19 @@
     }
 
     nav a {
-      color: #ffe7c2;
+      color: #e5e5e5;
       font-weight: 600;
       text-decoration: none;
       padding: 0.5rem 0;
       display: block;
     }
-
-    .home-link {
-      color: #c97c42;
-    }
-
+    
+.home-link {
+  color: #00ffc3;
+}
+    
     nav a:hover {
-      color: #e89b53;
+      color: #00ffc3;
     }
 
     .search-box {
@@ -110,7 +85,7 @@
       padding: 0.6rem;
       border-radius: 6px;
       background: #111;
-      color: #f5e9dd;
+      color: #e5e5e5;
       border: 1px solid #333;
     }
 
@@ -120,36 +95,39 @@
       text-align: center;
       border-radius: 1rem;
       margin-top: 2rem;
-      box-shadow: 0 4px 12px rgba(255, 248, 230, 0.03);
     }
 
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-      color: #ffe7c2;
-    }
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #fffff;
+      }
 
     .hero p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: #e1c7a5;
+      color: #e5e5e5;
     }
 
-    .btn {
-      display: inline-block;
-      background-color: transparent;
-      color: #c97c42;
-      padding: 0.7rem 1.3rem;
-      font-weight: 600;
-      border-radius: 12px;
-      border: 2px solid #c97c42;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+    
+.btn {
+  display: inline-block;
+  background-color: transparent;
+  color: #f9e8d2;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid #f9e8d2;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 6px #f9e8d288;
+}
 
-    .btn:hover {
-      background-color: rgba(201, 124, 66, 0.1);
-    }
+.btn:hover {
+  background-color: rgba(255, 245, 230, 0.07); 
+  color: #0e0e0e;
+  box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
+  }
 
     .features {
       display: grid;
@@ -159,12 +137,12 @@
     }
 
     .features article {
-      background-color: #0e0e0e;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(255, 248, 230, 0.05);
-      transition: transform 0.3s ease;
-    }
+  background-color: #0d1117;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #30363d; 
+  transition: transform 0.3s ease;
+      }
 
     .features article:hover {
       transform: translateY(-4px);
@@ -173,18 +151,20 @@
     .features h3 {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
-      color: #c97c42;
+      color: #00ffc3;
     }
 
     .features p {
       font-size: 0.95rem;
-      color: #e1c7a5;
+      color: #ccc;
     }
-
-    .features h3 a {
-      text-decoration: none;
-      color: #c97c42;
-    }
+    
+.features h3 a {
+  text-decoration: none;
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: #e89b53;
+  font-weight: 400;
+}
 
     .features h3 a:hover {
       text-decoration: underline;
@@ -217,12 +197,12 @@
     }
 
     footer {
-      background-color: #0e0e0e;
+      background-color: #111;
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      color: #aa8a71;
-      border-top: 1px solid #1e1e1e;
+      color: #666;
+      border-top: 1px solid #222;
     }
 
     @media (min-width: 768px) {
@@ -276,8 +256,8 @@
             <a href="osint.html">🕵️ OSINT</a>
             <a href="opsec.html">🛡️ OPSEC</a>
             <a href="analog.html">📻 Analog Survival</a>
-            <a href="mobpriv.html" class="active">📱 Mobile Privacy</a>
-            <a href="money.html">💵 Financial Privacy</a>
+        <a href="mobpriv.html" class="active">📱 Mobile Privacy</a>
+        <a href="money.html">💵 Financial Privacy</a>
           </div>
         </div>
         <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
@@ -289,37 +269,37 @@
 
   <main class="container">
     <section class="hero">
-      <h2>🍫 Live Freely. Think Critically. Stay Hidden.</h2>
+      <h2>Live Freely. Think Critically. Stay Hidden.</h2>
       <p>Explore actionable privacy strategies, analog survival skills, and deep OPSEC methods to live off-grid in a digital world.</p>
       <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html" class="btn">Beginner's Guide</a>
     </section>
 
     <section class="features">
       <article>
-        <h3><a href="#">📍 Geolocation Spoofing</a></h3>
+        <h3><a href="https://fatty-raccoon.github.io/construction-pages/homepage.html">📍 Geolocation Spoofing</a></h3>
         <p>Fake your location without rooting your phone. Trick apps and sites into thinking you're somewhere else - safely.</p>
       </article>
       <article>
-        <h3><a href="#">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
-        <p>Go beyond incognito. Learn how sites track you without cookies - and how to spoof or blend in.</p>
+        <h3><a href="https://fatty-raccoon.github.io/construction-pages/homepage.html">🖥️ Safe Browsing & Fingerprint Resistance</a></h3>
+        </p>Go beyond incognito. Learn how sites track you without cookies - and how to spoof or blend in.</p>
       </article>
       <article>
-        <h3><a href="#">🔒 Offline & Encrypted Storage</a></h3>
+        <h3><a href="https://fatty-raccoon.github.io/construction-pages/homepage.html">🔒 Offline & Encrypted Storage</a></h3>
         <p>From encrypted physical drives to zero-knowledge clouds - make your storage answer to no one but you.</p>
       </article>
       <article>
-        <h3><a href="#">🕵️ Invisible Metadata</a></h3>
+        <h3><a href="https://fatty-raccoon.github.io/construction-pages/homepage.html">🕵️ Invisible Metadata</a></h3>
         <p>One photo can reveal your location, device and timestamp. Learn how to erase that digital fingerprint.</p>
       </article>
       <article>
-        <h3><a href="#">📡 App Traffic Monitoring</a></h3>
-        <p>Your apps are talking behind your back - see who is leaking data and shut them down from your phone.</p>
+        <h3><a href="https://fatty-raccoon.github.io/construction-pages/homepage.html">📡 App Traffic Monitoring</a></h3>
+        <p>Your apps are talking behind your back - see who is leaking data and shut them dowm from your phone.</p>
       </article>
     </section>
   </main>
 
   <footer>
-    <p>crafted by cookie eater 🍪 | &copy; 2025 cookie-crumbs</p>
+    <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
 
   <script>
