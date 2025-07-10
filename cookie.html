@@ -181,23 +181,19 @@
 
     main {
       flex: 1;
-    }
-
-.cookie-roll {
-  position: absolute;
-  top: 50%;
-  left: -3rem;
-  transform: translateY(-50%) translateX(0) rotate(0deg);
-  font-size: 3rem;
-  opacity: 0;
-  transition: transform 1.2s ease, opacity 0.5s ease;
-  z-index: 10;
-  pointer-events: none;
-    }
+      
+@keyframes barrelRoll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1080deg); /* 3 full spins */
+  }
+      }
     }
   </style>
 </head>
-<body>
+<body id="page">
   <header>
     <div class="container">
       <div class="site-title">🍪 cookie-crumbs</div>
@@ -215,7 +211,6 @@
 <section class="hero">
   <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
   <a id="startBtn" class="btn">Start Eating 🍪</a>
-  <div id="cookieRollBtn" class="cookie-roll">🍪</div>
   <hr class="midline" />
 </section>
 
@@ -237,22 +232,23 @@ By the way, this site simply shares what I’ve learned about online tracking, i
   <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
-<script>
+  <script>
   const startBtn = document.getElementById("startBtn");
-const cookieRoll = document.getElementById("cookieRollBtn");
+  const page = document.getElementById("page");
 
-startBtn.addEventListener("click", () => {
-  startBtn.style.opacity = "0";
-  cookieRoll.style.opacity = "1";
+  startBtn.addEventListener("click", () => {
+    startBtn.style.opacity = "0";
 
-  // Move across hero section (about 80% width), spin
-  cookieRoll.style.transform = "translateY(-50%) translateX(80%) rotate(720deg)";
+    // Apply the barrel roll animation to the whole page
+    page.style.animation = "barrelRoll 2s ease-in-out";
 
-  setTimeout(() => {
-    window.location.href = "learn.html";
-  }, 1600);
-});
-</script>
+    // Redirect after 2 seconds (when animation completes)
+    setTimeout(() => {
+      window.location.href = "learn.html";
+    }, 2000);
+  });
+  </script>
+
   <script>
     function toggleMenu() {
   const nav = document.getElementById("mainNav");
