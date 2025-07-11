@@ -182,7 +182,7 @@
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 9998;
+  z-index: 9998;  /* less than sidebar (9999) */
   transition: opacity 0.3s ease;
 }
 
@@ -198,10 +198,12 @@
   transform: translateX(100%);
   transition: transform 0.3s ease;
   z-index: 9999;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;  /* was space-between */
   padding: 1.2rem 1.5rem;
+  overflow: hidden;  /* prevent scrolling */
 }
 
 .sidebar a {
@@ -217,13 +219,18 @@
 }
 
 .sidebar-quote {
-  font-size: 0.95rem;
+  font-size: 0.80rem;
   text-align: center;
   padding-top: 2rem;
   border-top: 1px solid #444;
   opacity: 0.8;
 }
-
+    
+.sidebar-links {
+  max-height: calc(100vh - 140px); /* adjusts space for top + quote */
+  overflow-y: auto;
+}
+    
 .close-btn {
   background: none;
   border: none;
@@ -399,28 +406,24 @@ By the way, this site simply shares what I’ve learned about online tracking, i
   });
 </script>
   <script>
-  function openSidebar() {
-    const sidebar = document.getElementById("rightSidebar");
-sidebar.classList.remove("hidden");
-sidebar.classList.add("open");
-    document.getElementById("sidebarOverlay").classList.add("show");
-    document.getElementById("sidebarOverlay").classList.remove("hidden");
-  }
-
-  function closeSidebar() {
+function openSidebar() {
   const sidebar = document.getElementById("rightSidebar");
+  sidebar.classList.remove("hidden");
+  sidebar.classList.add("open");
+
   const overlay = document.getElementById("sidebarOverlay");
+  overlay.classList.remove("hidden");
+  overlay.classList.add("show");
+}
 
-  sidebar.classList.remove("open");
+function closeSidebar() {
+  document.getElementById("rightSidebar").classList.remove("open");
+  const overlay = document.getElementById("sidebarOverlay");
   overlay.classList.remove("show");
-
-  // After transition, fully hide both
   setTimeout(() => {
-    sidebar.classList.add("hidden");
     overlay.classList.add("hidden");
-  }, 300); // match CSS transition duration
+  }, 300); // transition time match
     }
-
   // Optional: Close when clicking outside
   document.getElementById("sidebarOverlay").addEventListener("click", closeSidebar);
   </script>
@@ -431,6 +434,7 @@ sidebar.classList.add("open");
 <!-- Slide-in Sidebar -->
 <aside id="rightSidebar" class="sidebar hidden">
   <button class="close-btn" onclick="closeSidebar()">✖</button>
+
   <nav class="sidebar-links">
     <a href="index.html">🏠 Home</a>
     <a href="about.html">🧠 About This Site</a>
@@ -438,7 +442,8 @@ sidebar.classList.add("open");
     <a href="notices.html">🔔 Notices & Updates</a>
     <a href="contact.html">📬 Contact</a>
   </nav>
-  <div class="sidebar-quote">
+
+  <div class="sidebar-quote" style="margin-top: auto;">
     🍪 “some cookies are worth keeping”
   </div>
 </aside>
