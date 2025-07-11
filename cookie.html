@@ -3,35 +3,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cookie-crumbs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
-  font-family: 'Inter', sans-serif;
-  background-color: #000;
-  color: #e5e5e5;
-  overflow-x: hidden;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { height: 100%; background: #000; color: #e5e5e5; font-family: 'Inter', sans-serif; overflow-x: hidden; }.page-wrapper {
+  transition: filter 0.3s ease;
 }
 
 header {
-  position: sticky;
-  top: 0;
   background: #111;
   padding: 1rem 1.5rem;
-  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .site-title {
@@ -41,48 +30,6 @@ header {
 }
 
 .menu-btn {
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: #f9e8d2;
-  cursor: pointer;
-  z-index: 1101;
-}
-
-/* Sidebar */
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: -300px;
-  width: 280px;
-  height: 100%;
-  background: #111;
-  box-shadow: -4px 0 10px rgba(0,0,0,0.6);
-  padding: 2rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: right 0.3s ease;
-  z-index: 1100;
-}
-
-.sidebar.open {
-  right: 0;
-}
-
-.sidebar a {
-  color: #f9e8d2;
-  text-decoration: none;
-  margin: 0.75rem 0;
-  font-weight: 600;
-}
-
-.sidebar a:hover {
-  color: #00ffc3;
-}
-
-.sidebar .close-btn {
-  align-self: flex-end;
   font-size: 1.5rem;
   background: none;
   border: none;
@@ -90,125 +37,155 @@ header {
   cursor: pointer;
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  width: 280px;
+  background-color: #111;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 2000;
+  transition: transform 0.4s ease;
+  box-shadow: -4px 0 15px #00000099;
+}
+
+.sidebar.active {
+  transform: translateX(-100%);
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #f0f0f0;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  display: block;
+}
+
+.sidebar .quote-bar {
+  background-color: #000;
+  padding: 1rem;
+  border-top: 1px solid #333;
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-top: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 1.5rem;
+  color: #f9e8d2;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  backdrop-filter: blur(6px);
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 1500;
   display: none;
 }
 
-.overlay.show {
+.overlay.active {
   display: block;
 }
 
 .hero {
   text-align: center;
-  padding: 3rem 1rem 2rem 1rem;
+  padding: 3rem 1rem;
 }
 
 .hero h2 {
-  font-size: 1.8rem;
   font-family: 'Slackey', cursive;
+  font-size: 1.7rem;
   margin-bottom: 1rem;
 }
 
 .btn {
+  padding: 0.7rem 1.2rem;
+  border: 2px solid #f9e8d2;
   background: transparent;
   color: #f9e8d2;
-  border: 2px solid #f9e8d2;
-  padding: 0.7rem 1.3rem;
   font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-block;
+  cursor: pointer;
   box-shadow: 0 0 6px #f9e8d288;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-  background: rgba(255, 245, 230, 0.07);
-  color: #0e0e0e;
+  background-color: rgba(255, 245, 230, 0.07);
+  color: #000;
   box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
 }
 
-.quote-bar {
-  background-color: #000;
-  color: #fff;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1rem;
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  margin-top: auto;
+@keyframes barrelRoll {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(1080deg); }
 }
 
-footer {
-  background-color: #111;
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #666;
-  border-top: 1px solid #222;
+.spin {
+  animation: barrelRoll 2s ease-in-out;
 }
 
   </style>
-</head>
-<body>
-  <div class="overlay" id="overlay"></div>
-  <header>
-    <div class="site-title">🍪 cookie-crumbs</div>
-    <button class="menu-btn" id="openSidebar">☰</button>
-  </header>  <aside class="sidebar" id="sidebar">
-    <button class="close-btn" id="closeSidebar">✖</button>
-    <nav>
-      <a href="index.html">🏠 Home</a>
-      <a href="osint.html">🕵️ OSINT</a>
-      <a href="opsec.html">🛡️ OPSEC</a>
-      <a href="analog.html">📻 Analog Survival</a>
-      <a href="mobpriv.html">📱 Mobile Privacy</a>
-      <a href="money.html">💵 Financial Privacy</a>
-      <a href="tools.html">🛠️ Privacy Tools</a>
-      <a href="notices.html">🔔 Notices</a>
-      <a href="contact.html">🔗 Contact</a>
-      <!-- Extra Buttons -->
-      <hr style="margin: 1rem 0; border: 1px dashed #333;">
-      <a href="#">📄 Legal</a>
-      <a href="#">⚙️ Settings</a>
-    </nav>
-  </aside>  <main class="container">
-    <section class="hero">
-      <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
-      <a href="learn.html" class="btn">Start Eating 🍪</a>
-    </section><div class="quote-bar">
-  🍪 “eating some cookies can actually prove to be healthy, unless you're fat”
-</div>
+</head><body>
+  <div class="page-wrapper" id="page">
+    <header>
+      <div class="site-title">🍪 cookie-crumbs</div>
+      <button class="menu-btn" onclick="openSidebar()">☰</button>
+    </header><main>
+  <section class="hero">
+    <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
+    <button id="startBtn" class="btn">Start Eating 🍪</button>
+  </section>
+</main>
 
-  </main>  <footer>
-    <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
-  </footer>  <script>
-    const openBtn = document.getElementById("openSidebar");
-    const closeBtn = document.getElementById("closeSidebar");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
+  </div>  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>  <div class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="closeSidebar()">✕</button>
+    <div>
+      <a href="#">🏠 Home</a>
+      <a href="#">📚 Mini Guides</a>
+      <a href="#">🛠️ Tools</a>
+      <a href="#">🔔 Notices</a>
+      <a href="#">📱 Contact</a>
+    </div>
+    <div class="quote-bar">🍪 "Cookies are good until they track you"</div>
+  </div>  <script>
+    const page = document.getElementById("page");
+    const startBtn = document.getElementById("startBtn");
 
-    openBtn.addEventListener("click", () => {
-      sidebar.classList.add("open");
-      overlay.classList.add("show");
+    startBtn.addEventListener("click", () => {
+      page.classList.add("spin");
+      setTimeout(() => {
+        window.location.href = "learn.html";
+      }, 2000);
     });
 
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      overlay.classList.remove("show");
+    window.addEventListener("pageshow", () => {
+      page.classList.remove("spin");
+      page.style.animation = "none";
+      void page.offsetWidth;
     });
 
-    overlay.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      overlay.classList.remove("show");
-    });
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("active");
+      document.getElementById("overlay").classList.add("active");
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("active");
+      document.getElementById("overlay").classList.remove("active");
+    }
   </script></body>
   </html>
