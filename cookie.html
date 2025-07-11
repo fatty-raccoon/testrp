@@ -1,273 +1,214 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cookie-crumbs</title>
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
-
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
+    }body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000;
+  color: #e5e5e5;
+  overflow-x: hidden;
+}
 
-    html, body {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      transition: transform 2s ease-in-out;
-    }
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #000;
-      color: #e5e5e5;
-    }
-
-    .header-bar {
+header {
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding: 1rem 1.5rem;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1.5rem;
 }
 
 .site-title {
   font-family: 'Freckle Face', cursive;
-  font-size: 2.4rem;  /* Increased size */
-  font-weight: 400;
+  font-size: 2rem;
   color: #f9e8d2;
 }
 
-    .menu-toggle {
-  width: 1.8rem;
-  height: 1.8rem;
+.menu-btn {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #f9e8d2;
+  cursor: pointer;
+  z-index: 1101;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100%;
+  background: #111;
+  box-shadow: -4px 0 10px rgba(0,0,0,0.6);
+  padding: 2rem 1.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  right: 1.2rem;
-  transform: translateY(-50%);
+  transition: right 0.3s ease;
   z-index: 1100;
 }
 
-.menu-toggle .bar {
-  width: 100%;
-  height: 2px;
-  background-color: #f9e8d2; /* brighter in dark theme */
-  border-radius: 2px;
+.sidebar.open {
+  right: 0;
+}
+
+.sidebar a {
+  color: #f9e8d2;
+  text-decoration: none;
+  margin: 0.75rem 0;
+  font-weight: 600;
+}
+
+.sidebar a:hover {
+  color: #00ffc3;
+}
+
+.sidebar .close-btn {
+  align-self: flex-end;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #f9e8d2;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem 1rem;
+}
+
+.hero h2 {
+  font-size: 1.8rem;
+  font-family: 'Slackey', cursive;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background: transparent;
+  color: #f9e8d2;
+  border: 2px solid #f9e8d2;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
   transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 0 6px #f9e8d288;
 }
 
-.menu-toggle.active .top {
-  transform: rotate(45deg) translate(5px, 5px);
+.btn:hover {
+  background: rgba(255, 245, 230, 0.07);
+  color: #0e0e0e;
+  box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
 }
 
-.menu-toggle.active .middle {
-  opacity: 0;
+.quote-bar {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  margin-top: auto;
 }
 
-.menu-toggle.active .bottom {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-    
-    nav {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: max-height 0.4s ease, opacity 0.3s ease;
-    }
-
-    .nav-open {
-      max-height: 500px;
-      opacity: 1;
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      color: #e5e5e5;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 0.5rem 0;
-    }
-
-    .home-link {
-      color: #00ffc3;
-    }
-
-    nav a:hover {
-      color: #00ffc3;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 2.5rem 1rem;
-    }
-
-    .hero h2 {
-      font-family: 'Slackey', cursive;
-      font-size: 2rem;
-      color: #fff;
-      margin-bottom: 0.8rem;
-    }
-
-    .btn {
-      background-color: transparent;
-      color: #f9e8d2;
-      padding: 0.7rem 1.3rem;
-      font-weight: 600;
-      border: 2px solid #f9e8d2;
-      text-decoration: none;
-      box-shadow: 0 0 6px #f9e8d288;
-      margin-top: 0.5rem;
-      margin-bottom: 1.2rem;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background-color: rgba(255, 245, 230, 0.07); 
-      color: #0e0e0e;
-      box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
-    }
-
-    .midline {
-      width: 62%;
-      height: 2px;
-      margin: 1rem auto 0.5rem auto;
-      border: none;
-      background: linear-gradient(to right, #f9e8d2, #d7b88b, #f9e8d2);
-      box-shadow: 0 0 4px #f9e8d2aa;
-    }
-
-    .blended-tile {
-      background-color: #000;
-      color: #bbb;
-      padding: 1.2rem 1.5rem;
-      text-align: center;
-      line-height: 1.6;
-      margin-bottom: 0.6rem;
-      border: 2px dashed white;
-    }
-
-    .quote-bar {
-      background-color: #000;
-      color: #fff;
-      padding: 1rem 2rem;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1rem;
-      border-top: 2px solid #fff;
-      border-bottom: 2px solid #fff;
-      margin-top: auto;
-    }
-
-    footer {
-      background-color: #111;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #222;
-    }
-    @keyframes barrelRoll {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(1080deg);
-  }
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #222;
 }
 
-.spin {
-  animation: barrelRoll 2s ease-in-out;
-}
-    }
   </style>
 </head>
-
-<body id="page">
-<header>
-  <div class="container header-bar">
+<body>
+  <div class="overlay" id="overlay"></div>
+  <header>
     <div class="site-title">🍪 cookie-crumbs</div>
-<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-  <span class="bar top"></span>
-  <span class="bar middle"></span>
-  <span class="bar bottom"></span>
-</button>
-  </div>
-  <nav id="mainNav">
-    <a href="index.html" class="home-link">🏠 Home</a>
-    <a href="#">🛠️ Privacy & Security Tools</a>
-    <a href="notices.html">🔔 Notices & Updates</a>
-    <a href="contact.html">🔗 Contact Us</a>
-  </nav>
-</header>
-
-  <main class="container">
+    <button class="menu-btn" id="openSidebar">☰</button>
+  </header>  <aside class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeSidebar">✖</button>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="osint.html">🕵️ OSINT</a>
+      <a href="opsec.html">🛡️ OPSEC</a>
+      <a href="analog.html">📻 Analog Survival</a>
+      <a href="mobpriv.html">📱 Mobile Privacy</a>
+      <a href="money.html">💵 Financial Privacy</a>
+      <a href="tools.html">🛠️ Privacy Tools</a>
+      <a href="notices.html">🔔 Notices</a>
+      <a href="contact.html">🔗 Contact</a>
+      <!-- Extra Buttons -->
+      <hr style="margin: 1rem 0; border: 1px dashed #333;">
+      <a href="#">📄 Legal</a>
+      <a href="#">⚙️ Settings</a>
+    </nav>
+  </aside>  <main class="container">
     <section class="hero">
       <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
-      <a id="startBtn" class="btn">Start Eating 🍪</a>
-      <hr class="midline" />
-    </section>
+      <a href="learn.html" class="btn">Start Eating 🍪</a>
+    </section><div class="quote-bar">
+  🍪 “eating some cookies can actually prove to be healthy, unless you're fat”
+</div>
 
-    <section class="blended-tile">
-      <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem;">did you know?</h3>
-      <p>
-        the developer of this site loves cookies a lot (just not the ones in browser).<br/>
-        this site simply shares what I’ve learned about online tracking, identity, and basic privacy — not professional training, just real stuff that might help.<br/>
-        <a href="#" style="color: #ffd966; text-decoration: underline;">check out the github README →</a>
-      </p>
-    </section>
-
-    <div class="quote-bar">
-      🍪 “eating some cookies can actually prove to be healthy, unless you're fat”
-    </div>
-  </main>
-
-  <footer>
+  </main>  <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
-  </footer>
-<script>
-  window.addEventListener("pageshow", () => {
-    const page = document.getElementById("page");
-    page.classList.remove("spin");       // Remove spin class
-    page.style.animation = "none";       // Reset inline animation (backup)
-    void page.offsetWidth;               // Trigger reflow
-  });
-</script>
-  <script>
-    const startBtn = document.getElementById("startBtn");
-    const page = document.getElementById("page");
+  </footer>  <script>
+    const openBtn = document.getElementById("openSidebar");
+    const closeBtn = document.getElementById("closeSidebar");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
 
-    startBtn.addEventListener("click", () => {
-      page.classList.add("spin");
-      setTimeout(() => {
-        window.location.href = "learn.html";
-      }, 2000);
+    openBtn.addEventListener("click", () => {
+      sidebar.classList.add("open");
+      overlay.classList.add("show");
     });
 
-    function toggleMenu() {
-  const nav = document.getElementById("mainNav");
-  const toggle = document.getElementById("menuToggle");
-  nav.classList.toggle("nav-open");
-  toggle.classList.toggle("active");
-    }
-  </script>
-</body>
-</html>
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  </script></body>
+  </html>
