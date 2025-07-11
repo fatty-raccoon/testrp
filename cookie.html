@@ -46,32 +46,33 @@
   color: #f9e8d2;
 }
 
-
-
     .menu-toggle {
-  width: 2.2rem;
-  height: 2.2rem;
-  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: none;
+  align-items: center;
   background: none;
+  border: none;
   cursor: pointer;
-  padding: 0;
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
   z-index: 1100;
 }
 
 .menu-toggle .bar {
-  height: 3px;
   width: 100%;
-  background-color: #f9e8d2;
+  height: 2px;
+  background-color: #f9e8d2; /* brighter in dark theme */
   border-radius: 2px;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .menu-toggle.active .top {
-  transform: rotate(45deg) translateY(8px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .menu-toggle.active .middle {
@@ -79,7 +80,7 @@
 }
 
 .menu-toggle.active .bottom {
-  transform: rotate(-45deg) translateY(-8px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
     
     nav {
@@ -184,14 +185,18 @@
       color: #666;
       border-top: 1px solid #222;
     }
-
     @keyframes barrelRoll {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(1080deg); } /* 3 spins */
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1080deg);
+  }
+}
 
-    .spin {
-      animation: barrelRoll 2s ease-in-out;
+.spin {
+  animation: barrelRoll 2s ease-in-out;
+}
     }
   </style>
 </head>
@@ -200,11 +205,11 @@
 <header>
   <div class="container header-bar">
     <div class="site-title">🍪 cookie-crumbs</div>
-    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
   <span class="bar top"></span>
   <span class="bar middle"></span>
   <span class="bar bottom"></span>
-    </button>
+</button>
   </div>
   <nav id="mainNav">
     <a href="index.html" class="home-link">🏠 Home</a>
@@ -238,7 +243,14 @@
   <footer>
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
-
+<script>
+  window.addEventListener("pageshow", () => {
+    const page = document.getElementById("page");
+    page.classList.remove("spin");       // Remove spin class
+    page.style.animation = "none";       // Reset inline animation (backup)
+    void page.offsetWidth;               // Trigger reflow
+  });
+</script>
   <script>
     const startBtn = document.getElementById("startBtn");
     const page = document.getElementById("page");
@@ -251,8 +263,10 @@
     });
 
     function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.classList.toggle("nav-open");
+  const nav = document.getElementById("mainNav");
+  const toggle = document.getElementById("menuToggle");
+  nav.classList.toggle("nav-open");
+  toggle.classList.toggle("active");
     }
   </script>
 </body>
