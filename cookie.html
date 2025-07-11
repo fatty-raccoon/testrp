@@ -400,18 +400,26 @@ By the way, this site simply shares what I’ve learned about online tracking, i
 </script>
   <script>
   function openSidebar() {
-    document.getElementById("rightSidebar").classList.add("open");
+    const sidebar = document.getElementById("rightSidebar");
+sidebar.classList.remove("hidden");
+sidebar.classList.add("open");
     document.getElementById("sidebarOverlay").classList.add("show");
     document.getElementById("sidebarOverlay").classList.remove("hidden");
   }
 
   function closeSidebar() {
-    document.getElementById("rightSidebar").classList.remove("open");
-    document.getElementById("sidebarOverlay").classList.remove("show");
-    setTimeout(() => {
-      document.getElementById("sidebarOverlay").classList.add("hidden");
-    }, 300); // matches transition
-  }
+  const sidebar = document.getElementById("rightSidebar");
+  const overlay = document.getElementById("sidebarOverlay");
+
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+
+  // After transition, fully hide both
+  setTimeout(() => {
+    sidebar.classList.add("hidden");
+    overlay.classList.add("hidden");
+  }, 300); // match CSS transition duration
+    }
 
   // Optional: Close when clicking outside
   document.getElementById("sidebarOverlay").addEventListener("click", closeSidebar);
