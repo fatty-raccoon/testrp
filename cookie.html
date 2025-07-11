@@ -174,85 +174,83 @@
       flex: 1;
     }
 
-    /* Sidebar and Overlay */
+/* Overlay (Blur Background) */
 .overlay {
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
-  z-index: 9998;  /* less than sidebar (9999) */
-  transition: opacity 0.3s ease;
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sidebar */
 .sidebar {
   position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
   width: 280px;
-  background: #111;
-  color: #f9e8d2;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  border-left: 1px solid #30363d;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
   transform: translateX(100%);
   transition: transform 0.3s ease;
   z-index: 9999;
-
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  /* was space-between */
   padding: 1.2rem 1.5rem;
-  overflow: hidden;  /* prevent scrolling */
 }
 
-.sidebar a {
-  color: #f9e8d2;
+/* Show sidebar */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Sidebar links */
+.sidebar-links a {
+  color: #c9d1d9;
   text-decoration: none;
-  margin: 0.7rem 0;
-  font-weight: 600;
+  font-weight: 500;
+  padding: 0.6rem 0;
   display: block;
+  border-bottom: 1px solid #21262d;
 }
 
-.sidebar a:hover {
-  color: #00ffc3;
+.sidebar-links a:hover {
+  color: #58a6ff;
 }
 
-.sidebar-quote {
-  font-size: 0.80rem;
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid #444;
-  opacity: 0.8;
-}
-    
-.sidebar-links {
-  max-height: calc(100vh - 140px); /* adjusts space for top + quote */
-  overflow-y: auto;
-}
-    
+/* Close button */
 .close-btn {
   background: none;
   border: none;
-  color: #f9e8d2;
-  font-size: 1.3rem;
+  color: #8b949e;
+  font-size: 1.2rem;
   align-self: flex-end;
   cursor: pointer;
   margin-bottom: 1rem;
 }
 
-.hidden {
-  display: none;
-}
-
-.sidebar.open {
-  transform: translateX(0);
-}
-
-.overlay.show {
-  display: block;
-  opacity: 1;
-}
+/* Sidebar footer */
+.sidebar-quote {
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: #8b949e;
+  padding-top: 1rem;
+  border-top: 1px solid #21262d;
+  text-align: center;
+  }
 
     @keyframes barrelRoll {
   from {
@@ -356,32 +354,33 @@ By the way, this site simply shares what I’ve learned about online tracking, i
     <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("mainNav");
-      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+<script>
+  const sidebar = document.getElementById("rightSidebar");
+  const overlay = document.getElementById("sidebarOverlay");
+  const openBtn = document.querySelector(".menu-toggle");
+  const closeBtn = document.querySelector(".close-btn");
+
+  function openSidebar() {
+    sidebar.classList.add("open");
+    overlay.classList.add("show");
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+  }
+
+  openBtn.addEventListener("click", openSidebar);
+  closeBtn.addEventListener("click", closeSidebar);
+  overlay.addEventListener("click", closeSidebar);
+
+  // Optional: Close sidebar on Esc key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sidebar.classList.contains("open")) {
+      closeSidebar();
     }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const miniLink = document.getElementById('miniGuidesLink');
-      const dropdownMenu = miniLink.nextElementSibling;
-      const arrow = miniLink.querySelector('.dropdown-toggle');
-
-      miniLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isOpen = dropdownMenu.style.display === 'flex';
-        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
-        arrow.classList.toggle('rotate', !isOpen);
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-          dropdownMenu.style.display = 'none';
-          arrow.classList.remove('rotate');
-        }
-      });
-    });
-  </script>
+  });
+</script>
 
 <script>
   const startBtn = document.getElementById("startBtn");
@@ -428,12 +427,12 @@ function closeSidebar() {
   document.getElementById("sidebarOverlay").addEventListener("click", closeSidebar);
   </script>
 
-<!-- Sidebar Overlay -->
-<div id="sidebarOverlay" class="overlay hidden"></div>
+<!-- Overlay -->
+<div id="sidebarOverlay" class="overlay"></div>
 
-<!-- Slide-in Sidebar -->
-<aside id="rightSidebar" class="sidebar hidden">
-  <button class="close-btn" onclick="closeSidebar()">✖</button>
+<!-- Sidebar -->
+<aside id="rightSidebar" class="sidebar">
+  <button class="close-btn">✖</button>
 
   <nav class="sidebar-links">
     <a href="index.html">🏠 Home</a>
@@ -443,9 +442,10 @@ function closeSidebar() {
     <a href="contact.html">📬 Contact</a>
   </nav>
 
-  <div class="sidebar-quote" style="margin-top: auto;">
-    🍪 “some cookies are worth keeping”
+  <div class="sidebar-quote">
+    🍪 “some cookies are definitely worth keeping”
   </div>
 </aside>
+
 </body>
   </html>
