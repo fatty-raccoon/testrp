@@ -1,191 +1,329 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cookie-crumbs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { height: 100%; background: #000; color: #e5e5e5; font-family: 'Inter', sans-serif; overflow-x: hidden; }.page-wrapper {
-  transition: filter 0.3s ease;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header {
-  background: #111;
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
-.site-title {
-  font-family: 'Freckle Face', cursive;
-  font-size: 2rem;
-  color: #f9e8d2;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000000;
+      color: #e5e5e5;
+    }
 
-.menu-btn {
-  font-size: 1.5rem;
-  background: none;
+    header {
+      background-color: #111;
+      color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .site-title {
+      font-family: 'Freckle Face', cursive;
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .menu-toggle {
+      font-size: 1.6rem;
+      background: none;
+      color: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: #e5e5e5;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      display: block;
+    }
+
+    .home-link {
+      color: #00ffc3;
+    }
+
+    nav a:hover {
+      color: #00ffc3;
+    }
+
+    .hero {
+      background-color: #000000;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      font-family: 'Slackey', cursive;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #f5f5f5;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #f9e8d2;
+      padding: 0.7rem 1.3rem;
+      font-weight: 600;
+      border-radius: 0px;
+      border: 2px solid #f9e8d2;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 6px #f9e8d288;
+      margin-top: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 245, 230, 0.07); 
+      color: #0e0e0e;
+      box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
+    }
+    
+    .midline {
+  width: 62%;
+  height: 2px;
+  margin: 1rem auto 0.5rem auto;
   border: none;
-  color: #f9e8d2;
-  cursor: pointer;
-}
+  background: linear-gradient(to right, #f9e8d2, #d7b88b, #f9e8d2);
+  box-shadow: 0 0 4px #f9e8d2aa;
+    }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  height: 100vh;
-  width: 280px;
-  background-color: #111;
-  padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index: 2000;
-  transition: transform 0.4s ease;
-  box-shadow: -4px 0 15px #00000099;
-}
-
-.sidebar.active {
-  transform: translateX(-100%);
-}
-
-.sidebar a {
-  text-decoration: none;
-  color: #f0f0f0;
-  margin-bottom: 1.2rem;
-  font-weight: 600;
-  display: block;
-}
-
-.sidebar .quote-bar {
+.blended-tile {
   background-color: #000;
-  padding: 1rem;
-  border-top: 1px solid #333;
-  font-size: 0.95rem;
-  color: #aaa;
-  margin-top: auto;
-}
-
-.close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1.2rem;
-  font-size: 1.5rem;
-  color: #f9e8d2;
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-  z-index: 1500;
-  display: none;
-}
-
-.overlay.active {
-  display: block;
-}
-
-.hero {
+  padding: 1.2rem 1.5rem; 
+  font-size: 1rem;
+  color: #bbbbbb;
   text-align: center;
-  padding: 3rem 1rem;
-}
+  border-radius: 0;
+  line-height: 1.6;
+  margin-top: -1.2rem;
+  margin-bottom: 0.6rem;
+      }
+  .blended-tile {
+  border: 2px dashed white;
+    }
 
-.hero h2 {
-  font-family: 'Slackey', cursive;
-  font-size: 1.7rem;
-  margin-bottom: 1rem;
-}
-
-.btn {
-  padding: 0.7rem 1.2rem;
-  border: 2px solid #f9e8d2;
-  background: transparent;
-  color: #f9e8d2;
+.quote-bar {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  text-align: center;
   font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 0 6px #f9e8d288;
-  transition: all 0.3s ease;
-}
+  font-size: 1rem;
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  margin-top: auto;
+      }
 
-.btn:hover {
-  background-color: rgba(255, 245, 230, 0.07);
-  color: #000;
-  box-shadow: 0 0 10px #f9e8d2, 0 0 20px #f9e8d2;
-}
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #222;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0;
+        position: static;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .search-box {
+        margin-top: 0;
+        margin-left: auto;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .dropdown-menu a {
+        padding: 0.2rem 0;
+      }
 
 @keyframes barrelRoll {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(1080deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1080deg); /* 3 full spins */
+  }
 }
 
 .spin {
   animation: barrelRoll 2s ease-in-out;
-}
-
+      }
+    }
   </style>
-</head><body>
-  <div class="page-wrapper" id="page">
-    <header>
+</head>
+<body>
+  <header>
+    <div class="container">
       <div class="site-title">🍪 cookie-crumbs</div>
-      <button class="menu-btn" onclick="openSidebar()">☰</button>
-    </header><main>
-  <section class="hero">
-    <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
-    <button id="startBtn" class="btn">Start Eating 🍪</button>
-  </section>
-</main>
-
-  </div>  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>  <div class="sidebar" id="sidebar">
-    <button class="close-btn" onclick="closeSidebar()">✕</button>
-    <div>
-      <a href="#">🏠 Home</a>
-      <a href="#">📚 Mini Guides</a>
-      <a href="#">🛠️ Tools</a>
-      <a href="#">🔔 Notices</a>
-      <a href="#">📱 Contact</a>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="mainNav">
+        <a href="https://fatty-raccoon.github.io/cookie-crumbs" class="home-link">🏠 Home</a>
+        <div class="dropdown">
+          <a href="#" id="miniGuidesLink">
+            <span>📚 Mini Guides</span>
+            <span class="dropdown-toggle">▾</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="osint.html">🕵️ OSINT</a>
+            <a href="opsec.html">🛡️ OPSEC</a>
+            <a href="analog.html">📻 Analog Survival</a>
+            <a href="mobpriv.html" class="active">📱 Mobile Privacy</a>
+            <a href="money.html">💵 Financial Privacy</a>
+          </div>
+        </div>
+        <a href="https://fatty-raccoon.github.io/construction-pages/homepage.html"> 🛠️ Privacy & Security Tools</a>
+        <a href="notices.html">🔔 Notices & Updates</a>
+        <a href="contact.html">🔗 Contact Us</a>
+      </nav>
     </div>
-    <div class="quote-bar">🍪 "Cookies are good until they track you"</div>
-  </div>  <script>
-    const page = document.getElementById("page");
-    const startBtn = document.getElementById("startBtn");
+  </header>
 
-    startBtn.addEventListener("click", () => {
-      page.classList.add("spin");
-      setTimeout(() => {
-        window.location.href = "learn.html";
-      }, 2000);
-    });
+  <main class="container">
+    <section class="hero">
+      <h2>live freely, think critically, stay hidden (and maybe eat some cookies)</h2>
+      <a href="learn.html" class="btn">Start Eating 🍪</a>
+      <hr class="midline" />
+    </section>
 
-    window.addEventListener("pageshow", () => {
-      page.classList.remove("spin");
-      page.style.animation = "none";
-      void page.offsetWidth;
-    });
+   <section class="blended-tile">
+  <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 1rem;">did you know?</h3>
+  <p>
+    the developer of this site loves cookies a lot (just not the ones in browser).
+By the way, this site simply shares what I’ve learned about online tracking, identity, and basic privacy — not professional training, just real stuff that might help, depending on how you use it.
+    if you want to know more about the site, <a href="https://github.com/fatty-raccoon/cookie-crumbs/blob/main/README.md" style="color: #ffd966; text-decoration: underline;">check out the github README →</a>
+  </p>
+</section>
 
-    function openSidebar() {
-      document.getElementById("sidebar").classList.add("active");
-      document.getElementById("overlay").classList.add("active");
+<div class="quote-bar">
+  🍪 “eating some cookies can actually prove to be healthy, unless you're fat”
+</div>
+  </main>
+
+  <footer>
+    <p>crafted by cookie eater | &copy; 2025 cookie-crumbs</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      nav.style.display = nav.style.display === "flex" ? "none" : "flex";
     }
 
-    function closeSidebar() {
-      document.getElementById("sidebar").classList.remove("active");
-      document.getElementById("overlay").classList.remove("active");
-    }
-  </script></body>
+    document.addEventListener('DOMContentLoaded', function () {
+      const miniLink = document.getElementById('miniGuidesLink');
+      const dropdownMenu = miniLink.nextElementSibling;
+      const arrow = miniLink.querySelector('.dropdown-toggle');
+
+      miniLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === 'flex';
+        dropdownMenu.style.display = isOpen ? 'none' : 'flex';
+        arrow.classList.toggle('rotate', !isOpen);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!miniLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+          arrow.classList.remove('rotate');
+        }
+      });
+    });
+  </script>
+
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const page = document.body;
+
+  startBtn.addEventListener("click", () => {
+    page.classList.add("spin");
+
+    setTimeout(() => {
+      window.location.href = "learn.html"; // change URL if needed
+    }, 2000); // Matches the 2s animation duration
+  });
+</script>
+
+<script>
+  window.addEventListener("pageshow", () => {
+    const page = document.body;
+    page.classList.remove("spin");            // Remove old spin class
+    page.style.animation = "none";            // Reset inline animation
+    void page.offsetWidth;                    // Trigger reflow
+    page.style.animation = "";                // Allow animation to be added again
+  });
+</script>
+
+
+</body>
   </html>
