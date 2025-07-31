@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en" x-data="{ darkMode: false }" x-init="darkMode = localStorage.getItem('theme') === 'dark'" x-bind:class="darkMode ? 'dark' : ''"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            title: ['"Poppins"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head><body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 flex justify-between items-center px-6 py-4 shadow-sm">
+    <h1 class="font-title text-xl">MySite</h1>
+    <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light')" class="w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition duration-300">
+      <template x-if="!darkMode">
+        <i data-lucide="moon" class="w-5 h-5"></i>
+      </template>
+      <template x-if="darkMode">
+        <i data-lucide="sun" class="w-5 h-5"></i>
+      </template>
+    </button>
+  </header>  <!-- Cover Image -->  <div class="relative h-48 sm:h-64 md:h-80 w-full bg-gray-300">
+    <img src="cover.jpg" alt="Cover Image" class="w-full h-full object-cover">
+    <!-- Profile Image -->
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+      <img src="profile.jpg" alt="Profile" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white dark:border-gray-900 object-cover">
+    </div>
+  </div>  <!-- Main Content -->  <main class="mt-20 px-6 text-center max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold">Your Name</h2>
+    <p class="mt-2 text-lg text-gray-700 dark:text-gray-300">Short summary about you — your passion, what you do, and what you're aiming for.</p><!-- Skills Section -->
+<section class="mt-8">
+  <h3 class="text-xl font-semibold mb-4">Skills</h3>
+  <div class="flex flex-wrap justify-center gap-3">
+    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Networking</span>
+    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Linux</span>
+    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Cybersecurity</span>
+    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">HTML/CSS</span>
+    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Git</span>
+    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Python</span>
+  </div>
+</section>
+
+<!-- Icons Section -->
+<section class="mt-10 flex justify-center gap-6">
+  <a href="#" aria-label="Email"><i data-lucide="mail" class="w-6 h-6 hover:text-blue-500"></i></a>
+  <a href="#" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6 hover:text-gray-700 dark:hover:text-white"></i></a>
+  <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6 hover:text-blue-600"></i></a>
+  <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6 hover:text-blue-800"></i></a>
+  <a href="#" aria-label="Globe"><i data-lucide="globe" class="w-6 h-6 hover:text-green-600"></i></a>
+  <a href="#" aria-label="Terminal"><i data-lucide="terminal" class="w-6 h-6 hover:text-yellow-600"></i></a>
+</section>
+
+  </main>  <!-- Footer -->  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>  <script>
+    lucide.createIcons();
+  </script></body></html>
