@@ -49,15 +49,29 @@
     <p class="mt-2 text-sm font-summary font-bold text-gray-700 dark:text-gray-300">
   Short summary about you — your passion, what you do, and what you're aiming for.
     </p><!-- Skills Section -->
-    <section 
+    <!-- ✅ Swipeable Learning Tiles with Progress Bars --><section 
   x-data="{
     index: 0,
     tiles: [
-      { title: '🛠️ Skills', text: 'Networking, Linux, Cybersecurity, HTML, Git, Python' },
-      { title: '📚 Currently Learning', text: 'Fortinet FCF, Markdown logging, Tor basics' },
-      { title: '🧪 Things I Broke', text: 'Netplan configs, IP tables, my sleep schedule' },
-      { title: '💡 Curious About', text: 'Device fingerprinting, endpoint security, OS hardening' },
-      { title: '🧠 Realizations', text: 'The OS isn’t slow. My brain is. Fixing both.' },
+      {
+        title: 'Currently Learning',
+        items: [
+          { name: 'Fortinet FCF', percent: 4 },
+          { name: 'Intro to Cybersecurity', percent: 22 },
+          { name: 'Networking', percent: 64 },
+          { name: 'Linux Essentials', percent: 31 },
+          { name: 'Markdown Logging', percent: 83 },
+          { name: 'Privacy & Tor', percent: 15 }
+        ]
+      },
+      {
+        title: 'Want to Learn',
+        items: [
+          { name: 'Firewalls Deep Dive', percent: 0 },
+          { name: 'Advanced Networking', percent: 0 },
+          { name: 'SIEM & Blue Teaming', percent: 0 }
+        ]
+      }
     ],
     next() {
       this.index = (this.index + 1) % this.tiles.length;
@@ -74,22 +88,40 @@
       else if (startX - endX > 40) next();
     });
   "
-  class="border-t border-b border-gray-300 dark:border-gray-600 mt-10 py-6 select-none"
+  class="relative max-w-md mx-auto mt-10 border-t border-b border-gray-300 dark:border-gray-600 py-4"
 >
-  <div class="flex items-center justify-between px-4 text-lg font-medium font-summary text-gray-800 dark:text-gray-100">
-    <!-- Left Button -->
-    <button @click="prev" class="hover:text-blue-500 transition">←</button>
-
-    <!-- Tile Content -->
-    <div class="text-center mx-4 w-full max-w-xl">
-      <div x-text="tiles[index].title" class="mb-2 text-base sm:text-lg font-semibold"></div>
-      <div x-text="tiles[index].text" class="text-sm sm:text-base font-normal"></div>
-    </div>
-
-    <!-- Right Button -->
-    <button @click="next" class="hover:text-blue-500 transition">→</button>
+  <!-- Arrow Controls -->
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 px-2">
+    <button @click="prev" class="text-2xl font-bold text-gray-500 hover:text-blue-500">&#8592;</button>
   </div>
-    </section>
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 px-2">
+    <button @click="next" class="text-2xl font-bold text-gray-500 hover:text-blue-500">&#8594;</button>
+  </div>  <!-- Tiles -->  <div class="overflow-hidden h-72">
+    <template x-for="(tile, i) in tiles" :key="i">
+      <div
+        x-show="index === i"
+        x-transition.opacity.duration.400ms
+        class="h-full px-6 text-center flex flex-col items-center justify-start"
+      >
+        <h3 class="text-lg font-bold mb-4 mt-2">{{ tile.title }}</h3>
+        <div class="overflow-y-auto w-full space-y-4 px-2 scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600 max-h-56">
+          <template x-for="(item, j) in tile.items" :key="j">
+            <div class="text-left">
+              <div class="flex justify-between text-sm font-medium">
+                <span x-text="item.name"></span>
+                <span x-text="item.percent + '%'" class="text-gray-500"></span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
+                <div class="bg-blue-500 h-2 rounded-full transition-all duration-700" :style="'width: ' + item.percent + '%'">
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+  </div>
+</section><!-- Add to <head> if missing --><!-- <script src="https://cdn.tailwindcss.com"></script> --><!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 <section class="mt-8">
   <h3 class="text-xl font-semibold mb-4">Skills</h3>
   <div class="flex flex-wrap justify-center gap-3">
