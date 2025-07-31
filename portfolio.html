@@ -22,19 +22,22 @@
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 flex justify-between items-center px-6 py-4 shadow-sm">
     <h1 class="font-title text-xl">MySite</h1>
-    <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light')" class="w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition duration-300">
-      <template x-if="!darkMode">
-        <i data-lucide="moon" class="w-5 h-5"></i>
-      </template>
-      <template x-if="darkMode">
-        <i data-lucide="sun" class="w-5 h-5"></i>
-      </template>
-    </button>
+   <button
+  @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light'); lucide.createIcons()"
+  class="w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition duration-300"
+>
+  <template x-if="!darkMode">
+    <i data-lucide="moon" class="w-5 h-5"></i>
+  </template>
+  <template x-if="darkMode">
+    <i data-lucide="sun" class="w-5 h-5"></i>
+  </template>
+     </button>
   </header>  <!-- Cover Image -->  <div class="relative h-48 sm:h-64 md:h-80 w-full bg-gray-300">
     <img src="cover.jpg" alt="Cover Image" class="w-full h-full object-cover">
     <!-- Profile Image -->
     <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-      <img src="profile.jpg" alt="Profile" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white dark:border-gray-900 object-cover">
+      <img src="cookie-bg.png" alt="Profile" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white dark:border-gray-900 object-cover">
     </div>
   </div>  <!-- Main Content -->  <main class="mt-20 px-6 text-center max-w-3xl mx-auto">
     <h2 class="text-3xl font-bold">Your Name</h2>
