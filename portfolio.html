@@ -8,34 +8,30 @@
 
   
 <style>
-  /* Hide scrollbar by default */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    opacity: 0;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(107, 114, 128, 0.6); /* gray-500 */
-    border-radius: 4px;
-    transition: opacity 0.3s ease;
-  }
-
-  .custom-scrollbar:hover::-webkit-scrollbar,
-  .custom-scrollbar:focus::-webkit-scrollbar,
-  .custom-scrollbar:active::-webkit-scrollbar {
-    opacity: 1;
-  }
-
-  /* Firefox */
+  /* Custom scrollbar container */
   .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(107, 114, 128, 0.6) transparent;
+    scrollbar-width: none; /* Firefox */
   }
 
-  .custom-scrollbar:not(:hover) {
-    scrollbar-color: transparent transparent;
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 0px; /* Chrome, Safari, Opera */
+    height: 0px;
   }
-    </style>
+
+  .custom-scrollbar:hover {
+    scrollbar-width: thin;
+  }
+
+  .custom-scrollbar:hover::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(107, 114, 128, 0.6); /* Tailwind gray-500 */
+    border-radius: 4px;
+  }
+</style>
 
 
   
