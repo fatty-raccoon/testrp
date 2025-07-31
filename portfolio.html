@@ -28,11 +28,12 @@
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
     $nextTick(() => lucide.createIcons());
   "
-  class="w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition duration-300"
->
+    
+  class="p-1 hover:scale-110 transition-transform duration-300"
+    >
 <i
   x-bind:data-lucide="darkMode ? 'sun' : 'moon'"
-  class="w-6 h-6 transition-opacity duration-300 opacity-100"
+  class="w-7 h-7 transition-opacity duration-300 opacity-100"
 ></i>
   </button>
   </header>  <!-- Cover Image -->  <div class="relative h-48 sm:h-64 md:h-80 w-full bg-gray-300">
