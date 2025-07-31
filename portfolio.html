@@ -30,10 +30,10 @@
   "
   class="w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition duration-300"
 >
-  <i
-    x-bind:data-lucide="darkMode ? 'sun' : 'moon'"
-    class="w-5 h-5 transition-opacity duration-300 opacity-100"
-  ></i>
+<i
+  x-bind:data-lucide="darkMode ? 'sun' : 'moon'"
+  class="w-6 h-6 transition-opacity duration-300 opacity-100"
+></i>
   </button>
   </header>  <!-- Cover Image -->  <div class="relative h-48 sm:h-64 md:h-80 w-full bg-gray-300">
     <img src="cover.jpg" alt="Cover Image" class="w-full h-full object-cover">
@@ -67,7 +67,13 @@
 </section>
 
   </main>  <!-- Footer -->  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
-    &copy; 2025 Your Name. All rights reserved.
+    &copy; 2025 fatty-raccoon. All rights reserved.
   </footer>  <script>
     lucide.createIcons();
-  </script></body></html>
+  </script>
+<script>
+  document.addEventListener('alpine:init', () => {
+    requestAnimationFrame(() => lucide.createIcons());
+  });
+      </script>
+</body></html>
