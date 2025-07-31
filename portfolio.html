@@ -49,6 +49,47 @@
     <p class="mt-2 text-sm font-summary font-bold text-gray-700 dark:text-gray-300">
   Short summary about you — your passion, what you do, and what you're aiming for.
     </p><!-- Skills Section -->
+    <section 
+  x-data="{
+    index: 0,
+    tiles: [
+      { title: '🛠️ Skills', text: 'Networking, Linux, Cybersecurity, HTML, Git, Python' },
+      { title: '📚 Currently Learning', text: 'Fortinet FCF, Markdown logging, Tor basics' },
+      { title: '🧪 Things I Broke', text: 'Netplan configs, IP tables, my sleep schedule' },
+      { title: '💡 Curious About', text: 'Device fingerprinting, endpoint security, OS hardening' },
+      { title: '🧠 Realizations', text: 'The OS isn’t slow. My brain is. Fixing both.' },
+    ],
+    next() {
+      this.index = (this.index + 1) % this.tiles.length;
+    },
+    prev() {
+      this.index = (this.index - 1 + this.tiles.length) % this.tiles.length;
+    }
+  }"
+  x-init="
+    $el.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    $el.addEventListener('touchend', e => {
+      let endX = e.changedTouches[0].clientX;
+      if (endX - startX > 40) prev();
+      else if (startX - endX > 40) next();
+    });
+  "
+  class="border-t border-b border-gray-300 dark:border-gray-600 mt-10 py-6 select-none"
+>
+  <div class="flex items-center justify-between px-4 text-lg font-medium font-summary text-gray-800 dark:text-gray-100">
+    <!-- Left Button -->
+    <button @click="prev" class="hover:text-blue-500 transition">←</button>
+
+    <!-- Tile Content -->
+    <div class="text-center mx-4 w-full max-w-xl">
+      <div x-text="tiles[index].title" class="mb-2 text-base sm:text-lg font-semibold"></div>
+      <div x-text="tiles[index].text" class="text-sm sm:text-base font-normal"></div>
+    </div>
+
+    <!-- Right Button -->
+    <button @click="next" class="hover:text-blue-500 transition">→</button>
+  </div>
+    </section>
 <section class="mt-8">
   <h3 class="text-xl font-semibold mb-4">Skills</h3>
   <div class="flex flex-wrap justify-center gap-3">
