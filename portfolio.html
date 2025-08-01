@@ -135,7 +135,7 @@
 
   <!-- Tiles -->
   <div class="overflow-hidden h-72">
-    <template x-for="(tile, i) in tiles" :key="progressKey">
+    <template x-for="(tile, i) in tiles" :key="progressKey + '-' + i">
       <div
         x-show="index === i"
         x-transition.opacity.duration.400ms
