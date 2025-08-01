@@ -8,14 +8,17 @@
   <script src="https://unpkg.com/lucide@latest"></script>  
   
   <style>
-.glitch-bar {
+
+    .glitch-bar {
   position: relative;
   height: 24px;
+  width: 100%; /* ✅ Add this line */
   background: #000;
   overflow: hidden;
   transform: skewX(-30deg);
   margin: 0.5rem 0;
-}
+  font-family: 'Poppins', sans-serif; /* ✅ for number text */
+    }
 
 .glitch-bar::before {
   content: '';
@@ -194,10 +197,12 @@
 
     <div class="w-full space-y-4">
       <template x-for="(item, j) in slide.items" :key="j">
-        <div class="text-left">
-          <div class="mb-1 text-sm font-medium text-white dark:text-gray-300" x-text="item.name"></div>
-          <div class="glitch-bar" :style="'--p:' + item.percent + '; --width:' + item.percent + '%'"></div>
-        </div>
+  <div class="text-left">
+    <div class="mb-1 text-sm font-medium text-white dark:text-gray-300" x-text="item.name"></div>
+    <div class="w-60 max-w-full">
+      <div class="glitch-bar w-full" :style="'--p:' + item.percent + '; --width:' + item.percent + '%'"></div>
+    </div>
+  </div>
       </template>
     </div>
   </div>
