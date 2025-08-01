@@ -168,78 +168,182 @@
       <i data-lucide="arrow-right-circle" class="w-7 h-7 text-gray-500 hover:text-blue-500"></i>
     </button>
   </div>
-  
 
-  <!-- Tiles -->
-  <div class="overflow-hidden h-72">
-    <template x-for="(tile, i) in tiles" :key="progressKey + '-' + i">
-      <div
-        x-show="index === i"
-        x-transition.opacity.duration.400ms
-        class="h-full px-6 text-center flex flex-col items-center justify-start"
-      >
-        <h3 class="text-lg font-bold mb-4 mt-2" x-text="tile.title"></h3>
-        <div class="w-full space-y-4 px-2">
-         <template x-for="(item, j) in tile.items" :key="j">
-            <div class="text-left">
-              <div class="flex justify-between text-sm font-medium">
-                <span x-text="item.name"></span>
-                <span x-text="item.percent + '%'"></span>
+
+<body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 flex justify-between items-center px-6 py-4 shadow-sm">
+    <h1 class="font-title text-xl">MySite</h1>
+    <button
+      @click="
+        darkMode = !darkMode;
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+        $nextTick(() => lucide.createIcons());
+      "
+      class="p-1 hover:scale-110 transition-transform duration-300"
+    >
+      <i
+        x-bind:data-lucide="darkMode ? 'sun' : 'moon'"
+        class="w-7 h-7 transition-opacity duration-300 opacity-100"
+      ></i>
+    </button>
+  </header>
+
+  <!-- Cover Image Section -->
+  <section class="relative h-64 sm:h-80 w-full bg-gray-200 dark:bg-gray-800">
+    <img src="cover.jpg" alt="Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-20 pointer-events-none" />
+  </section>
+
+  <!-- Profile Image Overlapping Bottom Right -->
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="absolute -top-12 right-6 sm:right-10 z-10">
+      <img src="cookie-bg.jpg" alt="Profile" class="w-28 h-28 sm:w-40 sm:h-40 rounded-full border-4 border-white dark:border-gray-900 object-cover shadow-md">
+    </div>
+  </div>
+
+  <!-- Intro Text Block (Below Profile) -->
+  <section class="mt-20 sm:mt-24 px-6 max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-end justify-between">
+    <!-- Text Left -->
+    <div class="mt-4">
+      <h1 class="text-3xl sm:text-4xl font-title text-black dark:text-white">
+        <span class="wave-hand inline-block">👋</span> Hi there
+      </h1>
+      <p class="mt-1 text-lg sm:text-xl font-summary text-gray-600 dark:text-gray-300">
+        I am <span class="font-bold">Your Name</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Summary Section -->
+  <section class="mt-6 px-6 text-center max-w-3xl mx-auto">
+    <p class="text-sm font-summary font-bold text-gray-700 dark:text-gray-300">
+      Short summary about you — your passion, what you do, and what you're aiming for.
+    </p>
+  </section>
+
+  <!-- Skills Section - Swipeable -->
+  <section
+    x-data="{
+      index: 0,
+      progressKey: 0,
+      tiles: [
+        {
+          title: 'Currently Learning',
+          items: [
+            { name: 'Intro to Cybersecurity', percent: 8 },
+            { name: 'Networking', percent: 64 },
+            { name: 'Linux Essentials', percent: 31 },
+            { name: 'Privacy & Tor', percent: 47 }
+          ]
+        },
+        {
+          title: 'Want to Learn',
+          items: [
+            { name: 'Firewalls Deep Dive', percent: 0 },
+            { name: 'Advanced Networking', percent: 0 },
+            { name: 'SIEM & Blue Teaming', percent: 0 }
+          ]
+        }
+      ],
+      next() {
+        this.index = (this.index + 1) % this.tiles.length;
+        this.progressKey++;
+      },
+      prev() {
+        this.index = (this.index - 1 + this.tiles.length) % this.tiles.length;
+        this.progressKey++;
+      }
+    }"
+    x-init="
+      $el.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+      $el.addEventListener('touchend', e => {
+        let endX = e.changedTouches[0].clientX;
+        if (endX - startX > 40) prev();
+        else if (startX - endX > 40) next();
+      });
+    "
+    class="relative max-w-md w-full mx-auto mt-12 px-4"
+  >
+    <!-- Arrows -->
+    <div class="absolute -left-6 top-1/2 -translate-y-1/2">
+      <button @click="prev" class="p-2 rounded-full hover:scale-110 transition">
+        <i data-lucide="arrow-left-circle" class="w-6 h-6 text-gray-500 hover:text-blue-500"></i>
+      </button>
+    </div>
+    <div class="absolute -right-6 top-1/2 -translate-y-1/2">
+      <button @click="next" class="p-2 rounded-full hover:scale-110 transition">
+        <i data-lucide="arrow-right-circle" class="w-6 h-6 text-gray-500 hover:text-blue-500"></i>
+      </button>
+    </div>
+
+    <!-- Tiles -->
+    <div class="overflow-hidden h-72 border-t border-b border-gray-300 dark:border-gray-600 py-4">
+      <template x-for="(tile, i) in tiles" :key="progressKey + '-' + i">
+        <div
+          x-show="index === i"
+          x-transition.opacity.duration.400ms
+          class="h-full px-4 text-center flex flex-col items-center justify-start"
+        >
+          <h3 class="text-lg font-bold mb-4 mt-2" x-text="tile.title"></h3>
+          <div class="w-full space-y-4">
+            <template x-for="(item, j) in tile.items" :key="j">
+              <div class="text-left">
+                <div class="flex justify-between text-sm font-medium">
+                  <span x-text="item.name"></span>
+                  <span x-text="item.percent + '%'"></span>
+                </div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
+                  <div
+                    x-data="{ width: 0 }"
+                    x-init="setTimeout(() => width = item.percent, 10)"
+                    class="bg-blue-500 h-2 rounded-full transition-all duration-700"
+                    :style="'width: ' + width + '%'"
+                    :key="progressKey + '-' + j"
+                  ></div>
+                </div>
               </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
-              <div
-  x-data="{ width: 0 }"
-  x-init="
-    width = 0;
-    setTimeout(() => { width = item.percent }, 10);
-  "
-  class="bg-blue-500 h-2 rounded-full transition-all duration-700"
-  :style="'width: ' + width + '%'"
-  :key="progressKey + '-' + j"
-></div>
-              </div>
-            </div>
-          </template>
+            </template>
+          </div>
         </div>
-      </div>
-    </template>
-  </div>
-</section>
+      </template>
+    </div>
+  </section>
 
-    
-    
-    
-    <!-- Add to <head> if missing --><!-- <script src="https://cdn.tailwindcss.com"></script> --><!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
-<section class="mt-8">
-  <h3 class="text-xl font-semibold mb-4">Skills</h3>
-  <div class="flex flex-wrap justify-center gap-3">
-    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Networking</span>
-    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Linux</span>
-    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Cybersecurity</span>
-    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">HTML/CSS</span>
-    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Git</span>
-    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Python</span>
-  </div>
-</section>
+  <!-- Skills Tags -->
+  <section class="mt-10 px-6">
+    <h3 class="text-xl font-semibold mb-4 text-center">Skills</h3>
+    <div class="flex flex-wrap justify-center gap-3">
+      <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Networking</span>
+      <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Linux</span>
+      <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Cybersecurity</span>
+      <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">HTML/CSS</span>
+      <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Git</span>
+      <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Python</span>
+    </div>
+  </section>
 
-<!-- Icons Section -->
-<section class="mt-10 flex justify-center gap-6">
-  <a href="#" aria-label="Email"><i data-lucide="mail" class="w-6 h-6 hover:text-blue-500"></i></a>
-  <a href="#" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6 hover:text-gray-700 dark:hover:text-white"></i></a>
-  <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6 hover:text-blue-600"></i></a>
-  <a href="#" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6 hover:text-blue-800"></i></a>
-  <a href="#" aria-label="Globe"><i data-lucide="globe" class="w-6 h-6 hover:text-green-600"></i></a>
-  <a href="#" aria-label="Terminal"><i data-lucide="terminal" class="w-6 h-6 hover:text-yellow-600"></i></a>
-</section>
+  <!-- Social Icons -->
+  <section class="mt-10 flex justify-center gap-6">
+    <a href="#"><i data-lucide="mail" class="w-6 h-6 hover:text-blue-500"></i></a>
+    <a href="#"><i data-lucide="github" class="w-6 h-6 hover:text-gray-700 dark:hover:text-white"></i></a>
+    <a href="#"><i data-lucide="linkedin" class="w-6 h-6 hover:text-blue-600"></i></a>
+    <a href="#"><i data-lucide="facebook" class="w-6 h-6 hover:text-blue-800"></i></a>
+    <a href="#"><i data-lucide="globe" class="w-6 h-6 hover:text-green-600"></i></a>
+    <a href="#"><i data-lucide="terminal" class="w-6 h-6 hover:text-yellow-600"></i></a>
+  </section>
 
-  </main>  <!-- Footer -->  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+  <!-- Footer -->
+  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
     &copy; 2025 fatty-raccoon. All rights reserved.
-  </footer>  <script>
+  </footer>
+
+  <script>
     lucide.createIcons();
+    document.addEventListener('alpine:init', () => {
+      requestAnimationFrame(() => lucide.createIcons());
+    });
   </script>
-<script>
-  document.addEventListener('alpine:init', () => {
-    requestAnimationFrame(() => lucide.createIcons());
-  });
-      </script>
-</body></html>
+  </body>
+  
+  
+</html>
