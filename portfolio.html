@@ -1,228 +1,59 @@
-<!DOCTYPE html>
-<html lang="en" x-data="{ darkMode: false }" x-init="darkMode = localStorage.getItem('theme') === 'dark'" x-bind:class="darkMode ? 'dark' : ''"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en" x-data="{ darkMode: false }" x-init="darkMode = localStorage.getItem('theme') === 'dark'" x-bind:class="darkMode ? 'dark' : ''">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-
-<style>
-  @keyframes wave {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(14deg); }
-    40% { transform: rotate(-4deg); }
-    50% { transform: rotate(10deg); }
-    60% { transform: rotate(0deg); }
-    100% { transform: rotate(0deg); }
-  }
-
-  .wave-hand {
-    display: inline-block;
-    animation: wave 2.2s infinite;
-    transform-origin: 70% 70%; /* elbow pivot */
-  }
-                           </style>
-  
-  
-  <script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        fontFamily: {
-          title: ['"Poppins"', 'sans-serif'],      // your title font
-          summary: ['"Comfortaa"', 'sans-serif'],     // new summary font
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            title: ['Poppins', 'sans-serif'],
+            summary: ['Comfortaa', 'sans-serif'],
+          }
         }
       }
+    };
+  </script>  <style>
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      10% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      30% { transform: rotate(14deg); }
+      40% { transform: rotate(-4deg); }
+      50% { transform: rotate(10deg); }
     }
-  }
-</script>
-
-
-  
-  
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-  
-  
-  <body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500">
+    .wave-hand {
+      display: inline-block;
+      animation: wave 2.2s infinite;
+      transform-origin: 70% 70%;
+    }
+  </style></head><body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500">
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 flex justify-between items-center px-6 py-4 shadow-sm">
     <h1 class="font-title text-xl">MySite</h1>
-  <button
-  @click="
-    darkMode = !darkMode;
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    $nextTick(() => lucide.createIcons());
-  "
-    
-  class="p-1 hover:scale-110 transition-transform duration-300"
-    >
-<i
-  x-bind:data-lucide="darkMode ? 'sun' : 'moon'"
-  class="w-7 h-7 transition-opacity duration-300 opacity-100"
-></i>
-  </button>
-  </header>  
-    
-    
-
-    <!-- Hero Section with Cover Image -->
-<section class="relative h-48 sm:h-64 md:h-80 w-full bg-gray-200 dark:bg-gray-800">
-  <!-- Cover Background -->
-  <img src="cover.jpg" alt="Cover Image" class="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-20 pointer-events-none">
-</section>
-
-<!-- Profile and Intro Text Row -->
-<section class="relative max-w-5xl mx-auto px-6">
-  <!-- Profile Image -->
-  <div class="absolute left-1/2 transform translate-x-24 -translate-y-1/2 sm:translate-x-48">
-    <img src="cookie-bg.jpg" alt="Profile" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white dark:border-gray-900 object-cover shadow-md">
-  </div>
-
-  <!-- Text Block -->
-  <div class="pt-20 sm:pt-24 flex flex-col items-start justify-center sm:flex-row sm:items-center sm:justify-start gap-4">
-    <div class="text-left">
-      <h1 class="text-3xl sm:text-4xl font-title text-black dark:text-white">
-        <span class="wave-hand inline-block">👋</span> Hi there
-      </h1>
-      <p class="mt-1 text-lg sm:text-xl font-summary text-gray-700 dark:text-gray-300">
-        I am <span class="font-bold">Your Name</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Summary Text -->
-<section class="mt-6 px-6 text-center max-w-3xl mx-auto">
-  <p class="text-sm font-summary font-bold text-gray-700 dark:text-gray-300">
-    Short summary about you — your passion, what you do, and what you're aiming for.
-  </p>
-  </section>
-    
-  
-      
-      
-      
-      <!-- Skills Section -->
-    <!-- ✅ Swipeable Learning Tiles with Progress Bars -->
-    
-
-<section 
-  x-data="{
-    index: 0,
-  progressKey: 0,
-    tiles: [
-      {
-        title: 'Currently Learning',
-        items: [
-          { name: 'Intro to Cybersecurity', percent: 8 },
-          { name: 'Networking', percent: 64 },
-          { name: 'Linux Essentials', percent: 31 },
-          { name: 'Privacy & Tor', percent: 47 }
-        ]
-      },
-      {
-        title: 'Want to Learn',
-        items: [
-          { name: 'Firewalls Deep Dive', percent: 0 },
-          { name: 'Advanced Networking', percent: 0 },
-          { name: 'SIEM & Blue Teaming', percent: 0 }
-        ]
-      }
-    ],
-    next() {
-      this.index = (this.index + 1) % this.tiles.length;
-     this.progressKey++;
-  },
-    prev() {
-      this.index = (this.index - 1 + this.tiles.length) % this.tiles.length;
-    this.progressKey++;
-  }
-  }"
-  x-init="
-    $el.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-    $el.addEventListener('touchend', e => {
-      let endX = e.changedTouches[0].clientX;
-      if (endX - startX > 40) prev();
-      else if (startX - endX > 40) next();
-    });
-  "
-  class="relative max-w-md mx-auto mt-10 border-t border-b border-gray-300 dark:border-gray-600 py-4"
->
-
-  
-  <!-- Arrow Controls -->
-  <div class="absolute -left-7 top-1/2 -translate-y-1/2">
-    <button @click="prev" class="p-2 rounded-full hover:scale-110 transition">
-      <i data-lucide="arrow-left-circle" class="w-7 h-7 text-gray-500 hover:text-blue-500"></i>
+    <button @click="darkMode = !darkMode; localStorage.setItem('theme', darkMode ? 'dark' : 'light'); $nextTick(() => lucide.createIcons());" class="p-1 hover:scale-110 transition-transform duration-300">
+      <i x-bind:data-lucide="darkMode ? 'sun' : 'moon'" class="w-7 h-7"></i>
     </button>
-  </div>
-  <div class="absolute -right-7 top-1/2 -translate-y-1/2">
-    <button @click="next" class="p-2 rounded-full hover:scale-110 transition">
-      <i data-lucide="arrow-right-circle" class="w-7 h-7 text-gray-500 hover:text-blue-500"></i>
-    </button>
-  </div>
-
-
-<body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 flex justify-between items-center px-6 py-4 shadow-sm">
-    <h1 class="font-title text-xl">MySite</h1>
-    <button
-      @click="
-        darkMode = !darkMode;
-        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-        $nextTick(() => lucide.createIcons());
-      "
-      class="p-1 hover:scale-110 transition-transform duration-300"
-    >
-      <i
-        x-bind:data-lucide="darkMode ? 'sun' : 'moon'"
-        class="w-7 h-7 transition-opacity duration-300 opacity-100"
-      ></i>
-    </button>
-  </header>
-
-  <!-- Cover Image Section -->
-  <section class="relative h-64 sm:h-80 w-full bg-gray-200 dark:bg-gray-800">
+  </header>  <!-- Cover Section -->  <section class="relative h-64 sm:h-80 w-full bg-gray-200 dark:bg-gray-800">
     <img src="cover.jpg" alt="Cover" class="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-20 pointer-events-none" />
-  </section>
-
-  <!-- Profile Image Overlapping Bottom Right -->
-  <div class="relative max-w-6xl mx-auto px-6">
-    <div class="absolute -top-12 right-6 sm:right-10 z-10">
-      <img src="cookie-bg.jpg" alt="Profile" class="w-28 h-28 sm:w-40 sm:h-40 rounded-full border-4 border-white dark:border-gray-900 object-cover shadow-md">
+    <!-- Profile image and text -->
+    <div class="absolute bottom-[-3rem] right-6 sm:right-10 flex flex-col items-start sm:items-end text-right">
+      <img src="cookie-bg.jpg" alt="Profile" class="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-4 border-white dark:border-gray-900 object-cover shadow-md" />
+      <div class="mt-2">
+        <h1 class="text-2xl sm:text-3xl font-title"><span class="wave-hand">👋</span> Hi there</h1>
+        <p class="text-md font-summary text-gray-700 dark:text-gray-300">I am <span class="font-bold">Your Name</span></p>
+      </div>
     </div>
-  </div>
-
-  <!-- Intro Text Block (Below Profile) -->
-  <section class="mt-20 sm:mt-24 px-6 max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-end justify-between">
-    <!-- Text Left -->
-    <div class="mt-4">
-      <h1 class="text-3xl sm:text-4xl font-title text-black dark:text-white">
-        <span class="wave-hand inline-block">👋</span> Hi there
-      </h1>
-      <p class="mt-1 text-lg sm:text-xl font-summary text-gray-600 dark:text-gray-300">
-        I am <span class="font-bold">Your Name</span>
-      </p>
-    </div>
-  </section>
-
-  <!-- Summary Section -->
-  <section class="mt-6 px-6 text-center max-w-3xl mx-auto">
+  </section>  <!-- Summary Text -->  <section class="mt-20 px-6 text-center max-w-3xl mx-auto">
     <p class="text-sm font-summary font-bold text-gray-700 dark:text-gray-300">
       Short summary about you — your passion, what you do, and what you're aiming for.
     </p>
-  </section>
-
-  <!-- Skills Section - Swipeable -->
-  <section
+  </section>  <!-- Skills Progress Section -->  <section 
     x-data="{
       index: 0,
       progressKey: 0,
@@ -245,14 +76,8 @@
           ]
         }
       ],
-      next() {
-        this.index = (this.index + 1) % this.tiles.length;
-        this.progressKey++;
-      },
-      prev() {
-        this.index = (this.index - 1 + this.tiles.length) % this.tiles.length;
-        this.progressKey++;
-      }
+      next() { this.index = (this.index + 1) % this.tiles.length; this.progressKey++; },
+      prev() { this.index = (this.index - 1 + this.tiles.length) % this.tiles.length; this.progressKey++; }
     }"
     x-init="
       $el.addEventListener('touchstart', e => startX = e.touches[0].clientX);
@@ -274,43 +99,29 @@
       <button @click="next" class="p-2 rounded-full hover:scale-110 transition">
         <i data-lucide="arrow-right-circle" class="w-6 h-6 text-gray-500 hover:text-blue-500"></i>
       </button>
-    </div>
-
-    <!-- Tiles -->
-    <div class="overflow-hidden h-72 border-t border-b border-gray-300 dark:border-gray-600 py-4">
-      <template x-for="(tile, i) in tiles" :key="progressKey + '-' + i">
-        <div
-          x-show="index === i"
-          x-transition.opacity.duration.400ms
-          class="h-full px-4 text-center flex flex-col items-center justify-start"
-        >
-          <h3 class="text-lg font-bold mb-4 mt-2" x-text="tile.title"></h3>
-          <div class="w-full space-y-4">
-            <template x-for="(item, j) in tile.items" :key="j">
-              <div class="text-left">
-                <div class="flex justify-between text-sm font-medium">
-                  <span x-text="item.name"></span>
-                  <span x-text="item.percent + '%'"></span>
-                </div>
-                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
-                  <div
-                    x-data="{ width: 0 }"
-                    x-init="setTimeout(() => width = item.percent, 10)"
-                    class="bg-blue-500 h-2 rounded-full transition-all duration-700"
-                    :style="'width: ' + width + '%'"
-                    :key="progressKey + '-' + j"
-                  ></div>
-                </div>
-              </div>
-            </template>
+    </div><!-- Tiles -->
+<div class="overflow-hidden h-72 border-t border-b border-gray-300 dark:border-gray-600 py-4">
+  <template x-for="(tile, i) in tiles" :key="progressKey + '-' + i">
+    <div x-show="index === i" x-transition.opacity.duration.400ms class="h-full px-4 text-center flex flex-col items-center justify-start">
+      <h3 class="text-lg font-bold mb-4 mt-2" x-text="tile.title"></h3>
+      <div class="w-full space-y-4">
+        <template x-for="(item, j) in tile.items" :key="j">
+          <div class="text-left">
+            <div class="flex justify-between text-sm font-medium">
+              <span x-text="item.name"></span>
+              <span x-text="item.percent + '%' "></span>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
+              <div x-data="{ width: 0 }" x-init="setTimeout(() => width = item.percent, 10)" class="bg-blue-500 h-2 rounded-full transition-all duration-700" :style="'width: ' + width + '%'" :key="progressKey + '-' + j"></div>
+            </div>
           </div>
-        </div>
-      </template>
+        </template>
+      </div>
     </div>
-  </section>
+  </template>
+</div>
 
-  <!-- Skills Tags -->
-  <section class="mt-10 px-6">
+  </section>  <!-- Skills Tags -->  <section class="mt-10 px-6">
     <h3 class="text-xl font-semibold mb-4 text-center">Skills</h3>
     <div class="flex flex-wrap justify-center gap-3">
       <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Networking</span>
@@ -320,30 +131,12 @@
       <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Git</span>
       <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800">Python</span>
     </div>
-  </section>
-
-  <!-- Social Icons -->
-  <section class="mt-10 flex justify-center gap-6">
-    <a href="#"><i data-lucide="mail" class="w-6 h-6 hover:text-blue-500"></i></a>
-    <a href="#"><i data-lucide="github" class="w-6 h-6 hover:text-gray-700 dark:hover:text-white"></i></a>
-    <a href="#"><i data-lucide="linkedin" class="w-6 h-6 hover:text-blue-600"></i></a>
-    <a href="#"><i data-lucide="facebook" class="w-6 h-6 hover:text-blue-800"></i></a>
-    <a href="#"><i data-lucide="globe" class="w-6 h-6 hover:text-green-600"></i></a>
-    <a href="#"><i data-lucide="terminal" class="w-6 h-6 hover:text-yellow-600"></i></a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+  </section>  <!-- Footer -->  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
     &copy; 2025 fatty-raccoon. All rights reserved.
-  </footer>
-
-  <script>
+  </footer>  <script>
     lucide.createIcons();
     document.addEventListener('alpine:init', () => {
       requestAnimationFrame(() => lucide.createIcons());
     });
-  </script>
-  </body>
-  
-  
-</html>
+  </script></body>
+                                                                                                                 </html>
