@@ -150,11 +150,16 @@
                 <span x-text="item.percent + '%'"></span>
               </div>
               <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
-              <div 
+              <div
+  x-data="{ width: 0 }"
+  x-init="
+    width = 0;
+    setTimeout(() => { width = item.percent }, 10);
+  "
   class="bg-blue-500 h-2 rounded-full transition-all duration-700"
+  :style="'width: ' + width + '%'"
   :key="progressKey + '-' + j"
-  :style="'width: ' + item.percent + '%'">
-              </div>
+></div>
               </div>
             </div>
           </template>
