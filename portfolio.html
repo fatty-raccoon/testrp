@@ -6,33 +6,6 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
-  
-<style>
-  /* Custom scrollbar container */
-  .custom-scrollbar {
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 0px; /* Chrome, Safari, Opera */
-    height: 0px;
-  }
-
-  .custom-scrollbar:hover {
-    scrollbar-width: thin;
-  }
-
-  .custom-scrollbar:hover::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(107, 114, 128, 0.6); /* Tailwind gray-500 */
-    border-radius: 4px;
-  }
-</style>
-
 
   
   <script>
@@ -49,6 +22,8 @@
   }
 </script>
 
+
+  
   
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
@@ -162,7 +137,7 @@
         class="h-full px-6 text-center flex flex-col items-center justify-start"
       >
         <h3 class="text-lg font-bold mb-4 mt-2" x-text="tile.title"></h3>
-        <div class="overflow-y-auto w-full space-y-4 px-2 max-h-56 custom-scrollbar">
+        <div class="w-full space-y-4 px-2">
          <template x-for="(item, j) in tile.items" :key="j">
             <div class="text-left">
               <div class="flex justify-between text-sm font-medium">
