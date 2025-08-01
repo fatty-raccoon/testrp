@@ -78,6 +78,7 @@
 <section 
   x-data="{
     index: 0,
+  progressKey: 0,
     tiles: [
       {
         title: 'Currently Learning',
@@ -101,10 +102,12 @@
     ],
     next() {
       this.index = (this.index + 1) % this.tiles.length;
-    },
+     this.progressKey++;
+  },
     prev() {
       this.index = (this.index - 1 + this.tiles.length) % this.tiles.length;
-    }
+    this.progressKey++;
+  }
   }"
   x-init="
     $el.addEventListener('touchstart', e => startX = e.touches[0].clientX);
@@ -134,6 +137,7 @@
       <div
         x-show="index === i"
         x-transition.opacity.duration.400ms
+        key="progressKey"
         class="h-full px-6 text-center flex flex-col items-center justify-start"
       >
         <h3 class="text-lg font-bold mb-4 mt-2" x-text="tile.title"></h3>
@@ -145,10 +149,9 @@
                 <span x-text="item.percent + '%'"></span>
               </div>
               <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
-                <div
-                  class="bg-blue-500 h-2 rounded-full transition-all duration-700"
-                  :style="'width: ' + item.percent + '%'"
-                ></div>
+              <div class="bg-blue-500 h-2 rounded-full transition-all duration-700"
+             :style="'width: ' + item.percent + '%'"
+              ></div>
               </div>
             </div>
           </template>
