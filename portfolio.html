@@ -128,25 +128,55 @@
         class="h-full text-center flex flex-col items-center justify-start space-y-5"
       >
         <h3 class="text-lg font-bold mb-2" x-text="slide.title"></h3>
-        <div class="w-full space-y-4">
-          <template x-for="(item, j) in slide.items" :key="j">
-            <div class="text-left">
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span x-text="item.name"></span>
-                <span x-text="item.percent + '%'"></span>
-              </div>
-              <div class="w-full bg-gray-200 dark:bg-gray-700 h-3 rounded-none">
-                <div
-                  x-data="{ width: 0 }"
-                  x-init="setTimeout(() => width = item.percent, 10)"
-                  class="bg-blue-500 h-3 transition-all duration-700"
-                  :style="'width: ' + width + '%'"
-                  :key="progressKey + '-' + j"
-                ></div>
-              </div>
-            </div>
-          </template>
-        </div>
+        
+<!-- ✅ New Circular Grid -->
+<div class="grid grid-cols-2 gap-y-6 gap-x-6 sm:gap-x-10 justify-items-center">
+  <template x-for="(item, i) in slide.items" :key="i">
+    <div x-data="{ percent: 0 }" x-init="
+        setTimeout(() => {
+          percent = item.percent;
+          let circle = $el.querySelector('.progress-ring');
+          let offset = 226.2 * (1 - percent / 100);
+          circle.style.strokeDashoffset = offset;
+        }, 200);
+      " class="relative w-24 h-24">
+      
+      <!-- SVG Ring -->
+      <svg class="w-full h-full rotate-[-90deg]">
+        <!-- Background Circle -->
+        <circle
+          class="text-gray-300 dark:text-gray-700"
+          stroke="currentColor"
+          stroke-width="8"
+          fill="transparent"
+          r="36"
+          cx="48"
+          cy="48"
+        />
+        <!-- Foreground Progress Circle -->
+        <circle
+          class="text-blue-500 progress-ring"
+          stroke="currentColor"
+          stroke-width="8"
+          fill="transparent"
+          r="36"
+          cx="48"
+          cy="48"
+          stroke-dasharray="226.2"
+          stroke-dashoffset="226.2"
+        />
+      </svg>
+
+      <!-- Text in center -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-xs text-center font-summary">
+        <span class="font-bold text-gray-800 dark:text-white" x-text="percent + '%'"></span>
+        <span class="mt-1 text-[10px] text-gray-500 dark:text-gray-300 font-medium leading-tight" x-text="item.name"></span>
+      </div>
+    </div>
+  </template>
+</div>
+
+
       </div>
     </template>
   </div>
