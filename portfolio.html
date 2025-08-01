@@ -5,7 +5,70 @@
   <title>My Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>  <style>
+  <script src="https://unpkg.com/lucide@latest"></script>  
+  
+  <style>
+.glitch-bar {
+  position: relative;
+  height: 24px;
+  background: #000;
+  overflow: hidden;
+  transform: skewX(-30deg);
+  margin: 0.5rem 0;
+}
+
+.glitch-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #F3E600;
+  z-index: 0;
+  animation: load 0.5s forwards linear, glitch 2s infinite linear;
+}
+
+.glitch-bar::after {
+  counter-reset: progress var(--p);
+  content: counter(progress) '%';
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%) skewX(-30deg);
+  z-index: 1;
+}
+
+@keyframes load {
+  to {
+    width: var(--width);
+  }
+}
+
+@keyframes glitch {
+  0%, 5% {
+    transform: translate(0, 0);
+  }
+  1% {
+    transform: translate(-5%, -10%);
+  }
+  2% {
+    transform: translate(10%, 30%);
+  }
+  3% {
+    transform: translate(-43%, 10%);
+  }
+  4% {
+    transform: translate(2%, -23%);
+  }
+}
+  </style>
+  
+  
+  <style>
     @keyframes wave {
       0% { transform: rotate(0deg); }
       10% { transform: rotate(14deg); }
@@ -125,53 +188,16 @@
       <div
         x-show="index === i"
         x-transition.opacity.duration.400ms
-        class="h-full text-center flex flex-col items-center justify-start space-y-5"
-      >
-        <h3 class="text-lg font-bold mb-2" x-text="slide.title"></h3>
-        
-<!-- ✅ New Circular Grid -->
-<div class="grid grid-cols-2 gap-y-6 gap-x-6 sm:gap-x-10 justify-items-center">
-  <template x-for="(item, i) in slide.items" :key="i">
-    <div x-data="{ percent: 0 }" x-init="
-        setTimeout(() => {
-          percent = item.percent;
-          let circle = $el.querySelector('.progress-ring');
-          let offset = 226.2 * (1 - percent / 100);
-          circle.style.strokeDashoffset = offset;
-        }, 200);
-      " class="relative w-24 h-24">
-      
-      <!-- SVG Ring -->
-      <svg class="w-full h-full rotate-[-90deg]">
-        <!-- Background Circle -->
-        <circle
-          class="text-gray-300 dark:text-gray-700"
-          stroke="currentColor"
-          stroke-width="8"
-          fill="transparent"
-          r="36"
-          cx="48"
-          cy="48"
-        />
-        <!-- Foreground Progress Circle -->
-        <circle
-          class="text-blue-500 progress-ring"
-          stroke="currentColor"
-          stroke-width="8"
-          fill="transparent"
-          r="36"
-          cx="48"
-          cy="48"
-          stroke-dasharray="226.2"
-          stroke-dashoffset="226.2"
-        />
-      </svg>
 
-      <!-- Text in center -->
-      <div class="absolute inset-0 flex flex-col items-center justify-center text-xs text-center font-summary">
-        <span class="font-bold text-gray-800 dark:text-white" x-text="percent + '%'"></span>
-        <span class="mt-1 text-[10px] text-gray-500 dark:text-gray-300 font-medium leading-tight" x-text="item.name"></span>
-      </div>
+
+
+        <h3 class="text-lg font-bold mb-2" x-text="slide.title"></h3>
+
+<div class="w-full space-y-4">
+  <template x-for="(item, j) in slide.items" :key="j">
+    <div class="text-left">
+      <div class="mb-1 text-sm font-medium text-white dark:text-gray-300" x-text="item.name"></div>
+      <div class="glitch-bar" :style="'--p:' + item.percent + '; --width:' + item.percent + '%'"></div>
     </div>
   </template>
 </div>
