@@ -64,117 +64,106 @@
     </p>
 
 
-<!-- Custom Slider Section -->
+<!-- 🔄 Slider Component -->
 <section 
   x-data="{
     index: 0,
+    progressKey: 0,
     slides: [
       {
-        title: 'Currently Learning',
+        title: 'Learning Topics',
         items: [
-          { name: 'Networking', percent: 65 },
-          { name: 'Linux Essentials', percent: 35 },
-          { name: 'Cybersecurity Basics', percent: 20 }
+          { name: 'Networking', percent: 64 },
+          { name: 'Linux', percent: 31 },
+          { name: 'Privacy & Tor', percent: 47 }
         ]
       },
       {
-        title: 'Ongoing Courses',
+        title: 'Ongoing Certifications',
         items: [
-          { name: 'TryHackMe PreSecurity', percent: 72 },
-          { name: 'Fortinet FCF', percent: 30 }
+          { name: 'Fortinet FCF', percent: 72 },
+          { name: 'TryHackMe PreSecurity', percent: 54 }
         ]
       },
       {
-        title: 'Certificate Highlight',
-        cert: {
-          name: 'Intro to Networking',
-          org: 'Cisco Networking Academy',
-          link: '#',
-        }
+        title: 'Featured Cert',
+        items: [
+          { name: 'Linux Essentials Badge', percent: 100 }
+        ]
       },
       {
-        title: 'Tip of the Day',
-        message: 'Keep documenting your learning. It adds proof *and* clarity.'
+        title: 'Upcoming Goals',
+        items: [
+          { name: 'Firewalls', percent: 0 },
+          { name: 'SIEM & Logs', percent: 0 }
+        ]
       }
     ],
-    next() { this.index = (this.index + 1) % this.slides.length },
-    prev() { this.index = (this.index - 1 + this.slides.length) % this.slides.length }
+    next() {
+      this.index = (this.index + 1) % this.slides.length;
+      this.progressKey++;
+    },
+    goTo(i) {
+      this.index = i;
+      this.progressKey++;
+    }
   }"
   x-init="
     $el.addEventListener('touchstart', e => startX = e.touches[0].clientX);
     $el.addEventListener('touchend', e => {
       let endX = e.changedTouches[0].clientX;
-      if (endX - startX > 40) prev();
-      else if (startX - endX > 40) next();
+      if (endX - startX > 40) index = (index - 1 + slides.length) % slides.length, progressKey++;
+      else if (startX - endX > 40) index = (index + 1) % slides.length, progressKey++;
     });
   "
-  class="relative max-w-md mx-auto mt-10 px-4"
+  class="relative max-w-md w-full mx-auto mt-10 px-4 border-t border-b border-gray-300 dark:border-gray-600 py-6"
 >
 
-  <!-- Arrows -->
-  <button @click="prev" class="absolute -left-6 top-1/2 -translate-y-1/2 z-10">
-    <i data-lucide="arrow-left-circle" class="w-6 h-6 text-gray-400 hover:text-blue-500"></i>
-  </button>
-  <button @click="next" class="absolute -right-6 top-1/2 -translate-y-1/2 z-10">
-    <i data-lucide="arrow-right-circle" class="w-6 h-6 text-gray-400 hover:text-blue-500"></i>
-  </button>
-
-  <!-- Slide Content -->
-  <div class="overflow-hidden h-64 border rounded-lg p-4 dark:border-gray-600 bg-white dark:bg-gray-800 shadow-sm">
-    <template x-for="(slide, i) in slides" :key="i">
-      <div x-show="index === i" x-transition.opacity.duration.300ms class="h-full space-y-4 text-center">
-        <h3 class="text-lg font-bold" x-text="slide.title"></h3>
-
-        <!-- Progress Style Slide -->
-        <template x-if="slide.items">
-          <div class="space-y-4 text-left">
-            <template x-for="(item, j) in slide.items" :key="j">
-              <div>
-                <div class="flex justify-between text-sm font-medium">
-                  <span x-text="item.name"></span>
-                  <span x-text="item.percent + '%'"></span>
-                </div>
-                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
-                  <div
-                    x-data="{ width: 0 }"
-                    x-init="setTimeout(() => width = item.percent, 10)"
-                    class="bg-blue-500 h-2 rounded-full transition-all duration-700"
-                    :style="'width: ' + width + '%'"
-                  ></div>
-                </div>
+  <!-- 🔁 Slide Content -->
+  <div class="overflow-hidden h-72">
+    <template x-for="(slide, i) in slides" :key="progressKey + '-' + i">
+      <div
+        x-show="index === i"
+        x-transition.opacity.duration.400ms
+        class="h-full text-center flex flex-col items-center justify-start space-y-5"
+      >
+        <h3 class="text-lg font-bold mb-2" x-text="slide.title"></h3>
+        <div class="w-full space-y-4">
+          <template x-for="(item, j) in slide.items" :key="j">
+            <div class="text-left">
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span x-text="item.name"></span>
+                <span x-text="item.percent + '%'"></span>
               </div>
-            </template>
-          </div>
-        </template>
-
-        <!-- Certificate Slide -->
-        <template x-if="slide.cert">
-          <div class="text-center">
-            <p class="text-sm font-semibold" x-text="slide.cert.name"></p>
-            <p class="text-xs text-gray-500" x-text="slide.cert.org"></p>
-            <a :href="slide.cert.link" target="_blank" class="text-blue-500 text-sm underline mt-2 inline-block">View Certificate</a>
-          </div>
-        </template>
-
-        <!-- Message Slide -->
-        <template x-if="slide.message">
-          <p class="italic text-sm text-gray-600 dark:text-gray-300" x-text="slide.message"></p>
-        </template>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 h-3 rounded-none">
+                <div
+                  x-data="{ width: 0 }"
+                  x-init="setTimeout(() => width = item.percent, 10)"
+                  class="bg-blue-500 h-3 transition-all duration-700"
+                  :style="'width: ' + width + '%'"
+                  :key="progressKey + '-' + j"
+                ></div>
+              </div>
+            </div>
+          </template>
+        </div>
       </div>
     </template>
   </div>
 
-  <!-- Dot Indicators -->
-  <div class="flex justify-center gap-2 mt-4">
-    <template x-for="(slide, i) in slides" :key="i">
-      <div
-        class="w-2.5 h-2.5 rounded-full"
-        :class="index === i ? 'bg-blue-500' : 'bg-gray-400 dark:bg-gray-600'"
-      ></div>
+  <!-- ⭕ Dot Navigation -->
+  <div class="flex justify-center mt-6 space-x-2">
+    <template x-for="(dot, i) in slides.length" :key="i">
+      <button
+        @click="goTo(i)"
+        class="text-lg"
+        :class="{ 'text-blue-500': index === i, 'text-gray-400': index !== i }"
+      >
+        •
+      </button>
     </template>
   </div>
-</section>
-
+                  </section>
 
     
   </section>  <!-- Footer -->  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
