@@ -55,13 +55,128 @@
       </p>
     </div><!-- Profile Image on Right Bottom -->
 <div class="absolute right-6 -top-12 sm:-top-16">
-  <img src="cookie-bg.jpg" alt="Profile" class="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-4 border-white dark:border-gray-900 object-cover shadow-md">
+  <img src="cookie-bg.png" alt="Profile" class="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-4 border-white dark:border-gray-900 object-cover shadow-md">
 </div>
 
   </section>  <!-- Summary -->  <section class="mt-6 px-6 text-center max-w-3xl mx-auto">
     <p class="text-sm font-summary font-bold text-gray-700 dark:text-gray-300">
       Short summary about you — your passion, what you do, and what you're aiming for.
     </p>
+
+
+<!-- Custom Slider Section -->
+<section 
+  x-data="{
+    index: 0,
+    slides: [
+      {
+        title: 'Currently Learning',
+        items: [
+          { name: 'Networking', percent: 65 },
+          { name: 'Linux Essentials', percent: 35 },
+          { name: 'Cybersecurity Basics', percent: 20 }
+        ]
+      },
+      {
+        title: 'Ongoing Courses',
+        items: [
+          { name: 'TryHackMe PreSecurity', percent: 72 },
+          { name: 'Fortinet FCF', percent: 30 }
+        ]
+      },
+      {
+        title: 'Certificate Highlight',
+        cert: {
+          name: 'Intro to Networking',
+          org: 'Cisco Networking Academy',
+          link: '#',
+        }
+      },
+      {
+        title: 'Tip of the Day',
+        message: 'Keep documenting your learning. It adds proof *and* clarity.'
+      }
+    ],
+    next() { this.index = (this.index + 1) % this.slides.length },
+    prev() { this.index = (this.index - 1 + this.slides.length) % this.slides.length }
+  }"
+  x-init="
+    $el.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    $el.addEventListener('touchend', e => {
+      let endX = e.changedTouches[0].clientX;
+      if (endX - startX > 40) prev();
+      else if (startX - endX > 40) next();
+    });
+  "
+  class="relative max-w-md mx-auto mt-10 px-4"
+>
+
+  <!-- Arrows -->
+  <button @click="prev" class="absolute -left-6 top-1/2 -translate-y-1/2 z-10">
+    <i data-lucide="arrow-left-circle" class="w-6 h-6 text-gray-400 hover:text-blue-500"></i>
+  </button>
+  <button @click="next" class="absolute -right-6 top-1/2 -translate-y-1/2 z-10">
+    <i data-lucide="arrow-right-circle" class="w-6 h-6 text-gray-400 hover:text-blue-500"></i>
+  </button>
+
+  <!-- Slide Content -->
+  <div class="overflow-hidden h-64 border rounded-lg p-4 dark:border-gray-600 bg-white dark:bg-gray-800 shadow-sm">
+    <template x-for="(slide, i) in slides" :key="i">
+      <div x-show="index === i" x-transition.opacity.duration.300ms class="h-full space-y-4 text-center">
+        <h3 class="text-lg font-bold" x-text="slide.title"></h3>
+
+        <!-- Progress Style Slide -->
+        <template x-if="slide.items">
+          <div class="space-y-4 text-left">
+            <template x-for="(item, j) in slide.items" :key="j">
+              <div>
+                <div class="flex justify-between text-sm font-medium">
+                  <span x-text="item.name"></span>
+                  <span x-text="item.percent + '%'"></span>
+                </div>
+                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1">
+                  <div
+                    x-data="{ width: 0 }"
+                    x-init="setTimeout(() => width = item.percent, 10)"
+                    class="bg-blue-500 h-2 rounded-full transition-all duration-700"
+                    :style="'width: ' + width + '%'"
+                  ></div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+
+        <!-- Certificate Slide -->
+        <template x-if="slide.cert">
+          <div class="text-center">
+            <p class="text-sm font-semibold" x-text="slide.cert.name"></p>
+            <p class="text-xs text-gray-500" x-text="slide.cert.org"></p>
+            <a :href="slide.cert.link" target="_blank" class="text-blue-500 text-sm underline mt-2 inline-block">View Certificate</a>
+          </div>
+        </template>
+
+        <!-- Message Slide -->
+        <template x-if="slide.message">
+          <p class="italic text-sm text-gray-600 dark:text-gray-300" x-text="slide.message"></p>
+        </template>
+      </div>
+    </template>
+  </div>
+
+  <!-- Dot Indicators -->
+  <div class="flex justify-center gap-2 mt-4">
+    <template x-for="(slide, i) in slides" :key="i">
+      <div
+        class="w-2.5 h-2.5 rounded-full"
+        :class="index === i ? 'bg-blue-500' : 'bg-gray-400 dark:bg-gray-600'"
+      ></div>
+    </template>
+  </div>
+</section>
+
+
+    
   </section>  <!-- Footer -->  <footer class="mt-12 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
     &copy; 2025 fatty-raccoon. All rights reserved.
   </footer>  <script>
