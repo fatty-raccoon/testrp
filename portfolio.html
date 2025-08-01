@@ -185,10 +185,23 @@
   <!-- 🔁 Slide Content -->
   <div class="overflow-hidden h-72">
     <template x-for="(slide, i) in slides" :key="progressKey + '-' + i">
-      <div
-        x-show="index === i"
-        x-transition.opacity.duration.400ms
+  <div
+    x-show="index === i"
+    x-transition.opacity.duration.400ms
+    class="h-full text-center flex flex-col items-center justify-start space-y-5"
+  >
+    <h3 class="text-lg font-bold mb-2" x-text="slide.title"></h3>
 
+    <div class="w-full space-y-4">
+      <template x-for="(item, j) in slide.items" :key="j">
+        <div class="text-left">
+          <div class="mb-1 text-sm font-medium text-white dark:text-gray-300" x-text="item.name"></div>
+          <div class="glitch-bar" :style="'--p:' + item.percent + '; --width:' + item.percent + '%'"></div>
+        </div>
+      </template>
+    </div>
+  </div>
+    </template>
 
 
         <h3 class="text-lg font-bold mb-2" x-text="slide.title"></h3>
