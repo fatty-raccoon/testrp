@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" class="">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>Dark Mode Portfolio</title>
 
-  <!-- ✅ Tailwind Config (safelist dark classes) -->
+  <!-- ✅ Tailwind Config with safelist -->
   <script>
     tailwind.config = {
       darkMode: 'class',
       safelist: [
         'dark',
-        'dark:bg-black',
-        'dark:text-white',
-        'dark:border-black',
-        'dark:bg-zinc-700',
-        'dark:text-zinc-400',
-        'dark:text-zinc-300'
+        'dark:bg-black', 'dark:text-white',
+        'dark:border-black', 'dark:text-zinc-300',
+        'dark:text-zinc-400', 'dark:bg-zinc-700'
       ]
     };
   </script>
 
-  <!-- ✅ Tailwind CDN -->
+  <!-- ✅ Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ✅ Lucide Icons (UMD for global access) -->
+  <!-- ✅ Lucide UMD Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <!-- ✅ Dark Mode Toggle Script -->
+  <!-- ✅ Dark Mode Script -->
   <script>
     function toggleDarkMode() {
       const html = document.documentElement;
       const icon = document.getElementById("mode-icon");
       const isDark = html.classList.toggle("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");
-
       icon.setAttribute("data-lucide", isDark ? "sun" : "moon");
       lucide.createIcons();
     }
@@ -60,7 +55,7 @@
 
 <body class="transition-all duration-300 bg-white text-zinc-900 dark:bg-black dark:text-white">
 
-  <!-- Header -->
+  <!-- ✅ Header with Toggle -->
   <header class="sticky top-0 z-50 w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-black shadow-md">
     <h1 class="text-2xl font-bold">MyPortfolio</h1>
     <button onclick="toggleDarkMode()" class="p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 transition">
@@ -68,18 +63,20 @@
     </button>
   </header>
 
-  <!-- Rest of the content -->
-  <section class="text-center mt-10">
-    <p class="text-lg text-zinc-700 dark:text-zinc-300">Welcome to my portfolio!</p>
+  <!-- ✅ Hero Section -->
+  <section class="text-center mt-12 px-4">
+    <h2 class="text-3xl font-bold mb-2">Hello 👋</h2>
+    <p class="text-lg text-zinc-600 dark:text-zinc-300">I’m [Your Name], a passionate [Role]</p>
   </section>
 
+  <!-- ✅ Footer -->
   <footer class="mt-12 py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
     © <span id="year"></span> Your Name. All rights reserved.
   </footer>
 
+  <!-- ✅ Year Script -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
-
-        </html>
+</html>
