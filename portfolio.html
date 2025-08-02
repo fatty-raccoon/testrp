@@ -1,40 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="en" class="">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Toggle Dark Mode
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle("dark");
-    }
-  </script>
-  <style>
-    .animate-waving-hand {
-      animation: wave 2s infinite;
-      display: inline-block;
-      transform-origin: 70% 70%;
-    }
-    @keyframes wave {
-      0% { transform: rotate(0deg); }
-      10% { transform: rotate(14deg); }
-      20% { transform: rotate(-8deg); }
-      30% { transform: rotate(14deg); }
-      40% { transform: rotate(-4deg); }
-      50% { transform: rotate(10deg); }
-      60% { transform: rotate(0deg); }
-      100% { transform: rotate(0deg); }
-    }
-  </style>
-  <!-- Lucide Icons -->
-  <script type="module" src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-white text-zinc-900 dark:bg-black dark:text-white transition-all">
 
-  <!-- Sticky Header -->
+  <!-- ✅ Tailwind Config (safelist dark classes) -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      safelist: [
+        'dark',
+        'dark:bg-black',
+        'dark:text-white',
+        'dark:border-black',
+        'dark:bg-zinc-700',
+        'dark:text-zinc-400',
+        'dark:text-zinc-300'
+      ]
+    };
+  </script>
+
+  <!-- ✅ Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ✅ Lucide Icons (UMD for global access) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- ✅ Dark Mode Toggle Script -->
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("mode-icon");
+      const isDark = html.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+
+      icon.setAttribute("data-lucide", isDark ? "sun" : "moon");
+      lucide.createIcons();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      const html = document.documentElement;
+      const icon = document.getElementById("mode-icon");
+
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+        icon.setAttribute("data-lucide", "sun");
+      } else {
+        html.classList.remove("dark");
+        icon.setAttribute("data-lucide", "moon");
+      }
+
+      lucide.createIcons();
+    });
+  </script>
+</head>
+
+<body class="transition-all duration-300 bg-white text-zinc-900 dark:bg-black dark:text-white">
+
+  <!-- Header -->
   <header class="sticky top-0 z-50 w-full flex justify-between items-center px-6 py-4 bg-white dark:bg-black shadow-md">
     <h1 class="text-2xl font-bold">MyPortfolio</h1>
     <button onclick="toggleDarkMode()" class="p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 transition">
@@ -42,58 +68,18 @@
     </button>
   </header>
 
-  <!-- Cover Photo + Profile -->
-  <section class="relative">
-
-   <div class="h-48 w-full bg-cover bg-center" style="background-image: url('your-image.jpg');"></div>
-
-   <div class="absolute top-9 left-6">
-
-      <img src="profile.jpg" alt="Profile"
-        class="h-32 w-32 rounded-full border-4 border-white dark:border-black object-cover" />
-    </div>
+  <!-- Rest of the content -->
+  <section class="text-center mt-10">
+    <p class="text-lg text-zinc-700 dark:text-zinc-300">Welcome to my portfolio!</p>
   </section>
 
-  <!-- Hi There + Name -->
-  <section class="pt-20 px-6 text-center">
-    <h2 class="text-3xl font-bold flex justify-center items-center gap-2">
-      Hi there <span class="animate-waving-hand">👋</span>
-    </h2>
-    <p class="mt-2 text-lg text-zinc-600 dark:text-zinc-300">I am [Your Name]</p>
-  </section>
-
-  <!-- Summary Text -->
-  <section class="mt-6 px-6 text-center max-w-3xl mx-auto">
-    <p class="text-base md:text-lg text-zinc-700 dark:text-zinc-300">
-      I am a passionate [Your Role] with experience in [Skillset or field]. I love building meaningful projects and learning new technologies every day.
-    </p>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="mt-12 px-6 text-center">
-    <h3 class="text-xl font-semibold mb-4">Contact Me</h3>
-    <div class="flex justify-center gap-6">
-      <a href="https://github.com/yourusername" target="_blank">
-        <span class="icon" data-lucide="github"></span>
-      </a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank">
-        <span class="icon" data-lucide="linkedin"></span>
-      </a>
-      <a href="https://facebook.com/yourusername" target="_blank">
-        <span class="icon" data-lucide="facebook"></span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="mt-12 py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
     © <span id="year"></span> Your Name. All rights reserved.
   </footer>
 
-  <!-- Script for year and icons -->
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    lucide.createIcons();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
-                                                    </html>
+
+        </html>
